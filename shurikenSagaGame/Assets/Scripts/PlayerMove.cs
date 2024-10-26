@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour {
 
     //public AudioSource WalkSFX;
     public Rigidbody2D rb2D;
-    private bool FaceLeft = true; // determine which way player is facing.
+    private bool FaceLeft = false; // determine which way player is facing.
     public static float runSpeed = 10f;
     public float startSpeed = 10f;
     public bool isAlive = true;
@@ -21,6 +21,9 @@ public class PlayerMove : MonoBehaviour {
 
     // Reference to the Animator component in Player_Art
     //private Animator animator;
+
+    public Sprite defaultSprite;
+    public Sprite sideSprite;
 
     void Start(){
         rb2D = transform.GetComponent<Rigidbody2D>();
@@ -44,6 +47,19 @@ public class PlayerMove : MonoBehaviour {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
             rb2D.velocity = movement;
 
+            if (hvMove.y < 0) {
+                //animator.enabled = true; // Enable Animator for front view
+                spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+            } else if (hvMove.y > 0) {
+                //animator.enabled = true; // Enable Animator for back view
+                spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+            } else if (hvMove.x != 0) {
+                //animator.enabled = true; // Enable Animator for side view
+                spriteRenderer.sprite = sideSprite; //Show non-moving default sprite
+            } else {
+                //animator.enabled = false; // Disable Animator
+                spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+            }
             // Turning. Reverse if input is moving the Player right and Player faces left.
             if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
                 playerTurn();

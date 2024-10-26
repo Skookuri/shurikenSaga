@@ -207,3 +207,5 @@ MonoBehaviour:
   startSpeed: 10
   isAlive: 1
   player: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 3274f86c314ba4cc08017bb4ef7a9c95, type: 3}
+  sideSprite: {fileID: 21300000, guid: 30dfa2d6d827742f4a81d74c8e380a2f, type: 3}
