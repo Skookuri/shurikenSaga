@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour {
     public static float runSpeed = 10f;
     public float startSpeed = 10f;
     public bool isAlive = true;
+    public bool isShoot = false;
 
     // Reference to the SpriteRenderer component in Player_Art
     private SpriteRenderer spriteRenderer;
@@ -25,6 +26,13 @@ public class PlayerMove : MonoBehaviour {
     public Sprite defaultSprite;
     public Sprite sideSprite;
     public Sprite backSprite;
+    public Sprite shuriSprite;
+
+    public Transform firePoint;
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 10f;
+    public float attackRate = 2f;
+    private float nextAttackTime = 0f;
 
     void Start(){
         rb2D = transform.GetComponent<Rigidbody2D>();
@@ -48,24 +56,40 @@ public class PlayerMove : MonoBehaviour {
             Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
             rb2D.velocity = movement;
 
-            if (hvMove.y < 0) {
+            if (Time.time >= nextAttackTime){
+                if (Input.GetAxis("AttackYea") > 0){
+                    playerFire();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                    isShoot = true;
+                } else {
+                    isShoot = false;
+                }
+            }
+
+            if (isShoot == true) {
+                spriteRenderer.sprite = shuriSprite; //Hide non- moving
+            } else {
+                if (hvMove.y < 0) {
                 //animator.enabled = true; // Enable Animator for front view
                 spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
-            } else if (hvMove.y > 0) {
-                //animator.enabled = true; // Enable Animator for back view
-                spriteRenderer.sprite = backSprite; //Show non-moving default sprite
-            } else if (hvMove.x != 0) {
-                //animator.enabled = true; // Enable Animator for side view
-                spriteRenderer.sprite = sideSprite; //Show non-moving default sprite
-            } else {
-                //animator.enabled = false; // Disable Animator
-                spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+                } else if (hvMove.y > 0) {
+                    //animator.enabled = true; // Enable Animator for back view
+                    spriteRenderer.sprite = backSprite; //Show non-moving default sprite
+                } else if (hvMove.x != 0) {
+                    //animator.enabled = true; // Enable Animator for side view
+                    spriteRenderer.sprite = sideSprite; //Show non-moving default sprite
+                } else {
+                    //animator.enabled = false; // Disable Animator
+                    spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+                }
             }
             // Turning. Reverse if input is moving the Player right and Player faces left.
             if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
                 playerTurn();
             }
         }
+
+        
     }
 
     private void playerTurn(){
@@ -76,5 +100,13 @@ public class PlayerMove : MonoBehaviour {
         Vector3 theScale = spriteRenderer.transform.localScale;
         theScale.x *= -1;
         spriteRenderer.transform.localScale = theScale;
+    }
+
+    void playerFire(){
+        //animator.SetTrigger ("Fire");
+        Vector2 fwd = (firePoint.position - this.transform.position).normalized;
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse);
+        spriteRenderer.sprite = shuriSprite; //Show non-moving default sprite
     }
 }
