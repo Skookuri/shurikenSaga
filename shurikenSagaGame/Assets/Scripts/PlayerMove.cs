@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour {
 
     public Sprite defaultSprite;
     public Sprite sideSprite;
+    public Sprite backSprite;
 
     void Start(){
         rb2D = transform.GetComponent<Rigidbody2D>();
@@ -52,7 +53,7 @@ public class PlayerMove : MonoBehaviour {
                 spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
             } else if (hvMove.y > 0) {
                 //animator.enabled = true; // Enable Animator for back view
-                spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+                spriteRenderer.sprite = backSprite; //Show non-moving default sprite
             } else if (hvMove.x != 0) {
                 //animator.enabled = true; // Enable Animator for side view
                 spriteRenderer.sprite = sideSprite; //Show non-moving default sprite
