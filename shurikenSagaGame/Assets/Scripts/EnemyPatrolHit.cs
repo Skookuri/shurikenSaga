@@ -32,9 +32,9 @@ public class EnemyPatrolHit : MonoBehaviour {
             } else {
                 chasingPlayer = false; // Stop chasing if player is out of sight
                 speed = 2.0f;
-
-                // Return to the defined coordinates
-                ReturnToCoordinate(returnPosition);
+                
+                ReturnToCoordinate(returnPosition); // Return to the defined coordinates
+                Patrol();
             }
 
             if (chasingPlayer) {
