@@ -10083,7 +10083,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190648720367959392, guid: bffc966da218e554598e1338c864b3ab, type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 644573782324524783, guid: bffc966da218e554598e1338c864b3ab, type: 3}
       propertyPath: player
