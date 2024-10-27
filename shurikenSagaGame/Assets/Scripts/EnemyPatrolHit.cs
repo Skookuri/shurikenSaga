@@ -98,7 +98,7 @@ public class EnemyPatrolHit : MonoBehaviour {
         // Call the method in GameHandler to damage the player
         Debug.Log($"Distance to Player: {distanceToPlayer}, Damage Range: {damageRange}");
         if (gameHandler != null) {
-            Debug.Log("hello");
+            //Debug.Log("hello");
             gameHandler.playerGetHit(damage);
             Debug.Log("Attacked player for " + damage + " damage!");
         } else {
