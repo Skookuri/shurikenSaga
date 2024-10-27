@@ -15,8 +15,14 @@ public class EnemyPatrolHit : MonoBehaviour {
 
     void Start() {
         // Find the GameHandler to manage player health
-        if (GameObject.FindWithTag("GameHandler") != null) {
-            gameHandler = GameObject.FindWithTag("GameHandler").GetComponent<GameHandler>();
+        GameObject gameHandlerObject = GameObject.FindWithTag("GameHandler");
+        if (gameHandlerObject != null) {
+            gameHandler = gameHandlerObject.GetComponent<GameHandler>();
+            if (gameHandler == null) {
+                Debug.LogError("GameHandler found but component is null.");
+            }
+        } else {
+            Debug.LogError("No GameHandler found with the tag 'GameHandler'.");
         }
     }
 
@@ -26,13 +32,12 @@ public class EnemyPatrolHit : MonoBehaviour {
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
             if (distanceToPlayer < sightRange) {
                 // The enemy sees the player
-                Debug.Log("Player detected!");
                 chasingPlayer = true; // Start chasing the player
                 speed = 2.7f;
             } else {
                 chasingPlayer = false; // Stop chasing if player is out of sight
                 speed = 2.0f;
-                
+
                 ReturnToCoordinate(returnPosition); // Return to the defined coordinates
                 Patrol();
             }
@@ -42,7 +47,7 @@ public class EnemyPatrolHit : MonoBehaviour {
 
                 // Check if the enemy can attack the player
                 if (distanceToPlayer < damageRange) {
-                    AttackPlayer();
+                    AttackPlayer(distanceToPlayer);
                 }
             }
         }
@@ -89,11 +94,15 @@ public class EnemyPatrolHit : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, step); 
     }
 
-    private void AttackPlayer() {
+    private void AttackPlayer(float distanceToPlayer) {
         // Call the method in GameHandler to damage the player
+        Debug.Log($"Distance to Player: {distanceToPlayer}, Damage Range: {damageRange}");
         if (gameHandler != null) {
+            Debug.Log("hello");
             gameHandler.playerGetHit(damage);
             Debug.Log("Attacked player for " + damage + " damage!");
+        } else {
+            Debug.Log("GameHandler is null");
         }
     }
 }
