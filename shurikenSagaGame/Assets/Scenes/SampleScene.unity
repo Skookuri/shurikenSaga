@@ -263,6 +263,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  sightRange: 5
+  damageRange: 1
+  damage: 10
+  player: {fileID: 582924885}
 --- !u!61 &258408538
 BoxCollider2D:
   m_ObjectHideFlags: 0
