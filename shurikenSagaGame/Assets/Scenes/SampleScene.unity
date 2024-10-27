@@ -263,11 +263,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  rayLength: 0.5
-  damage: 10
 --- !u!61 &258408538
 BoxCollider2D:
   m_ObjectHideFlags: 0
