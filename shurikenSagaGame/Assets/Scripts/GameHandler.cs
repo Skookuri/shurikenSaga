@@ -81,7 +81,11 @@ public class GameHandler : MonoBehaviour {
       }
 
       public void StartGame() {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Game Scene");
+      }
+
+      public void EndGame() {
+            SceneManager.LoadScene("Lose Scene");
       }
 
       // Return to MainMenu
