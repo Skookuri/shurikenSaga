@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour {
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
 
-    // dashing vars
+    // dashing vars (Massimo)
     [SerializeField]
     public float dashSpeed = 25f; // Speed during dash
     [SerializeField]
@@ -69,7 +69,7 @@ public class PlayerMove : MonoBehaviour {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
 
-            // Massimo changes start
+            // Massimo changes start*******
             // Check for double-tap on movement keys
             if (moveVertical > 0 && Input.GetKeyDown(KeyCode.W))
             {
@@ -94,7 +94,7 @@ public class PlayerMove : MonoBehaviour {
                 Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
                 rb2D.velocity = movement;
             }
-            //Massimo changes end
+            //Massimo changes end*******
 
             if (Time.time >= nextAttackTime){
                 if (Input.GetAxis("AttackYea") > 0){
@@ -131,7 +131,7 @@ public class PlayerMove : MonoBehaviour {
 
         
     }
-    //Massimo changes start
+    //Massimo changes start*******
     private void HandleDoubleTap(string key)
     {
         if (key == lastTappedKey && Time.time - lastTapTime <= doubleTapTime)
@@ -195,7 +195,7 @@ public class PlayerMove : MonoBehaviour {
         // Allow for immediate resumption of regular movement
         isDashing = false;
     }
-    //Massimo changes end
+    //Massimo changes end*******
 
     private void playerTurn(){
         // NOTE: Switch player facing label
