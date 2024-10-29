@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour{
     public Transform player;          
-    public float threshold = 0f;         
+    public float threshold = 0f;
+
     public float smoothSpeed = 0.025f;    
     public float moveAmountMultiplier = 1f;   
 
-    private float targetPositionX;     
+    private float targetPositionX;
     private float targetPositionY;      
     private float moveAmountX;
     private float moveAmountY;
