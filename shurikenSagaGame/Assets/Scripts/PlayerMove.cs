@@ -34,6 +34,22 @@ public class PlayerMove : MonoBehaviour {
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
 
+    // dashing vars
+    [SerializeField]
+    public float dashSpeed = 25f; // Speed during dash
+    [SerializeField]
+    public float dashDuration = .5f; // Duration of the dash
+    [SerializeField]
+    public float dashCooldown = .5f; // Cooldown time between dashes
+    [SerializeField]
+    public float dashLength = 10f; // Distance the player dashes
+
+    public float doubleTapTime = 0.22f; // Time window for double-tap detection
+    private float lastTapTime = 0f; // Last time a movement key was tapped
+    private string lastTappedKey = ""; // Track the last tapped movement key
+
+    private bool isDashing = false;
+
     void Start(){
         rb2D = transform.GetComponent<Rigidbody2D>();
 
@@ -53,8 +69,32 @@ public class PlayerMove : MonoBehaviour {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
 
-            Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
-            rb2D.velocity = movement;
+            // Massimo changes start
+            // Check for double-tap on movement keys
+            if (moveVertical > 0 && Input.GetKeyDown(KeyCode.W))
+            {
+                HandleDoubleTap("W");
+            }
+            else if (moveVertical < 0 && Input.GetKeyDown(KeyCode.S))
+            {
+                HandleDoubleTap("S");
+            }
+            else if (moveHorizontal < 0 && Input.GetKeyDown(KeyCode.A))
+            {
+                HandleDoubleTap("A");
+            }
+            else if (moveHorizontal > 0 && Input.GetKeyDown(KeyCode.D))
+            {
+                HandleDoubleTap("D");
+            }
+
+            // Handle normal movement
+            if (!isDashing)
+            {
+                Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
+                rb2D.velocity = movement;
+            }
+            //Massimo changes end
 
             if (Time.time >= nextAttackTime){
                 if (Input.GetAxis("AttackYea") > 0){
@@ -68,7 +108,7 @@ public class PlayerMove : MonoBehaviour {
 
             if (isShoot == true) {
                 spriteRenderer.sprite = shuriSprite; //Hide non- moving
-            } else {
+            } else if (!isDashing){ //disabled for when dashing (Massimo)
                 if (hvMove.y < 0) {
                 //animator.enabled = true; // Enable Animator for front view
                 spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
@@ -91,6 +131,71 @@ public class PlayerMove : MonoBehaviour {
 
         
     }
+    //Massimo changes start
+    private void HandleDoubleTap(string key)
+    {
+        if (key == lastTappedKey && Time.time - lastTapTime <= doubleTapTime)
+        {
+            // If the same key is tapped twice within the time window, dash
+            StartCoroutine(Dash(key));
+        }
+
+        // Update last tapped key and time
+        lastTappedKey = key;
+        lastTapTime = Time.time;
+    }
+
+    IEnumerator Dash(string directionKey)
+    {
+        isDashing = true;
+
+        // Determine the dash direction based on the key
+        Vector2 direction = Vector2.zero;
+        if (directionKey == "W")
+        {
+            direction = Vector2.up;
+            spriteRenderer.sprite = backSprite;
+
+        }
+        else if (directionKey == "S")
+        {
+            direction = Vector2.down;
+            spriteRenderer.sprite = defaultSprite;
+        }
+        else if (directionKey == "A") 
+        {
+            direction = Vector2.left;
+            spriteRenderer.sprite = sideSprite;
+        }
+        else if (directionKey == "D")
+        {
+            direction = Vector2.right;
+            spriteRenderer.sprite = sideSprite;
+        }
+
+        float elapsedTime = 0f;
+
+        // Store the initial position to calculate the distance
+        Vector2 startPosition = rb2D.position;
+        while (elapsedTime < dashDuration)
+        {
+            // Calculate the new position based on dash length and speed
+            Vector2 dashPosition = startPosition + direction * dashLength;
+
+            // Move to the dash position instantly
+            rb2D.MovePosition(Vector2.MoveTowards(rb2D.position, dashPosition, dashSpeed * Time.deltaTime));
+
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        // Stop the dash
+        rb2D.velocity = Vector2.zero;
+
+        // Allow for immediate resumption of regular movement
+        isDashing = false;
+    }
+    //Massimo changes end
 
     private void playerTurn(){
         // NOTE: Switch player facing label

@@ -2268,13 +2268,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
+      propertyPath: dashSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 566499522}
     - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
+      propertyPath: dashLength
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: shuriSprite
       value: 
       objectReference: {fileID: 21300000, guid: ede741535f2a742e1b7f647e63d583aa, type: 3}
+    - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
+      propertyPath: dashDuration
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: defaultSprite
       value: 
