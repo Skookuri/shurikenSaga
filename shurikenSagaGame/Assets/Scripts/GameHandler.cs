@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameHandler : MonoBehaviour {
 
       private GameObject player;
-      public static int playerHealth = 100;
+      public int playerHealth = 100;
       public int StartPlayerHealth = 100;
-      //public GameObject healthText;
+      public GameObject healthText;
 
       public static int gotTokens = 0;
-      //public GameObject tokensText;
+      public GameObject tokensText;
 
       public bool isDefending = false;
 
@@ -28,7 +28,7 @@ public class GameHandler : MonoBehaviour {
             //if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
                   playerHealth = StartPlayerHealth;
             //}
-            //updateStatsDisplay();
+            updateStatsDisplay();
       }
 
       public void playerGetTokens(int newTokens){
@@ -40,7 +40,7 @@ public class GameHandler : MonoBehaviour {
            if (isDefending == false){
                   playerHealth -= damage;
                   if (playerHealth >=0){
-                        //updateStatsDisplay();
+                        updateStatsDisplay();
                   }
                   if (damage > 0){
                         //player.GetComponent<PlayerHurt>().playerHit();       //play GetHit animation
@@ -49,7 +49,7 @@ public class GameHandler : MonoBehaviour {
 
            if (playerHealth > StartPlayerHealth){
                   playerHealth = StartPlayerHealth;
-                  //updateStatsDisplay();
+                  updateStatsDisplay();
             }
 
            if (playerHealth <= 0){
@@ -59,29 +59,30 @@ public class GameHandler : MonoBehaviour {
             }
       }
 
-    //   public void updateStatsDisplay(){
-    //         Text healthTextTemp = healthText.GetComponent<Text>();
-    //         healthTextTemp.text = "HEALTH: " + playerHealth;
+       public void updateStatsDisplay(){
+             Text healthTextTemp = healthText.GetComponent<Text>();
+             healthTextTemp.text = "HEALTH: " + playerHealth;
 
-    //         Text tokensTextTemp = tokensText.GetComponent<Text>();
-    //         tokensTextTemp.text = "GOLD: " + gotTokens;
-    //   }
+             Text tokensTextTemp = tokensText.GetComponent<Text>();
+             tokensTextTemp.text = "GOLD: " + gotTokens;
+       }
 
       public void playerDies(){
             //player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
             lastLevelDied = sceneName;       //allows replaying the Level where you died
-            StartCoroutine(DeathPause());
+            SceneManager.LoadScene("Lose Scene");
+            //StartCoroutine(DeathPause());
       }
 
       IEnumerator DeathPause(){
             player.GetComponent<PlayerMove>().isAlive = false;
             //player.GetComponent<PlayerJump>().isAlive = false;
             yield return new WaitForSeconds(1.0f);
-            SceneManager.LoadScene("EndLose");
+            SceneManager.LoadScene("Lose Scene");
       }
 
       public void StartGame() {
-            SceneManager.LoadScene("Game Scene");
+            SceneManager.LoadScene("SampleScene");
       }
 
       public void EndGame() {

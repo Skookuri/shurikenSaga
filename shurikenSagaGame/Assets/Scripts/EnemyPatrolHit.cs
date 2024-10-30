@@ -47,6 +47,7 @@ public class EnemyPatrolHit : MonoBehaviour {
 
                 // Check if the enemy can attack the player
                 if (distanceToPlayer < damageRange) {
+                    //yield return new WaitForSeconds(0.5);
                     AttackPlayer(distanceToPlayer);
                 }
             }
@@ -99,6 +100,7 @@ public class EnemyPatrolHit : MonoBehaviour {
         Debug.Log($"Distance to Player: {distanceToPlayer}, Damage Range: {damageRange}");
         if (gameHandler != null) {
             //Debug.Log("hello");
+
             gameHandler.playerGetHit(damage);
             Debug.Log("Attacked player for " + damage + " damage!");
         } else {
