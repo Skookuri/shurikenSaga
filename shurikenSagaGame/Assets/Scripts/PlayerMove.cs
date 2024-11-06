@@ -89,11 +89,11 @@ public class PlayerMove : MonoBehaviour {
             }
 
             // Handle normal movement
-            if (!isDashing)
-            {
-                Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
-                rb2D.velocity = movement;
-            }
+            //if (!isDashing)
+            //{
+            //    Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
+            //    rb2D.velocity = movement;
+            //}
             //Massimo changes end*******
 
             if (Time.time >= nextAttackTime){
@@ -131,6 +131,16 @@ public class PlayerMove : MonoBehaviour {
 
         
     }
+
+    private void FixedUpdate()
+    { 
+        if (isAlive && !isDashing)
+        {
+            Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * runSpeed * Time.fixedDeltaTime * 33;
+            rb2D.velocity = movement;
+        }
+    }
+
     //Massimo changes start*******
     private void HandleDoubleTap(string key)
     {
@@ -183,7 +193,7 @@ public class PlayerMove : MonoBehaviour {
             Vector2 dashPosition = startPosition + direction * dashLength;
 
             // Move to the dash position instantly
-            rb2D.MovePosition(Vector2.MoveTowards(rb2D.position, dashPosition, dashSpeed * Time.deltaTime));
+            rb2D.MovePosition(Vector2.MoveTowards(rb2D.position, dashPosition, dashSpeed * Time.fixedDeltaTime / 10));
 
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
