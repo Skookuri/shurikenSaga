@@ -100,7 +100,7 @@ public class EnemyPatrolHit : MonoBehaviour {
         Debug.Log($"Distance to Player: {distanceToPlayer}, Damage Range: {damageRange}");
         if (gameHandler != null) {
             //Debug.Log("hello");
-
+            
             gameHandler.playerGetHit(damage);
             Debug.Log("Attacked player for " + damage + " damage!");
         } else {

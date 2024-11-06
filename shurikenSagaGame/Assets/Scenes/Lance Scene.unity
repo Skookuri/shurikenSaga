@@ -8245,11 +8245,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8995252045443643313, guid: ae99072e23731f64cb4b5cebf4a5d634, type: 3}
+      propertyPath: damageRange
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1201339416379808579, guid: ae99072e23731f64cb4b5cebf4a5d634, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8093122768461307614, guid: ae99072e23731f64cb4b5cebf4a5d634, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 318374821}
   m_SourcePrefab: {fileID: 100100000, guid: ae99072e23731f64cb4b5cebf4a5d634, type: 3}
+--- !u!1 &318374816 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8093122768461307614, guid: ae99072e23731f64cb4b5cebf4a5d634, type: 3}
+  m_PrefabInstance: {fileID: 307643596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &318374821
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318374816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &478741014
 GameObject:
   m_ObjectHideFlags: 0
@@ -10881,7 +10915,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1472813841328071199, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
       propertyPath: orthographic size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3429735699589518147, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
       propertyPath: player

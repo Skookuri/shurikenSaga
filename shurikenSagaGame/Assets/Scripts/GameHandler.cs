@@ -39,6 +39,7 @@ public class GameHandler : MonoBehaviour {
       public void playerGetHit(int damage){
            if (isDefending == false){
                   playerHealth -= damage;
+                  //yield return new WaitForSeconds(1.0f);
                   if (playerHealth >=0){
                         updateStatsDisplay();
                   }
@@ -58,6 +59,7 @@ public class GameHandler : MonoBehaviour {
                   playerDies();
             }
       }
+
 
        public void updateStatsDisplay(){
              Text healthTextTemp = healthText.GetComponent<Text>();
