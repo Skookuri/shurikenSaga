@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    
+    //public AudioSource PauseSFX;
     void Start(){
         ResumeGame();
     }
@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
         {
             if(pauseMenu.activeInHierarchy)
             {
+                //PauseSFX.play();
                 ResumeGame();
             }
             else
