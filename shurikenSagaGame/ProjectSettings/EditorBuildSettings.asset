@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Game Scene.unity
     guid: 58ca6097c3b980b4298c5b72827d251e
+  - enabled: 1
+    path: Assets/Scenes/Scene1.unity
+    guid: bec167bd74378bd468a01d57e4a95ee9
+  - enabled: 1
+    path: Assets/Scenes/Massimo test scene.unity
+    guid: 7017342472b9f2347b974048f461dc45
+  - enabled: 1
+    path: Assets/Scenes/Lance Scene.unity
+    guid: d268cfc8c9b22074db0cfc0f98d496c5
   m_configObjects: {}
