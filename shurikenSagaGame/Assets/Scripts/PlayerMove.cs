@@ -1,12 +1,9 @@
-
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour {
-
-
     //public AudioSource WalkSFX;
     public Rigidbody2D rb2D;
     private bool FaceLeft = false; // determine which way player is facing.
@@ -14,14 +11,11 @@ public class PlayerMove : MonoBehaviour {
     public float startSpeed = 10f;
     public bool isAlive = true;
     public bool isShoot = false;
-
-    // Reference to the SpriteRenderer component in Player_Art
-    private SpriteRenderer spriteRenderer;
-
+    
     public Transform player;
 
-    // Reference to the Animator component in Player_Art
-    //private Animator animator;
+    private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component in Player_Art
+    private Animator animator; // Reference to the Animator component in Player_Art
 
     public Sprite defaultSprite;
     public Sprite sideSprite;
@@ -57,13 +51,19 @@ public class PlayerMove : MonoBehaviour {
         spriteRenderer = transform.Find("player_art").GetComponent<SpriteRenderer>();
 
         // Get the Animator component from the player_art child
-        //animator = transform.Find("player_art").GetComponent<Animator>();
+        animator = transform.Find("player_art").GetComponent<Animator>();
     }
 
     void Update(){
         //NOTE: Horizontal axis: [a] / left arrow is -1, [d] / right arrow is 1
         //NOTE: Vertical axis: [w] / up arrow, [s] / down arrow
         Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+
+        // Update vertical movement for the Animator
+        animator.SetFloat("Vertical", hvMove.y);  // Send the vertical movement to the Animator
+        bool MovingHoriz = hvMove.x != 0;  // Check if horizontal movement is happening
+        animator.SetBool("MovingHoriz", MovingHoriz);  // Send the horizontal movement != checker to the Animator
+        
         if (isAlive == true){
             //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -110,17 +110,17 @@ public class PlayerMove : MonoBehaviour {
                 spriteRenderer.sprite = shuriSprite; //Hide non- moving
             } else if (!isDashing){ //disabled for when dashing (Massimo)
                 if (hvMove.y < 0) {
-                //animator.enabled = true; // Enable Animator for front view
-                spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+                    animator.enabled = false; // Disable Animator for front view
+                    spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
                 } else if (hvMove.y > 0) {
-                    //animator.enabled = true; // Enable Animator for back view
+                    animator.enabled = false; // Disable Animator for back view
                     spriteRenderer.sprite = backSprite; //Show non-moving default sprite
                 } else if (hvMove.x != 0) {
-                    //animator.enabled = true; // Enable Animator for side view
+                    animator.enabled = false; // Disable Animator for side view
                     spriteRenderer.sprite = sideSprite; //Show non-moving default sprite
                 } else {
-                    //animator.enabled = false; // Disable Animator
-                    spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+                    animator.enabled = true; // Enable Animator for Idle front view animation
+                    //spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
                 }
             }
             // Turning. Reverse if input is moving the Player right and Player faces left.

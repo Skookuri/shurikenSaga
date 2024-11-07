@@ -10625,6 +10625,32 @@ Transform:
   m_Father: {fileID: 582924885}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1774271385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4983621539344125255, guid: 94334284fb80e49758cada6304da8315, type: 3}
+  m_PrefabInstance: {fileID: 2742546572139219136}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1774271388
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774271385}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 760556ca5c03a470b9f27ade9bfc09d2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1776485424
 GameObject:
   m_ObjectHideFlags: 0
@@ -10801,7 +10827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10869,7 +10895,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1531657247}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4983621539344125255, guid: 94334284fb80e49758cada6304da8315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1774271388}
   m_SourcePrefab: {fileID: 100100000, guid: 94334284fb80e49758cada6304da8315, type: 3}
 --- !u!1001 &3774891275102933406
 PrefabInstance:
