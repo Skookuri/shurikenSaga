@@ -44,7 +44,15 @@ public class PlayerMove : MonoBehaviour {
 
     private bool isDashing = false;
 
+    public float timePassed = 0;
+    public bool isVisible = true;
+
+    private Vector3 lastSavedPosition;
+    private bool fell = false;
+
     void Start(){
+        lastSavedPosition = transform.position;
+
         rb2D = transform.GetComponent<Rigidbody2D>();
 
         // Get the SpriteRenderer component from the player_art child
@@ -52,6 +60,16 @@ public class PlayerMove : MonoBehaviour {
 
         // Get the Animator component from the player_art child
         animator = transform.Find("player_art").GetComponent<Animator>();
+
+        InvokeRepeating("SavePosition", 1, 1);
+    }
+
+    private void SavePosition()
+    {
+        if (!fell)
+        {
+            lastSavedPosition = transform.position;
+        }
     }
 
     void Update(){
@@ -132,13 +150,62 @@ public class PlayerMove : MonoBehaviour {
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Hole") && !isDashing)
+        {
+            //LANCE - ACCOUNT FOR DAMAGE HERE
+            fell = true;
+            StartCoroutine(Wait());
+        }
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2); // Wait for 2 seconds
+        Debug.Log("2 seconds have passed!");
+        Respawn();
+        // Add any actions you want to perform after the wait here
+    }
+
+    public void Respawn()
+    {
+        fell = false;
+        transform.position = lastSavedPosition;
+    }
+
     private void FixedUpdate()
     { 
-        if (isAlive && !isDashing)
+        if (isAlive && !isDashing && !fell)
         {
             Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * runSpeed * Time.fixedDeltaTime * 33;
             rb2D.velocity = movement;
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
+        } else if ( isAlive && isDashing && !fell)
+        {
+            //Debug.Log(Time.fixedDeltaTime);
+            if (Time.time > timePassed + 0.037)
+            {
+                timePassed = Time.time;
+                ToggleVis();
+            }
+        } else if (fell)
+        {
+            Vector2 movement = new Vector2(0, 0);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
         }
+    }
+
+    private void ToggleVis() { 
+        if(isVisible)
+        {
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, .6f);
+        } else
+        {
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, .8f);
+        }
+        isVisible = !isVisible;
+
     }
 
     //Massimo changes start*******
