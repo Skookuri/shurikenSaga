@@ -37153,7 +37153,7 @@ PrefabInstance:
       objectReference: {fileID: 1302541824}
     - target: {fileID: 644573782324524783, guid: bffc966da218e554598e1338c864b3ab, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 644573782324524783, guid: bffc966da218e554598e1338c864b3ab, type: 3}
       propertyPath: sightRange
