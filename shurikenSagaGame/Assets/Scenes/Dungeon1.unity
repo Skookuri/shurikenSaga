@@ -10272,7 +10272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Monk
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10800,11 +10800,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.36
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.99
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10947,8 +10947,9 @@ GameObject:
   - component: {fileID: 1351769092}
   - component: {fileID: 1351769091}
   - component: {fileID: 1351769090}
+  - component: {fileID: 1351769094}
   m_Layer: 5
-  m_Name: Dialogue
+  m_Name: DialogueCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11039,6 +11040,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1351769094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351769089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecdafefaca7946838fe9357b91feec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueSegments:
+  - Dialogue: Hello...
+    Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
+  - Dialogue: Wowza
+    Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
+  SpeakerImg: {fileID: 1403101060}
+  DialogueBox: {fileID: 701348707}
+  DialogueContent: {fileID: 1796817668}
+  Skip: {fileID: 155806709}
+  SpeakerName: {fileID: 882612126}
+  DialogueSpeech: {fileID: 1990967070}
+  TextSpeed: 25
+  CanContinue: 0
 --- !u!1001 &1371757718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13777,7 +13803,7 @@ GameObject:
   - component: {fileID: 1990967071}
   - component: {fileID: 1990967070}
   m_Layer: 5
-  m_Name: Dialogue
+  m_Name: DialogueSpeech
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13823,7 +13849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello............
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
