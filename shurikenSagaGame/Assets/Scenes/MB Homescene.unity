@@ -41476,7 +41476,7 @@ Transform:
   m_GameObject: {fileID: 1499500004}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.94, y: -4.51, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 8.5, y: 8.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41580,7 +41580,7 @@ MonoBehaviour:
   dragAmount: 0.6
   chargeInterval: 5
   chargeAmp: 54
-  blinkColor: {r: 1, g: 0, b: 0, a: 1}
+  blinkColor: {r: 1, g: 0.7688679, b: 0.7688679, a: 1}
   timeBeforeBlinking: 3
   overallAmpSide: 0.015
   overallAmpVert: 0.015
