@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PrayTemple : MonoBehaviour
 {
-    public GameObject prayButton; // Pray button UI element
+    public GameObject prayText; // Pray button UI element
     public GameObject dialogueCanvas; // Dialogue Canvas 
     public Transform player; // player
     private Dialoguer dialoguer; // Declare a Dialoguer variable
@@ -13,7 +13,7 @@ public class PrayTemple : MonoBehaviour
 
     void Start()
     {
-        prayButton.SetActive(false); // Hide the button at the start
+        prayText.SetActive(false); // Hide the button at the start
         dialogueCanvas.SetActive(false);
     }
 
@@ -22,7 +22,7 @@ public class PrayTemple : MonoBehaviour
         // Check if the entering collider belongs to the player
         if (other.transform == player) {
             playerInTrigger = true; // Player is inside the trigger area
-            prayButton.SetActive(true); // Show the pray button when player is near
+            prayText.SetActive(true); // Show the pray button when player is near
             Debug.Log("Player entered the trigger area.");
         }
     }
@@ -32,7 +32,8 @@ public class PrayTemple : MonoBehaviour
         // Check if the exiting collider belongs to the player
         if (other.transform == player) {
             playerInTrigger = false; // Player is no longer in the trigger area
-            prayButton.SetActive(false); // Hide the pray button when player leaves
+            
+            prayText.SetActive(false); // Hide the pray button when player leaves
             Debug.Log("Player exited the trigger area.");
         }
     }
@@ -50,7 +51,7 @@ public class PrayTemple : MonoBehaviour
     void TriggerPrayAction()
     {
         // Deactivate the pray button once clicked
-        prayButton.SetActive(false);
+        prayText.SetActive(false);
         dialoguer = dialogueCanvas.GetComponent<Dialoguer>();
         dialogueCanvas.SetActive(true);
         dialoguer.StartDialogueSegment();

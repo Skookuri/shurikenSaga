@@ -19,6 +19,11 @@ public class Dialoguer : MonoBehaviour
     public bool CanContinue;
     private int DialogueIndex;
 
+    public Transform player;
+    private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component in Player_Art
+    private Animator animator; // Reference to the Animator component in Player_Art
+    public Sprite prayingSprite;
+
     public ScreenFade screenFade; // Reference to the ScreenFade script
     public ScreenShake screenShake; // Reference to the ScreenShake script
     public float shakeDuration;
@@ -27,7 +32,12 @@ public class Dialoguer : MonoBehaviour
     void Start()
     {
         DialogueIndex = 0;
-        //StartDialogueSegment();
+        //Transform playerArt = player.Find("player_art"); // Assuming "player_art" is the name of the child object
+        //spriteRenderer = playerArt.GetComponent<SpriteRenderer>(); // Access SpriteRenderer from the player_art
+        //animator = playerArt.GetComponent<Animator>(); // Access Animator from the player_art
+
+        spriteRenderer = player.Find("player_art").GetComponent<SpriteRenderer>();
+        animator = player.Find("player_art").GetComponent<Animator>();
     }
 
     void Update()
@@ -46,6 +56,7 @@ public class Dialoguer : MonoBehaviour
 
     public void StartDialogueSegment()
     {
+        player.GetComponent<PlayerMove>().enabled = false; //turns off movement temporarily
         DialogueSegment currentSegment = DialogueSegments[DialogueIndex];
 
         // Apply shake effect before dialogue if specified
@@ -69,6 +80,11 @@ public class Dialoguer : MonoBehaviour
         // Apply fade if the character is praying (half dark screen effect)
         if (currentSegment.IsPraying) {
             screenFade.StartFade(0.7f, 1f); // Fade to 70% opacity (half dark screen)
+            
+            animator.enabled = false; // Disable the animator
+            spriteRenderer.sprite = prayingSprite; // Set the praying sprite
+        } else {
+            animator.enabled = true; // Disable the animator
         }
 
         SetStyle(currentSegment.Character);
@@ -118,6 +134,7 @@ public class Dialoguer : MonoBehaviour
             screenFade.StartFade(1f, 1f);
             yield return new WaitForSeconds(1f); // Optional delay before hiding
             gameObject.SetActive(false);
+            player.GetComponent<PlayerMove>().enabled = true; //turns movement back on
         }
     }
 
