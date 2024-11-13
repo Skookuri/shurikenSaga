@@ -11057,6 +11057,8 @@ MonoBehaviour:
     Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
   - Dialogue: Wowza
     Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
+  - Dialogue: Woah!!
+    Character: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
   SpeakerImg: {fileID: 1403101060}
   DialogueBox: {fileID: 701348707}
   DialogueContent: {fileID: 1796817668}
