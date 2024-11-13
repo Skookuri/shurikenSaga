@@ -134,8 +134,13 @@ public class Dialoguer : MonoBehaviour
             screenFade.StartFade(1f, 1f);
             yield return new WaitForSeconds(1f); // Optional delay before hiding
             gameObject.SetActive(false);
-            player.GetComponent<PlayerMove>().enabled = true; //turns movement back on
+            //player.GetComponent<PlayerMove>().enabled = true; //turns movement back on
         }
+    }
+
+    // Restart movement when the dialogue is disabled
+    private void OnDisable() {
+        player.GetComponent<PlayerMove>().enabled = true;
     }
 
     [System.Serializable]
