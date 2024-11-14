@@ -128,10 +128,11 @@ public class PlayerMove : MonoBehaviour {
                 spriteRenderer.sprite = shuriSprite; //Hide non- moving
             } else if (!isDashing){ //disabled for when dashing (Massimo)
                 if (hvMove.y < 0) {
-                    animator.enabled = false; // Disable Animator for front view
-                    spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
+                    animator.enabled = true; // Disable Animator for front view
+                    //spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
                 } else if (hvMove.y > 0) {
                     animator.enabled = false; // Disable Animator for back view
+                    //animator.enabled = true;
                     spriteRenderer.sprite = backSprite; //Show non-moving default sprite
                 } else if (hvMove.x != 0) {
                     animator.enabled = false; // Disable Animator for side view

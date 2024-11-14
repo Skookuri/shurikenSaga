@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PrayTemple : MonoBehaviour
 {
-    public GameObject prayText; // Pray button UI element
+    public GameObject prayText; // Pray text UI element
     public GameObject dialogueCanvas; // Dialogue Canvas 
     public Transform player; // player
     private Dialoguer dialoguer; // Declare a Dialoguer variable
@@ -43,7 +43,6 @@ public class PrayTemple : MonoBehaviour
         // Check for input to trigger the prayer action when the player is in the trigger area
         if (playerInTrigger && Input.GetKeyDown(KeyCode.E)) {
             TriggerPrayAction();
-            //Debug.Log("Triggering pray action...");
         }
     }
 
