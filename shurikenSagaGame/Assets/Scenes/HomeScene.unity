@@ -36355,6 +36355,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -9.19
       objectReference: {fileID: 0}
+    - target: {fileID: 527622747701366820, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: m_Size.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 527622747701366820, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 527622747701366820, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 527622747701366820, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.64
+      objectReference: {fileID: 0}
     - target: {fileID: 2288427802079104824, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
       propertyPath: m_RootOrder
       value: 4
