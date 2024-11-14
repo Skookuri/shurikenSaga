@@ -37278,7 +37278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 2060509326}
+  fadeImage: {fileID: 0}
 --- !u!4 &1319565795
 Transform:
   m_ObjectHideFlags: 0
@@ -37569,6 +37569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 2137919938}
+  dialoguerComponent: QuickBubble
 --- !u!1001 &1371757718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44293,82 +44294,6 @@ Transform:
   m_Father: {fileID: 1302541824}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2060509325
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2060509328}
-  - component: {fileID: 2060509327}
-  - component: {fileID: 2060509326}
-  m_Layer: 5
-  m_Name: faderImg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2060509326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060509325}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2060509327
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060509325}
-  m_CullTransparentMesh: 1
---- !u!224 &2060509328
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2060509325}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2137919939}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2137919938
 GameObject:
   m_ObjectHideFlags: 0
@@ -44381,7 +44306,6 @@ GameObject:
   - component: {fileID: 2137919943}
   - component: {fileID: 2137919942}
   - component: {fileID: 2137919941}
-  - component: {fileID: 2137919940}
   - component: {fileID: 2137919944}
   m_Layer: 5
   m_Name: NoKeyDialogue
@@ -44404,7 +44328,6 @@ RectTransform:
   m_Children:
   - {fileID: 1046395530}
   - {fileID: 1333890651}
-  - {fileID: 2060509328}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44413,44 +44336,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &2137919940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137919938}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecdafefaca7946838fe9357b91feec8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DialogueSegments:
-  - Dialogue: Seems like I can't go through without a key...
-    Character: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
-    IsFinalSegment: 0
-    IsPraying: 0
-    ShouldFadeIn: 1
-    ShouldShakeBefore: 0
-  - Dialogue: Where would it be?
-    Character: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
-    IsFinalSegment: 1
-    IsPraying: 0
-    ShouldFadeIn: 0
-    ShouldShakeBefore: 0
-  SpeakerImg: {fileID: 1333890652}
-  DialogueBox: {fileID: 1046395531}
-  DialogueContent: {fileID: 46553979}
-  Skip: {fileID: 1171209599}
-  SpeakerName: {fileID: 1098313301}
-  DialogueSpeech: {fileID: 1012905439}
-  TextSpeed: 25
-  CanContinue: 0
-  player: {fileID: 1302541824}
-  prayingSprite: {fileID: 21300000, guid: 5d985510f6b1e4378b4bb1392070d94b, type: 3}
-  screenFade: {fileID: 1319565794}
-  screenShake: {fileID: 1319565793}
-  shakeDuration: 0.5
 --- !u!114 &2137919941
 MonoBehaviour:
   m_ObjectHideFlags: 0
