@@ -37569,7 +37569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueCanvas: {fileID: 2137919938}
-  player: {fileID: 1302541824}
 --- !u!1001 &1371757718
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37646,6 +37645,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2562606463486877718, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: dialogueCanvas
+      value: 
+      objectReference: {fileID: 2137919938}
     - target: {fileID: 3894353770232524179, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -78,7 +78,6 @@ public class QuickBubble : MonoBehaviour
         CanContinue = true;
 
         if (isFinalSegment) {
-            DialogueIndex = 0;  // Reset the DialogueIndex
             yield return new WaitForSeconds(1f); // Optional delay before hiding
             gameObject.SetActive(false);
         }
@@ -99,5 +98,8 @@ public class QuickBubble : MonoBehaviour
         public string Dialogue;
         public Speaker Character;
         public bool IsFinalSegment;
+        // public bool IsPraying;
+        // public bool ShouldFadeIn;
+        // public bool ShouldShakeBefore;
     }
 }
