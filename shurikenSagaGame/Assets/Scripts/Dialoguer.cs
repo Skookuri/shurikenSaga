@@ -32,9 +32,6 @@ public class Dialoguer : MonoBehaviour
     void Start()
     {
         DialogueIndex = 0;
-        //Transform playerArt = player.Find("player_art"); // Assuming "player_art" is the name of the child object
-        //spriteRenderer = playerArt.GetComponent<SpriteRenderer>(); // Access SpriteRenderer from the player_art
-        //animator = playerArt.GetComponent<Animator>(); // Access Animator from the player_art
 
         spriteRenderer = player.Find("player_art").GetComponent<SpriteRenderer>();
         animator = player.Find("player_art").GetComponent<Animator>();
@@ -56,6 +53,10 @@ public class Dialoguer : MonoBehaviour
 
     public void StartDialogueSegment()
     {
+        if (DialogueSegments == null || DialogueIndex >= DialogueSegments.Length) {
+            Debug.LogError("DialogueSegments is not properly initialized or the index is out of bounds.");
+            return;
+        }
         player.GetComponent<PlayerMove>().enabled = false; //turns off movement temporarily
         DialogueSegment currentSegment = DialogueSegments[DialogueIndex];
 
