@@ -27,6 +27,7 @@ public class Dialoguer : MonoBehaviour
     public ScreenFade screenFade; // Reference to the ScreenFade script
     public ScreenShake screenShake; // Reference to the ScreenShake script
     public float shakeDuration;
+    public bool playOnStart;
     private float originalDialogueBoxOpacity;
 
     void Start()
@@ -35,6 +36,10 @@ public class Dialoguer : MonoBehaviour
 
         spriteRenderer = player.Find("player_art").GetComponent<SpriteRenderer>();
         animator = player.Find("player_art").GetComponent<Animator>();
+
+        if (playOnStart) {
+            StartDialogueSegment();
+        }
 
         
     }

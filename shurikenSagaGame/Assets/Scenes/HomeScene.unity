@@ -37278,7 +37278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeImage: {fileID: 0}
+  fadeImage: {fileID: 1814468662}
 --- !u!4 &1319565795
 Transform:
   m_ObjectHideFlags: 0
@@ -37415,12 +37415,12 @@ GameObject:
   - component: {fileID: 1347983275}
   - component: {fileID: 1347983274}
   m_Layer: 5
-  m_Name: NoKeyDialogue (1)
+  m_Name: IntroMonologue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1347983274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37465,6 +37465,7 @@ MonoBehaviour:
   screenFade: {fileID: 1319565794}
   screenShake: {fileID: 1319565793}
   shakeDuration: 0.5
+  playOnStart: 1
 --- !u!114 &1347983275
 MonoBehaviour:
   m_ObjectHideFlags: 0
