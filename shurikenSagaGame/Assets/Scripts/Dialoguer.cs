@@ -39,9 +39,7 @@ public class Dialoguer : MonoBehaviour
 
         if (playOnStart) {
             StartDialogueSegment();
-        }
-
-        
+        } 
     }
 
     void Update()
