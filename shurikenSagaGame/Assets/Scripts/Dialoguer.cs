@@ -90,6 +90,7 @@ public class Dialoguer : MonoBehaviour
 
         SetStyle(currentSegment.Character);
         StartCoroutine(PlayDialogue(currentSegment.Dialogue, currentSegment.IsFinalSegment));
+        Debug.Log("Starting dialog...");
     }
 
     private IEnumerator ResumeDialogueAfterShake(float shakeDuration)
