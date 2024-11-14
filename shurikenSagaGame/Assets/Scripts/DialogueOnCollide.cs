@@ -5,28 +5,29 @@ using UnityEngine;
 public class DialogueOnCollide : MonoBehaviour
 {
     public GameObject dialogueCanvas; // Dialogue Canvas that contains Dialoguer component
-    public Transform player; // Reference to the player
     private Dialoguer dialoguer; // Reference to the Dialoguer component
+    //public Transform player; // Reference to the player
 
     void Start()
     {
         dialogueCanvas.SetActive(false); // Hide dialogue canvas initially
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    // Public helper function to trigger dialogue action
+    public void TriggerDialogueAction()
     {
-        // Check if the player collided with this object
-        if (other.transform == player)
-        {
-            TriggerDialogueAction();
+        // Ensure the dialoguer is correctly initialized
+        if (dialogueCanvas != null) {
+            dialoguer = dialogueCanvas.GetComponent<Dialoguer>();
+            if (dialoguer != null) {
+                dialogueCanvas.SetActive(true); // Show dialogue canvas
+                dialoguer.StartDialogueSegment(); // Start the dialogue
+                //Debug.Log("Dialogue started on collision.");
+            } else {
+                Debug.LogError("Dialoguer component is missing from the dialogueCanvas.");
+            }
+        } else {
+            Debug.LogError("DialogueCanvas is not assigned.");
         }
-    }
-
-    void TriggerDialogueAction()
-    {
-        dialoguer = dialogueCanvas.GetComponent<Dialoguer>();
-        dialogueCanvas.SetActive(true); // Show dialogue canvas
-        dialoguer.StartDialogueSegment(); // Start the dialogue
-        Debug.Log("Dialogue started on collision.");
     }
 }
