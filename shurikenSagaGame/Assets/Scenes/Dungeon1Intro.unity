@@ -13293,6 +13293,10 @@ PrefabInstance:
       value: Hello. Praying for your family, I see?
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
+      propertyPath: DialogueSegments.Array.data[5].Dialogue
+      value: 'Yes. They were killed by the shogun that ravaged our lands. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[13].Dialogue
       value: This gift, if mastered, will allow you to confront the shogun.
       objectReference: {fileID: 0}
@@ -13354,6 +13358,10 @@ PrefabInstance:
       propertyPath: DialogueSegments.Array.data[20].IsFinalSegment
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2197144602625025931, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 843097ad88da240e9a5c93c20c013a75, type: 3}
     - target: {fileID: 2893065583119685138, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: m_Pivot.x
       value: 0

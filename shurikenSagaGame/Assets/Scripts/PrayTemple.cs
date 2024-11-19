@@ -9,6 +9,7 @@ public class PrayTemple : MonoBehaviour
     public Transform player; // player
     private Dialoguer dialoguer; // Declare a Dialoguer variable
     private bool playerInTrigger = false; // To track if the player is in the trigger area
+    private bool hasInteracted = false; // To track if the player has interacted with the object
     
 
     void Start()
@@ -41,16 +42,19 @@ public class PrayTemple : MonoBehaviour
     void Update()
     {
         // Check for input to trigger the prayer action when the player is in the trigger area
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.E)) {
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.E) && !hasInteracted) {
             TriggerPrayAction();
+        } else if (playerInTrigger && hasInteracted) {
+            prayText.SetActive(false);
         }
     }
 
     // This function is called when the Pray button is clicked (or 'E' is pressed while in the trigger area)
     void TriggerPrayAction()
     {
-        // Deactivate the pray button once clicked
+        // Deactivate the pray text once clicked
         prayText.SetActive(false);
+        hasInteracted = true; // Mark that the player has interacted
         dialoguer = dialogueCanvas.GetComponent<Dialoguer>();
         dialogueCanvas.SetActive(true);
         dialoguer.StartDialogueSegment();

@@ -39,6 +39,8 @@ public class MonkController : MonoBehaviour
         if (MoveMonk) {
             if (monkRenderer != null && !monkRenderer.enabled) {
                 monkRenderer.enabled = true;
+                BoxCollider2D monkCollider = monk.GetComponent<BoxCollider2D>();
+                monkCollider.isTrigger = false;
             }
             // Check if already at the target location
             if (AtTargetLocation()) {
