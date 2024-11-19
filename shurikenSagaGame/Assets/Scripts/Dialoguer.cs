@@ -99,12 +99,12 @@ public class Dialoguer : MonoBehaviour
 
             MonkController.MoveMonk = true; //enable monk moving in while praying
             
-        } else {
+        } /*else {
             if (spriteRenderer.sprite == prayingSprite) {
                 Debug.Log("Enabling animator");
                 animator.enabled = true; // Enable the animator
             }
-        }
+        }*/ //having this enabled can prevent the dialogue from loading unfortunately
 
         SetStyle(currentSegment.Character);
         StartCoroutine(PlayDialogue(currentSegment.Dialogue, currentSegment.IsFinalSegment));
