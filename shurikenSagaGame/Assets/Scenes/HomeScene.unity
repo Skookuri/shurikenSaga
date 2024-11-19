@@ -15803,18 +15803,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1472813841328071199, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
-      propertyPath: orthographic size
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 3429735699589518147, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1302541824}
-    - target: {fileID: 3429735699589518147, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
-      propertyPath: smoothSpeed
-      value: 0.075
-      objectReference: {fileID: 0}
     - target: {fileID: 7089207366140228065, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -15859,6 +15851,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7102884792679650042, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c07f62d7cd80483ea560f0175fbdcf2, type: 2}
     - target: {fileID: 7604569872418412430, guid: 7abeedeb8e07e8d42973e7bc6fc4976b, type: 3}
       propertyPath: m_Name
       value: Main Camera
