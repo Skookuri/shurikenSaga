@@ -23,7 +23,6 @@ public class Dialoguer : MonoBehaviour
     private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component in Player_Art
     private Animator animator; // Reference to the Animator component in Player_Art
     public Sprite prayingSprite;
-
     public ScreenFade screenFade; // Reference to the ScreenFade script
     public ScreenShake screenShake; // Reference to the ScreenShake script
     public float shakeDuration;
@@ -96,6 +95,9 @@ public class Dialoguer : MonoBehaviour
             
             animator.enabled = false; // Disable the animator
             spriteRenderer.sprite = prayingSprite; // Set the praying sprite
+
+            MonkController.MoveMonk = true; //enable monk moving in while praying
+            
         } /*else {
             // if (animator.enabled == false) {
             //     Debug.Log("Enabling animator");
@@ -106,7 +108,7 @@ public class Dialoguer : MonoBehaviour
 
         SetStyle(currentSegment.Character);
         StartCoroutine(PlayDialogue(currentSegment.Dialogue, currentSegment.IsFinalSegment));
-        Debug.Log("Starting dialog...");
+        //Debug.Log("Starting dialog...");
     }
 
     private IEnumerator ResumeDialogueAfterShake(float shakeDuration)
