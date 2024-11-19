@@ -75,6 +75,8 @@ public class Dialoguer : MonoBehaviour
             
             // Temporarily reduce opacity
             SetUIOpacity(DialogueBox, 0f);
+            SetUIOpacity(SpeakerName, 0f);
+            SetUIOpacity(DialogueSpeech, 0f);
             SetUIOpacity(SpeakerImg, 0f);
 
             // Start the screen shake effect
@@ -113,6 +115,8 @@ public class Dialoguer : MonoBehaviour
 
         // Restore opacity
         SetUIOpacity(DialogueBox, originalDialogueBoxOpacity);
+        SetUIOpacity(SpeakerName, 1f);
+        SetUIOpacity(DialogueSpeech, 1f);
         SetUIOpacity(SpeakerImg, 1f);
     }
 
