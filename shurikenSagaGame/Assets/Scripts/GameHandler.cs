@@ -84,7 +84,7 @@ public class GameHandler : MonoBehaviour {
       }
 
       public void StartGame() {
-            SceneManager.LoadScene("HomeScene");
+            SceneManager.LoadScene("IntroScene");
       }
 
       public void EndGame() {

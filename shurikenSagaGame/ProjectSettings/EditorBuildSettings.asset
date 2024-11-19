@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 4f8712a31d165be43ad991b07991448d
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: 0b98ecd46413642eeb537a7daee4dd95
+  - enabled: 1
+    path: Assets/Scenes/Dungeon1Intro.unity
+    guid: dc27caaaea8c4491dbaff526aa89a9a0
   - enabled: 0
     path: Assets/Scenes/Lose Scene.unity
     guid: 077e199813a4d8b4daa091f1877a6f55
@@ -20,9 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HomeScene.unity
     guid: e44832181240d4aa5b3a8dfb5c4f8720
-  - enabled: 1
-    path: Assets/Scenes/Dungeon1Intro.unity
-    guid: dc27caaaea8c4491dbaff526aa89a9a0
   - enabled: 0
     path: Assets/Scenes/Scene1.unity
     guid: bec167bd74378bd468a01d57e4a95ee9
