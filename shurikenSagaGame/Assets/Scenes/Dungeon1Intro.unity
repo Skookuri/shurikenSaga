@@ -13217,7 +13217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[17].Dialogue
-      value: This is the very first "Jutsu"- a skill- that you will learn
+      value: This is the very first "Jutsu"- a skill- that you will learn.
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[18].Dialogue
