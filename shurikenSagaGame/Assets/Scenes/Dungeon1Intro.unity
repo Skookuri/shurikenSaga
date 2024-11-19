@@ -13672,6 +13672,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6166471729733924721, guid: 3500f465eecfb474bbed6bb01df7c467, type: 3}
   m_PrefabInstance: {fileID: 1976695752}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1976695754 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8049781163151230583, guid: 3500f465eecfb474bbed6bb01df7c467, type: 3}
+  m_PrefabInstance: {fileID: 1976695752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983176639
 GameObject:
   m_ObjectHideFlags: 0
@@ -14106,6 +14111,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1302541824}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
+      propertyPath: popSFX
+      value: 
+      objectReference: {fileID: 1976695754}
+    - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: screenFade
       value: 
       objectReference: {fileID: 2017142452}
@@ -14172,19 +14181,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
-      propertyPath: DialogueSegments.Array.data[14].IsFinalSegment
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
-      propertyPath: DialogueSegments.Array.data[16].IsFinalSegment
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[18].IsFinalSegment
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
-      propertyPath: DialogueSegments.Array.data[19].IsFinalSegment
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}

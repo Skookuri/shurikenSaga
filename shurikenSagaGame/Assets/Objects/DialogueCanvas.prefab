@@ -36,7 +36,7 @@ RectTransform:
   - {fileID: 1443491047345642107}
   - {fileID: 1757178401699487451}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -198,8 +198,13 @@ MonoBehaviour:
     IsPraying: 0
     ShouldFadeIn: 0
     ShouldShakeBefore: 1
-  - Dialogue: This gift, if mastered, will allow you to confront the shogun and his
-      army in both the physical and shadow dimensions.
+  - Dialogue: This gift, if mastered, will allow you to confront the shogun.
+    Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
+    IsFinalSegment: 0
+    IsPraying: 0
+    ShouldFadeIn: 0
+    ShouldShakeBefore: 0
+  - Dialogue: You will be able to access both the shadow and overworld realms.
     Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
     IsFinalSegment: 0
     IsPraying: 0
@@ -217,8 +222,14 @@ MonoBehaviour:
     IsPraying: 0
     ShouldFadeIn: 0
     ShouldShakeBefore: 0
-  - Dialogue: The shogun has hidden himself in a forest fortress, protected by fierce
-      guardians. You must prepare well before seeking him.
+  - Dialogue: 'The shogun has hidden himself in a forest fortress, protected by fierce
+      guardians. '
+    Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
+    IsFinalSegment: 0
+    IsPraying: 0
+    ShouldFadeIn: 0
+    ShouldShakeBefore: 0
+  - Dialogue: You must prepare well before seeking him.
     Character: {fileID: 11400000, guid: 77b4e82c3334f410393e9dd8da4c417c, type: 2}
     IsFinalSegment: 0
     IsPraying: 0
@@ -231,7 +242,7 @@ MonoBehaviour:
     IsPraying: 0
     ShouldFadeIn: 0
     ShouldShakeBefore: 0
-  - Dialogue: Thank you, wise one. I will not fail.
+  - Dialogue: Thank you, wise one. I will not fail you.
     Character: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
     IsFinalSegment: 1
     IsPraying: 0
@@ -250,6 +261,8 @@ MonoBehaviour:
   screenFade: {fileID: 0}
   screenShake: {fileID: 0}
   shakeDuration: 0.5
+  playOnStart: 0
+  popSFX: {fileID: 0}
 --- !u!1 &1041608325540825169
 GameObject:
   m_ObjectHideFlags: 0
