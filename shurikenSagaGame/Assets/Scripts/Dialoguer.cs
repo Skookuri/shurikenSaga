@@ -28,7 +28,9 @@ public class Dialoguer : MonoBehaviour
     public ScreenShake screenShake; // Reference to the ScreenShake script
     public float shakeDuration;
     public bool playOnStart;
+    public AudioSource popSFX;
     private float originalDialogueBoxOpacity;
+    
 
     void Start()
     {
@@ -46,6 +48,7 @@ public class Dialoguer : MonoBehaviour
     {
         Skip.enabled = CanContinue;
         if (Input.GetKeyDown(KeyCode.P) && CanContinue) {
+            popSFX.Play();
             DialogueIndex++;
             if (DialogueIndex == DialogueSegments.Length) {
                 gameObject.SetActive(false); // Ends display if no more segments

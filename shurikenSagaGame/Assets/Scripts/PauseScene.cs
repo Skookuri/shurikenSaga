@@ -6,21 +6,17 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
     //public AudioSource PauseSFX;
-    void Start(){
+    void Start() {
         ResumeGame();
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            if(pauseMenu.activeInHierarchy)
-            {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (pauseMenu.activeInHierarchy) {
                 //PauseSFX.play();
                 ResumeGame();
-            }
-            else
-            {
+            } else {
                 PauseGame();
             }
         }

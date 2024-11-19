@@ -12,21 +12,27 @@ public class PlayerMove : MonoBehaviour {
     public bool isAlive = true;
     public bool isShoot = false;
     
+
+    //Sprites
     public Transform player;
 
-    private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component in Player_Art
-    private Animator animator; // Reference to the Animator component in Player_Art
-
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
     public Sprite defaultSprite;
     public Sprite sideSprite;
     public Sprite backSprite;
     public Sprite shuriSprite;
 
+    //Projectiles
     public Transform firePoint;
     public GameObject projectilePrefab;
     public float projectileSpeed = 10f;
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
+    
+    //Sounds
+    public AudioSource footstepSFX;
+    private bool isMoving = false; // Track movement state
 
     // dashing vars (Massimo)
     [SerializeField]
@@ -83,7 +89,26 @@ public class PlayerMove : MonoBehaviour {
         animator.SetBool("MovingHoriz", MovingHoriz);  // Send the horizontal movement != checker to the Animator
         
         if (isAlive == true){
-            //transform.position = transform.position + hvMove * runSpeed * Time.deltaTime;
+            Vector2 movement = hvMove * runSpeed * Time.deltaTime;
+            rb2D.velocity = movement;
+
+            // Check if the player is moving
+            isMoving = hvMove != Vector3.zero;
+
+            if (isMoving) {
+                // If moving and footstep sound isn't playing, play the sound
+                if (!footstepSFX.isPlaying) {
+                    footstepSFX.Play();
+                    Debug.Log("Playing Footstep sound..");
+                }
+            } else {
+                // If not moving, stop the sound
+                if (footstepSFX.isPlaying) {
+                    footstepSFX.Stop();
+                    Debug.Log("Stopping Footstep sound..");
+                }
+            }
+
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
 
@@ -105,13 +130,6 @@ public class PlayerMove : MonoBehaviour {
             {
                 HandleDoubleTap("D");
             }
-
-            // Handle normal movement
-            //if (!isDashing)
-            //{
-            //    Vector2 movement = new Vector2(moveHorizontal, moveVertical) * runSpeed;
-            //    rb2D.velocity = movement;
-            //}
             //Massimo changes end*******
 
             if (Time.time >= nextAttackTime){
@@ -133,6 +151,7 @@ public class PlayerMove : MonoBehaviour {
                 } else if (hvMove.y > 0) {
                     animator.enabled = false; // Disable Animator for back view
                     //animator.enabled = true;
+                    footstepSFX.Play();
                     spriteRenderer.sprite = backSprite; //Show non-moving default sprite
                 } else if (hvMove.x != 0) {
                     animator.enabled = false; // Disable Animator for side view

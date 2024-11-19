@@ -21,6 +21,7 @@ public class QuickBubble : MonoBehaviour
 
     public Transform player;
     private float originalDialogueBoxOpacity;
+    public AudioSource popSFX;
 
     void Start()
     {
@@ -37,6 +38,7 @@ public class QuickBubble : MonoBehaviour
     {
         Skip.enabled = CanContinue;
         if (Input.GetKeyDown(KeyCode.P) && CanContinue) {
+            popSFX.Play();
             if (DialogueSegments.Length != 1) {
                 DialogueIndex++;
             }
