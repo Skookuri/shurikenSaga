@@ -11556,6 +11556,7 @@ MonoBehaviour:
   prayText: {fileID: 439628069}
   dialogueCanvas: {fileID: 1351769089}
   player: {fileID: 1302541824}
+  ScrollJutsuPair: {fileID: 0}
 --- !u!1 &1471365416
 GameObject:
   m_ObjectHideFlags: 0
@@ -14244,7 +14245,7 @@ PrefabInstance:
       objectReference: {fileID: 2017142451}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.size
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[0].Dialogue
@@ -14268,19 +14269,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[5].Dialogue
-      value: Not so fast!! Im evil mwahaha
+      value: Ruh roh...
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[6].Dialogue
-      value: Shogun?!? What're you doing here?
+      value: Ruh roh...
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[7].Dialogue
-      value: Watch me turn into a skeleton hold on
+      value: Ruh roh...
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[8].Dialogue
-      value: AAAAALOOKATMEE!!! Im even MORE evil....
+      value: Ruh roh...
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[9].Dialogue
@@ -14361,7 +14362,7 @@ PrefabInstance:
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[5].Character
       value: 
-      objectReference: {fileID: 11400000, guid: ca7ced6be50bc40a0b4f09eeeab08c4b, type: 2}
+      objectReference: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[6].Character
       value: 
@@ -14369,11 +14370,15 @@ PrefabInstance:
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[7].Character
       value: 
-      objectReference: {fileID: 11400000, guid: ca7ced6be50bc40a0b4f09eeeab08c4b, type: 2}
+      objectReference: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[8].Character
       value: 
-      objectReference: {fileID: 11400000, guid: 08d882916bfa1461196a72cade3e9804, type: 2}
+      objectReference: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
+    - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
+      propertyPath: DialogueSegments.Array.data[8].IsPraying
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[9].Character
       value: 
@@ -14440,7 +14445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[3].ShouldFadeIn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[4].ShouldFadeIn
@@ -14448,7 +14453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[5].ShouldFadeIn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[6].ShouldFadeIn
@@ -14460,7 +14465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[8].ShouldFadeIn
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[19].ShouldFadeIn
@@ -14480,23 +14485,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[4].IsFinalSegment
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[5].IsFinalSegment
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[6].IsFinalSegment
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[7].IsFinalSegment
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[8].IsFinalSegment
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[9].IsFinalSegment
@@ -14564,7 +14569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[5].ShouldShakeBefore
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[6].ShouldShakeBefore
@@ -14576,7 +14581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[8].ShouldShakeBefore
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.data[9].ShouldShakeBefore

@@ -17,15 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dungeon1Intro.unity
     guid: dc27caaaea8c4491dbaff526aa89a9a0
+  - enabled: 1
+    path: Assets/Scenes/HomeScene.unity
+    guid: e44832181240d4aa5b3a8dfb5c4f8720
+  - enabled: 1
+    path: Assets/Scenes/Dungeon1.unity
+    guid: b8ddd1ef938bd45bdaf1edd0d1a0d50f
   - enabled: 0
     path: Assets/Scenes/Lose Scene.unity
     guid: 077e199813a4d8b4daa091f1877a6f55
   - enabled: 0
     path: Assets/Scenes/Game Scene.unity
     guid: 58ca6097c3b980b4298c5b72827d251e
-  - enabled: 1
-    path: Assets/Scenes/HomeScene.unity
-    guid: e44832181240d4aa5b3a8dfb5c4f8720
   - enabled: 0
     path: Assets/Scenes/Scene1.unity
     guid: bec167bd74378bd468a01d57e4a95ee9
