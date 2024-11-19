@@ -94,17 +94,17 @@ public class Dialoguer : MonoBehaviour
             screenFade.StartFade(0.7f, 1f); // Fade to 70% opacity (half dark screen)
             
             animator.enabled = false; // Disable the animator
+            // Debug.Log("Disabled animator successfully");
             spriteRenderer.sprite = prayingSprite; // Set the praying sprite
 
             MonkController.MoveMonk = true; //enable monk moving in while praying
             
-        } /*else {
-            // if (animator.enabled == false) {
-            //     Debug.Log("Enabling animator");
-            //     animator.enabled = true; // Enable the animator
-            // }
-            // Debug.Log("Disabled animator successfully");
-        }*/
+        } else {
+            if (spriteRenderer.sprite == prayingSprite) {
+                Debug.Log("Enabling animator");
+                animator.enabled = true; // Enable the animator
+            }
+        }
 
         SetStyle(currentSegment.Character);
         StartCoroutine(PlayDialogue(currentSegment.Dialogue, currentSegment.IsFinalSegment));
