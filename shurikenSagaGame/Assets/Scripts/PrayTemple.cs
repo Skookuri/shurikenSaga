@@ -7,6 +7,7 @@ public class PrayTemple : MonoBehaviour
     public GameObject prayText; // Pray text UI element
     public GameObject dialogueCanvas; // Dialogue Canvas 
     public Transform player; // player
+    public GameObject ScrollJutsuPair; //scroll jutsu pair that drops after interaction is over
     private Dialoguer dialoguer; // Declare a Dialoguer variable
     private bool playerInTrigger = false; // To track if the player is in the trigger area
     private bool hasInteracted = false; // To track if the player has interacted with the object
@@ -16,6 +17,7 @@ public class PrayTemple : MonoBehaviour
     {
         prayText.SetActive(false); // Hide the button at the start
         dialogueCanvas.SetActive(false);
+        ScrollJutsuPair.SetActive(false);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -43,9 +45,12 @@ public class PrayTemple : MonoBehaviour
     {
         // Check for input to trigger the prayer action when the player is in the trigger area
         if (playerInTrigger && Input.GetKeyDown(KeyCode.E) && !hasInteracted) {
-            TriggerPrayAction();
+            TriggerPrayAction(); //starts prayer interaction when pressing e in location, first time doing so
         } else if (playerInTrigger && hasInteracted) {
-            prayText.SetActive(false);
+            prayText.SetActive(false); //hides pray text now that you already have started the interaction
+        } else if (!dialogueCanvas.activeSelf && hasInteracted) {
+            ScrollJutsuPair.SetActive(true); //shows scroll jutsu pair after interaction has ended
+            Debug.Log("Activating Scroll Jutsu Pair");
         }
     }
 
