@@ -12959,9 +12959,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1727040748930737203, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727040748930737203, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3077781952796024850, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b1cced9d7cb74b6e9e2860f0367ddf9, type: 3}
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_Name
       value: ScrollJutsuPair
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537711970192569377, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4537711970192569377, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946821529317554532, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4946821529317554532, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
