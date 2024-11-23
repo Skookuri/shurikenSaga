@@ -24,8 +24,8 @@ public class GameHandler : MonoBehaviour {
     public static string lastLevelDied;  //allows replaying the Level where you died
 
     public bool isOverWorld = true;
-    public GameObject allOverworld;
-    public GameObject allShadow;
+    private GameObject allOverworld;
+    private GameObject allShadow;
     private bool cooldownDone = true;
     private bool switching = false;
     private float timePassedWhileSwitching = 0;
@@ -46,15 +46,23 @@ public class GameHandler : MonoBehaviour {
 
 
     void Start(){
+        allOverworld = GameObject.FindWithTag("overworld");
+        allShadow = GameObject.FindWithTag("shadow");
+        if (isOverWorld)
+        {
+            allShadow.SetActive(true);
+            allOverworld.SetActive(false);
+        } else
+        {
+            allShadow.SetActive(false);
+            allOverworld.SetActive(true);
+        }
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
         //if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
                 playerHealth = StartPlayerHealth;
         //}
         updateStatsDisplay();
-
-        allOverworld = GameObject.FindGameObjectWithTag("overworld");
-        allShadow = GameObject.FindGameObjectWithTag("shadow");
         if (mainCamera == null)
         {
             mainCamera = Camera.main;
