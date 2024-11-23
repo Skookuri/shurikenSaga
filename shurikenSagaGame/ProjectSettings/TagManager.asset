@@ -9,6 +9,8 @@ TagManager:
   - player
   - PauseMusicVolSlider
   - PauseSFXVolSlider
+  - overworld
+  - shadow
   layers:
   - Default
   - TransparentFX
