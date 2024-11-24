@@ -4,6 +4,11 @@ using UnityEngine;
 public class GhostBehavior : MonoBehaviour
 {
     [SerializeField]
+    private Material material;
+
+    [SerializeField]
+    private bool canDash;
+    [SerializeField]
     Transform player;
     public float detRange;
     private float originalDR;
@@ -42,7 +47,14 @@ public class GhostBehavior : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
+        if (canDash)
+        {
+            Debug.Log("Got material color");
+            originalColor = material.GetColor("_ColorShift");
+        } else
+        {
+            originalColor = spriteRenderer.color;
+        }
         originalDR = detRange;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0; // Ensure the ghost is unaffected by gravity
@@ -55,7 +67,13 @@ public class GhostBehavior : MonoBehaviour
         float pDistance = Vector2.Distance(transform.position, player.position);
         if (pDistance > detRange)
         {
-            spriteRenderer.color = originalColor;
+            if (canDash)
+            {
+                material.SetColor("_ColorShift", originalColor);
+            } else
+            {
+                spriteRenderer.color = originalColor;
+            }
             detRange = originalDR;
             if (outOfAggro)
             {
@@ -109,36 +127,58 @@ public class GhostBehavior : MonoBehaviour
         Vector2 direction = (randomTarget - (Vector2)transform.position).normalized;
         rb.AddForce(direction * floatForce, ForceMode2D.Force);
 
-        if (timeUntilCharge >= chargeInterval)
-        {
-            spriteRenderer.color = originalColor;
-            timeUntilCharge = 0f;
-            blinkTimer = 0f;
-            Vector2 chargeDir = (player.position - transform.position).normalized;
-            rb.AddForce(chargeDir * chargeAmp, ForceMode2D.Force);
-        } else if (timeUntilCharge >= chargeInterval - timeBeforeBlinking)
-        {
-            // Increment the blinkTimer, reset when this block is first entered
-            blinkTimer += Time.deltaTime;
-
-            // Calculate the blink interval based on the normalized blinkTimer
-            float blinkInterval = Mathf.Lerp(0.2f, 0.04f, blinkTimer / timeBeforeBlinking);
-
-            // Check if it's time to blink
-            if (Time.time >= nextBlinkTime)
+        if (canDash) {
+            if (timeUntilCharge >= chargeInterval)
             {
-                // Toggle between blinkColor and normalColor
-                spriteRenderer.color = spriteRenderer.color == originalColor ? blinkColor : originalColor;
-
-                // Set the next blink time based on the calculated interval
-                nextBlinkTime = Time.time + blinkInterval;
+                if (canDash)
+                {
+                    material.SetColor("_ColorShift", originalColor);
+                } else
+                {
+                    spriteRenderer.color = originalColor;
+                }
+                timeUntilCharge = 0f;
+                blinkTimer = 0f;
+                Vector2 chargeDir = (player.position - transform.position).normalized;
+                rb.AddForce(chargeDir * chargeAmp, ForceMode2D.Force);
             }
-
-            // Ensure the color resets to normal after the entire `timeBeforeBlinking` duration
-            if (blinkTimer >= timeBeforeBlinking)
+            else if (timeUntilCharge >= chargeInterval - timeBeforeBlinking)
             {
-                spriteRenderer.color = originalColor; // Reset to normal color at the end
-                blinkTimer = 0; // Reset blinkTimer for the next charge
+                // Increment the blinkTimer, reset when this block is first entered
+                blinkTimer += Time.deltaTime;
+
+                // Calculate the blink interval based on the normalized blinkTimer
+                float blinkInterval = Mathf.Lerp(0.2f, 0.04f, blinkTimer / timeBeforeBlinking);
+
+                // Check if it's time to blink
+                if (Time.time >= nextBlinkTime)
+                {
+                    // Toggle between blinkColor and normalColor
+                    if (canDash)
+                    {
+                        Color currentColor = material.GetColor("_ColorShift");
+                        material.SetColor("_ColorShift", currentColor == originalColor ? blinkColor : originalColor);
+                    } else
+                    {
+                        spriteRenderer.color = spriteRenderer.color == originalColor ? blinkColor : originalColor;
+                    }
+
+                    // Set the next blink time based on the calculated interval
+                    nextBlinkTime = Time.time + blinkInterval;
+                }
+
+                // Ensure the color resets to normal after the entire `timeBeforeBlinking` duration
+                if (blinkTimer >= timeBeforeBlinking)
+                {
+                    if (canDash)
+                    {
+                        material.SetColor("_ColorShift", originalColor);
+                    } else
+                    {
+                        spriteRenderer.color = originalColor;
+                    }
+                    blinkTimer = 0; // Reset blinkTimer for the next charge
+                }
             }
         }
 
