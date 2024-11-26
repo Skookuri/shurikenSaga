@@ -5,7 +5,8 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    //public AudioSource PauseSFX;
+    public AudioSource PauseSFX;
+    public AudioSource PlaySFX;
     void Start() {
         ResumeGame();
     }
@@ -14,9 +15,11 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (pauseMenu.activeInHierarchy) {
-                //PauseSFX.play();
+                //PauseSFX
+                PlaySFX.Play();
                 ResumeGame();
             } else {
+                PauseSFX.Play();
                 PauseGame();
             }
         }
