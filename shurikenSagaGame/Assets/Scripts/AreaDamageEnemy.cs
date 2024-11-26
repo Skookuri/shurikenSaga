@@ -76,7 +76,7 @@ public class AreaDamageEnemy : MonoBehaviour
 
     void Smash()
     {
-        gameHandler.playerGetHit(10);
+        //gameHandler.playerGetHit(10);
         Debug.Log("Smashed");
     }
 }

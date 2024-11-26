@@ -14,6 +14,9 @@ public class GameHandler : MonoBehaviour {
     public bool hit = false;
     public bool isImmune = false;
     private float playerFlashingTime = 0;
+    [SerializeField]
+    private Color playerImmuneColor;
+    private SpriteRenderer playerSpriteRenderer;
 
     public static int gotTokens = 0;
     public GameObject tokensText;
@@ -47,20 +50,14 @@ public class GameHandler : MonoBehaviour {
     [SerializeField]
     private AudioSource audioSource;
 
+    private bool firstRunThrough = true;
+
 
     void Start(){
 
         allOverworld = GameObject.FindWithTag("overworld");
         allShadow = GameObject.FindWithTag("shadow");
-        if (isOverWorld)
-        {
-            allShadow.SetActive(true);
-            allOverworld.SetActive(false);
-        } else
-        {
-            allShadow.SetActive(false);
-            allOverworld.SetActive(true);
-        }
+        playerSpriteRenderer = GameObject.Find("player").transform.Find("player_art").GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
         //if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
@@ -77,8 +74,24 @@ public class GameHandler : MonoBehaviour {
 
     private void Update()
     {
+        if (firstRunThrough)
+        {
+            firstRunThrough = false;
+            if (isOverWorld)
+            {
+                allShadow.SetActive(true);
+                allOverworld.SetActive(false);
+            }
+            else
+            {
+                allShadow.SetActive(false);
+                allOverworld.SetActive(true);
+            }
+        }
+        
         if (hit && !isImmune)
         {
+            playerGetHit();
             hit = false;
             isImmune = true;
             playerFlashingTime = 0f;
@@ -89,9 +102,11 @@ public class GameHandler : MonoBehaviour {
             playerFlashingTime += Time.deltaTime;
             if (playerFlashingTime > .08)
             {
-                //player.GetComponentInChildren<SpriteRenderer>()
+                playerSpriteRenderer.color = (playerSpriteRenderer.color == playerImmuneColor) ? new Color (1, 1, 1, 1) : playerImmuneColor;
+                playerFlashingTime = 0f;
             }
         }
+        
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (cooldownDone)
@@ -159,14 +174,15 @@ public class GameHandler : MonoBehaviour {
             }
         }
     }
-
+    
     public IEnumerator hitCooldown()
     {
         yield return new WaitForSeconds(1.5f);
         //Debug.Log("2 seconds have passed!");
         isImmune = false;
+        playerSpriteRenderer.color = new Color(1, 1, 1, 1);
     }
-
+    
     private void CameraShake()
     {
         if (mainCamera == null) return;
@@ -194,27 +210,21 @@ public class GameHandler : MonoBehaviour {
         //updateStatsDisplay();
     }
 
-    public void playerGetHit(int damage){
+    public void playerGetHit(){
         if (isDefending == false){
-                playerHealth -= damage;
-                //yield return new WaitForSeconds(1.0f);
-                if (playerHealth >=0){
-                    updateStatsDisplay();
-                }
-                if (damage > 0){
-                    //player.GetComponent<PlayerHurt>().playerHit();       //play GetHit animation
-                }
+            //yield return new WaitForSeconds(1.0f);
+            if (playerHealth >=0){
+                updateStatsDisplay();
+            } else
+            {
+                playerHealth = 0;
+                playerDies();
+            }
         }
 
         if (playerHealth > StartPlayerHealth){
                 playerHealth = StartPlayerHealth;
                 updateStatsDisplay();
-        }
-
-        if (playerHealth <= 0){
-                playerHealth = 0;
-                //updateStatsDisplay();
-                playerDies();
         }
     }
 

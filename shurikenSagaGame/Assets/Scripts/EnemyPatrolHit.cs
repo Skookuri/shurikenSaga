@@ -101,7 +101,7 @@ public class EnemyPatrolHit : MonoBehaviour {
         if (gameHandler != null) {
             //Debug.Log("hello");
             
-            gameHandler.playerGetHit(damage);
+            gameHandler.playerGetHit();
             Debug.Log("Attacked player for " + damage + " damage!");
         } else {
             Debug.Log("GameHandler is null");
