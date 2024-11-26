@@ -56,7 +56,10 @@ public class PlayerMove : MonoBehaviour {
     private Vector3 lastSavedPosition;
     private bool fell = false;
 
+    private GameHandler gh;
+
     void Start(){
+        gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
         lastSavedPosition = transform.position;
 
         rb2D = transform.GetComponent<Rigidbody2D>();
@@ -177,6 +180,11 @@ public class PlayerMove : MonoBehaviour {
             //LANCE - ACCOUNT FOR DAMAGE HERE
             fell = true;
             StartCoroutine(Wait());
+        }
+        if (collision.CompareTag("enemy"))
+        {
+            gh.hit = true;
+            gh.playerHealth -= 10;
         }
     }
 
