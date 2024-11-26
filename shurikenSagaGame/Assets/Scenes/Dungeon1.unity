@@ -1861,6 +1861,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1302541824}
+    - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 1993197071}

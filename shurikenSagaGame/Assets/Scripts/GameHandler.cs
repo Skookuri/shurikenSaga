@@ -11,6 +11,9 @@ public class GameHandler : MonoBehaviour {
     public int playerHealth = 100;
     public int StartPlayerHealth = 100;
     public GameObject healthText;
+    public bool hit = false;
+    public bool isImmune = false;
+    private float playerFlashingTime = 0;
 
     public static int gotTokens = 0;
     public GameObject tokensText;
@@ -46,6 +49,7 @@ public class GameHandler : MonoBehaviour {
 
 
     void Start(){
+
         allOverworld = GameObject.FindWithTag("overworld");
         allShadow = GameObject.FindWithTag("shadow");
         if (isOverWorld)
@@ -73,6 +77,21 @@ public class GameHandler : MonoBehaviour {
 
     private void Update()
     {
+        if (hit && !isImmune)
+        {
+            hit = false;
+            isImmune = true;
+            playerFlashingTime = 0f;
+            StartCoroutine(hitCooldown());
+        }
+        if (isImmune)
+        {
+            playerFlashingTime += Time.deltaTime;
+            if (playerFlashingTime > .08)
+            {
+                //player.GetComponentInChildren<SpriteRenderer>()
+            }
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (cooldownDone)
@@ -139,6 +158,13 @@ public class GameHandler : MonoBehaviour {
                 mainCamera.transform.localPosition = new Vector3(originalCameraPosition.x, originalCameraPosition.y, -10f);
             }
         }
+    }
+
+    public IEnumerator hitCooldown()
+    {
+        yield return new WaitForSeconds(1.5f);
+        //Debug.Log("2 seconds have passed!");
+        isImmune = false;
     }
 
     private void CameraShake()
