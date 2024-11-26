@@ -11,6 +11,7 @@ TagManager:
   - PauseSFXVolSlider
   - overworld
   - shadow
+  - enemy
   layers:
   - Default
   - TransparentFX
