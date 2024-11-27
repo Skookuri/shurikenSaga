@@ -28,9 +28,6 @@ public class Jutsu : MonoBehaviour
         } else {
             Debug.LogError("ExitButton child not found in jutsuUI!");
         }
-
-        // Optionally, initialize jutsuUI state here if needed
-        // jutsuUI.SetActive(true); // Make sure jutsuUI is initially active
     }
 
     void Update()
@@ -38,12 +35,9 @@ public class Jutsu : MonoBehaviour
         // Example check for exit button click
         if (exitButtonClicked) {
             // Hide jutsuUI when exit button is clicked
-            if (jutsuUI != null)
-            {
+            if (jutsuUI != null) {
                 jutsuUI.SetActive(false);
-            }
-            else
-            {
+            } else {
                 Debug.LogError("jutsuUI is not assigned!");
             }
         }

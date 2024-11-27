@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &10259754 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7483099907140594271, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1974678313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &215974178
 GameObject:
   m_ObjectHideFlags: 0
@@ -9701,6 +9706,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439628069}
   m_CullTransparentMesh: 1
+--- !u!114 &883020472 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3776502541592238404, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
+  m_PrefabInstance: {fileID: 8677332367948525779}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &955433186
 GameObject:
   m_ObjectHideFlags: 0
@@ -10088,7 +10104,7 @@ PrefabInstance:
     - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: footstepSFX
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 10259754}
     - target: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -10358,6 +10374,28 @@ MonoBehaviour:
   dialogueCanvas: {fileID: 1351769089}
   player: {fileID: 1302541824}
   ScrollJutsuPair: {fileID: 1874196334}
+--- !u!114 &1477803528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3861169512236313123, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1974678313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a8f28ce5c594e679e7003971e89c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1477803529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1221504356127885085, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1974678313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1477901797
 GameObject:
   m_ObjectHideFlags: 0
@@ -10483,7 +10521,7 @@ MonoBehaviour:
   speed: 2
   targetXCoord: -4
   targetYCoord: 2
-  footstepSFX: {fileID: 0}
+  footstepSFX: {fileID: 10259754}
 --- !u!61 &1477901802
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12426,6 +12464,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1221504356127885085, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 883020472}
     - target: {fileID: 4522620028252696214, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12498,14 +12540,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7365868411976817807, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 1974678315}
-    - target: {fileID: 7365868411976817807, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-      propertyPath: tokensText
-      value: 
-      objectReference: {fileID: 1974678314}
     - target: {fileID: 7481922899463534756, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_Name
       value: GLOBALS (GameHandler_Canvas_Camera etc)
@@ -12527,14 +12561,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
---- !u!1 &1974678314 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 378222190116657666, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-  m_PrefabInstance: {fileID: 1974678313}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1974678315 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5883847652988416055, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+--- !u!82 &1974678314 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8430926377588767133, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
   m_PrefabInstance: {fileID: 1974678313}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1993197071 stripped
@@ -12645,6 +12674,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!82 &2135375427 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2172418415991169437, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1974678313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2190970238443311797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12798,6 +12832,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: ScrollGetSFX
+      value: 
+      objectReference: {fileID: 1974678314}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12822,15 +12860,15 @@ PrefabInstance:
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: popSFX
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2135375427}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: screenFade
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1477803529}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: screenShake
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1477803528}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.size
       value: 22

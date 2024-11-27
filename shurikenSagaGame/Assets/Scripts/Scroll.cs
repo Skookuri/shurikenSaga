@@ -6,6 +6,7 @@ public class Scroll : MonoBehaviour
 {
     public bool isPickedUp = false;
     private DialogueOnCollide collisionTrigger;  // Reference to the DialogueOnCollide script
+    public AudioSource ScrollGetSFX;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,6 +21,7 @@ public class Scroll : MonoBehaviour
                 // Enable the jutsuUI display child of jutsu
                 Transform jutsuUI = jutsuTransform.Find("JutsuUI");
                 if (jutsuUI != null) {
+                    ScrollGetSFX.Play();
                     jutsuUI.gameObject.SetActive(true);
                 } else {
                     Debug.LogError("jutsuUI child not found in jutsu.");
