@@ -50384,28 +50384,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!114 &1133033525 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3861169512236313123, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-  m_PrefabInstance: {fileID: 1996661079}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a8f28ce5c594e679e7003971e89c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1133033526 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1221504356127885085, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-  m_PrefabInstance: {fileID: 1996661079}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1302541823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74020,6 +73998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6097190876393333497, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 111780732}
     - target: {fileID: 7177258995242786473, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -122217,6 +122199,28 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &2091833707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3986840335949785550, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1996661079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a8f28ce5c594e679e7003971e89c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2091833708 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6097190876393333497, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1996661079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8677332367948525779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122244,7 +122248,7 @@ PrefabInstance:
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: screenFade
       value: 
-      objectReference: {fileID: 1133033526}
+      objectReference: {fileID: 2091833708}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: playOnStart
       value: 1
@@ -122252,7 +122256,7 @@ PrefabInstance:
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: screenShake
       value: 
-      objectReference: {fileID: 1133033525}
+      objectReference: {fileID: 2091833707}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.size
       value: 5
