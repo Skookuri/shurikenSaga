@@ -15,6 +15,7 @@ public class Dialoguer : MonoBehaviour
     public TextMeshProUGUI SpeakerName;
     public TextMeshProUGUI DialogueSpeech;
     [Space]
+    private AudioSource SpeakerSpeech;
     public float TextSpeed;
     public bool CanContinue;
     private int DialogueIndex;
@@ -35,8 +36,19 @@ public class Dialoguer : MonoBehaviour
     {
         DialogueIndex = 0;
 
-        spriteRenderer = player.Find("player_art").GetComponent<SpriteRenderer>();
-        animator = player.Find("player_art").GetComponent<Animator>();
+        // Ensure the player object and its components are properly assigned
+        if (player != null)
+        {
+            spriteRenderer = player.Find("player_art").GetComponent<SpriteRenderer>();
+            animator = player.Find("player_art").GetComponent<Animator>();
+        }
+
+        // Ensure that an AudioSource component is assigned
+        SpeakerSpeech = GetComponent<AudioSource>();
+        if (SpeakerSpeech == null)
+        {
+            Debug.LogError("AudioSource not found on the Dialoguer object.");
+        }
 
         if (playOnStart)
         {
@@ -129,9 +141,9 @@ public class Dialoguer : MonoBehaviour
 
     void SetStyle(Speaker Subject)
     {
-        if (Subject.SpeakerSprite == null)
+        if (Subject.SpeakerSprite == null) 
         {
-            SpeakerImg.color = new Color(0, 0, 0, 0);
+            SpeakerImg.color = new Color(0, 0, 0, 0); // Make speaker image invisible
         }
         else
         {
@@ -139,10 +151,20 @@ public class Dialoguer : MonoBehaviour
         }
 
         SpeakerName.SetText(Subject.SpeakerName);
+
+        if (Subject.MumbleClips != null && Subject.MumbleClips.Length > 0) 
+        {
+            int mumbleIndex = Random.Range(0, Subject.MumbleClips.Length);
+            SpeakerSpeech.clip = Subject.MumbleClips[mumbleIndex];
+        }
     }
 
     private IEnumerator PlayDialogue(string Dialogue, bool isFinalSegment)
     {
+        if (SpeakerSpeech != null && SpeakerSpeech.clip != null)
+        {
+            SpeakerSpeech.Play(); // Play mumble clip if available
+        }
         CanContinue = false;
         isTyping = true; // Set flag to indicate typing is in progress
         DialogueSpeech.SetText(string.Empty);

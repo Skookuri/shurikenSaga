@@ -307,7 +307,8 @@ PrefabInstance:
       value: SFXSources
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: -5937325502432673971, guid: 76dea02dedb7df2448a44a9e583a2216, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2066908876472106478, guid: 76dea02dedb7df2448a44a9e583a2216, type: 3}
       insertIndex: -1

@@ -107,10 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99a688fe6a6534dfc9a8d76af463159b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  threshold: 0
-  smoothSpeed: 0.075
-  moveAmountMultiplier: 1
+  player: {fileID: 4609256414913508916, guid: 94334284fb80e49758cada6304da8315, type: 3}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &6971351086623814590
 MonoBehaviour:
   m_ObjectHideFlags: 0

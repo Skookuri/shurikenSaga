@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpeakerName: You (praying)
   SpeakerSprite: {fileID: 21300000, guid: 5d985510f6b1e4378b4bb1392070d94b, type: 3}
+  MumbleClips:
+  - {fileID: 8300000, guid: 12e98c199d47b410ebd868787678ca98, type: 3}
+  - {fileID: 8300000, guid: 6360b351b6f7d47bf8bb95ff61be6bb6, type: 3}
+  - {fileID: 8300000, guid: 0514bf895b1a54b479c4a9ccdf965578, type: 3}
+  - {fileID: 8300000, guid: 39c573cc606424131a5296afe0bfb651, type: 3}
+  - {fileID: 8300000, guid: ee2080e0a63384b1ead24751dc73b550, type: 3}

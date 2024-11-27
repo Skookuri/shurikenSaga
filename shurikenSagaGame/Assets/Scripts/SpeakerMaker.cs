@@ -7,5 +7,5 @@ public class Speaker : ScriptableObject
 {
     public string SpeakerName;
     public Sprite SpeakerSprite;
-
+    public AudioClip[] MumbleClips;
 }
