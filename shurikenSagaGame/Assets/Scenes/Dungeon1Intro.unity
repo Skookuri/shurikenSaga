@@ -13382,6 +13382,10 @@ PrefabInstance:
       propertyPath: DialogueSegments.Array.data[21].IsFinalSegment
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1172224830447997236, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2197144602625025931, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: m_Sprite
       value: 
