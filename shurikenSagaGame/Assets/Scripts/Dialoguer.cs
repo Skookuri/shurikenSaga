@@ -18,18 +18,18 @@ public class Dialoguer : MonoBehaviour
     public float TextSpeed;
     public bool CanContinue;
     private int DialogueIndex;
+    private bool isTyping; // Flag to track if dialogue is being typed
 
     public Transform player;
-    private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component in Player_Art
-    private Animator animator; // Reference to the Animator component in Player_Art
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
     public Sprite prayingSprite;
-    public ScreenFade screenFade; // Reference to the ScreenFade script
-    public ScreenShake screenShake; // Reference to the ScreenShake script
+    public ScreenFade screenFade;
+    public ScreenShake screenShake;
     public float shakeDuration;
     public bool playOnStart;
     public AudioSource popSFX;
     private float originalDialogueBoxOpacity;
-    
 
     void Start()
     {
@@ -38,84 +38,82 @@ public class Dialoguer : MonoBehaviour
         spriteRenderer = player.Find("player_art").GetComponent<SpriteRenderer>();
         animator = player.Find("player_art").GetComponent<Animator>();
 
-        if (playOnStart) {
+        if (playOnStart)
+        {
             StartDialogueSegment();
-        } 
+        }
     }
 
     void Update()
     {
         Skip.enabled = CanContinue;
-        if (Input.GetKeyDown(KeyCode.P) && CanContinue) {
-            popSFX.Play();
-            DialogueIndex++;
-            if (DialogueIndex == DialogueSegments.Length) {
-                gameObject.SetActive(false); // Ends display if no more segments
-                return;
-            }
 
-            StartDialogueSegment();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (CanContinue)
+            {
+                popSFX.Play();
+                DialogueIndex++;
+                if (DialogueIndex == DialogueSegments.Length)
+                {
+                    gameObject.SetActive(false); // Ends display if no more segments
+                    return;
+                }
+
+                StartDialogueSegment();
+            }
+            else if (isTyping)
+            {
+                // Autocomplete the dialogue if it's still typing
+                StopAllCoroutines();
+                AutocompleteDialogue();
+            }
         }
     }
 
     public void StartDialogueSegment()
     {
-        if (DialogueSegments == null || DialogueIndex >= DialogueSegments.Length) {
+        if (DialogueSegments == null || DialogueIndex >= DialogueSegments.Length)
+        {
             Debug.LogError("DialogueSegments is not properly initialized or the index is out of bounds.");
             return;
         }
-        
-        player.GetComponent<PlayerMove>().enabled = false; //turns off movement temporarily
+
+        player.GetComponent<PlayerMove>().enabled = false; // Turn off movement temporarily
         DialogueSegment currentSegment = DialogueSegments[DialogueIndex];
 
-        // Apply shake effect before dialogue if specified
-        if (currentSegment.ShouldShakeBefore) {
+        if (currentSegment.ShouldShakeBefore)
+        {
             originalDialogueBoxOpacity = DialogueBox.color.a;
-            
-            // Temporarily reduce opacity
             SetUIOpacity(DialogueBox, 0f);
             SetUIOpacity(SpeakerName, 0f);
             SetUIOpacity(DialogueSpeech, 0f);
             SetUIOpacity(SpeakerImg, 0f);
-
-            // Start the screen shake effect
             screenShake.StartShake(shakeDuration);
+            Debug.Log("Starting shake...");
             StartCoroutine(ResumeDialogueAfterShake(shakeDuration));
         }
 
-        // Apply fade-in before dialogue if specified
-        if (currentSegment.ShouldFadeIn) {
+        if (currentSegment.ShouldFadeIn)
+        {
             screenFade.StartFade(0f, 1f); // Fade from black to transparent
         }
 
-
-        // Apply fade if the character is praying (half dark screen effect)
-        if (currentSegment.IsPraying) {
+        if (currentSegment.IsPraying)
+        {
             screenFade.StartFade(0.7f, 1f); // Fade to 70% opacity (half dark screen)
-            
-            animator.enabled = false; // Disable the animator
-            // Debug.Log("Disabled animator successfully");
-            spriteRenderer.sprite = prayingSprite; // Set the praying sprite
-
-            MonkController.MoveMonk = true; //enable monk moving in while praying
-            
-        } /*else {
-            if (spriteRenderer.sprite == prayingSprite) {
-                Debug.Log("Enabling animator");
-                animator.enabled = true; // Enable the animator
-            }
-        }*/ //having this enabled can prevent the dialogue from loading unfortunately
+            animator.enabled = false;
+            spriteRenderer.sprite = prayingSprite;
+            MonkController.MoveMonk = true;
+        }
 
         SetStyle(currentSegment.Character);
         StartCoroutine(PlayDialogue(currentSegment.Dialogue, currentSegment.IsFinalSegment));
-        //Debug.Log("Starting dialog...");
     }
 
     private IEnumerator ResumeDialogueAfterShake(float shakeDuration)
     {
         yield return new WaitForSeconds(shakeDuration);
-
-        // Restore opacity
         SetUIOpacity(DialogueBox, originalDialogueBoxOpacity);
         SetUIOpacity(SpeakerName, 1f);
         SetUIOpacity(DialogueSpeech, 1f);
@@ -131,43 +129,60 @@ public class Dialoguer : MonoBehaviour
 
     void SetStyle(Speaker Subject)
     {
-        if (Subject.SpeakerSprite == null) {
+        if (Subject.SpeakerSprite == null)
+        {
             SpeakerImg.color = new Color(0, 0, 0, 0);
-        } else {
+        }
+        else
+        {
             SpeakerImg.sprite = Subject.SpeakerSprite;
-            //SpeakerImg.color = Color.white;
         }
 
         SpeakerName.SetText(Subject.SpeakerName);
     }
 
-    IEnumerator PlayDialogue(string Dialogue, bool isFinalSegment) {
+    private IEnumerator PlayDialogue(string Dialogue, bool isFinalSegment)
+    {
         CanContinue = false;
+        isTyping = true; // Set flag to indicate typing is in progress
         DialogueSpeech.SetText(string.Empty);
 
-        for (int i = 0; i < Dialogue.Length; i++) {
+        for (int i = 0; i < Dialogue.Length; i++)
+        {
             DialogueSpeech.text += Dialogue[i];
             yield return new WaitForSeconds(1f / TextSpeed);
         }
+
+        isTyping = false; // Typing complete
         CanContinue = true;
 
-        if (isFinalSegment) {
-            // Fade-out after the final segment
+        if (isFinalSegment)
+        {
             screenFade.StartFade(1f, 1f);
-            yield return new WaitForSeconds(1f); // Optional delay before hiding
+            yield return new WaitForSeconds(1f);
             gameObject.SetActive(false);
-            //player.GetComponent<PlayerMove>().enabled = true; //turns movement back on
         }
     }
 
-    // Restart movement when the dialogue is disabled
-    private void OnDisable() {
-    if (player != null && player.GetComponent<PlayerMove>() != null) {
-        player.GetComponent<PlayerMove>().enabled = true;
-    } else {
-        Debug.LogWarning("Player or PlayerMove component not found.");
+    private void AutocompleteDialogue()
+    {
+        DialogueSegment currentSegment = DialogueSegments[DialogueIndex];
+        DialogueSpeech.SetText(currentSegment.Dialogue); // Show full dialogue
+        isTyping = false; // Stop typing
+        CanContinue = true; // Allow continuing to the next segment
     }
-}
+
+    private void OnDisable()
+    {
+        if (player != null && player.GetComponent<PlayerMove>() != null)
+        {
+            player.GetComponent<PlayerMove>().enabled = true;
+        }
+        else
+        {
+            Debug.LogWarning("Player or PlayerMove component not found.");
+        }
+    }
 
     [System.Serializable]
     public class DialogueSegment

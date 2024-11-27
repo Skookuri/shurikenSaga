@@ -52,6 +52,9 @@ public class GameHandler : MonoBehaviour {
 
     private bool firstRunThrough = true;
 
+    public AudioSource toShadow;
+    public AudioSource toHome;
+
 
     void Start(){
 
@@ -152,13 +155,12 @@ public class GameHandler : MonoBehaviour {
                 if(switchRealms)
                 {
                     switchRealms = false;
-                    if (!isOverWorld)
-                    {
+                    if (!isOverWorld) {
+                        toHome.Play();
                         allShadow.SetActive(false);
                         allOverworld.SetActive(true);
-                    }
-                    else
-                    {
+                    } else {
+                        toShadow.Play();
                         allShadow.SetActive(true);
                         allOverworld.SetActive(false);
                     }

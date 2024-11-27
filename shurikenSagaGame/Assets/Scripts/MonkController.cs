@@ -6,6 +6,7 @@ public class MonkController : MonoBehaviour
     public Transform monk; // Reference to the monk GameObject's transform
     public float speed = 2f; // Speed at which the monk moves
     public static bool MoveMonk = false; // Static bool to indicate if monk should be moved
+    public static bool FightMonk = false; // Static bool to indicate if monk is to be fought
     public int targetXCoord; // Target X coordinate for monk to arrive at
     public int targetYCoord; // Target Y coordinate for monk to arrive at
 
@@ -13,22 +14,13 @@ public class MonkController : MonoBehaviour
     public AudioSource footstepSFX; //monk footsteps
     private SpriteRenderer monkRenderer;
 
-    /*private void Awake()
-    {
-        // This ensures the script is running even if the monk GameObject is initially disabled.
-        if (monk == null)
-        {
-            Debug.LogError("Monk Transform is not assigned.");
-        }
-    }*/
-
     private void Start()
     {        
         // Initialize the target position to prevent issues
         if (monk != null) {            
             targetPosition = monk.position;
             monkRenderer = monk.GetComponent<SpriteRenderer>();
-            monkRenderer.enabled = false; // This hides the monk visually but doesn't disable the GameObject
+            monkRenderer.enabled = false; //hides the monk visually but doesn't disable the GameObject
         } else {
             Debug.LogError("Monk Transform is not assigned.");
         }
@@ -54,6 +46,15 @@ public class MonkController : MonoBehaviour
             } else {
                 // If not at target location, slowly move towards it
                 MonkStartMove();
+            }
+        }
+
+        if (FightMonk) {
+            Debug.Log("Fight monk!");
+            if (monkRenderer != null && !monkRenderer.enabled) {
+                monkRenderer.enabled = true;
+                BoxCollider2D monkCollider = monk.GetComponent<BoxCollider2D>();
+                monkCollider.isTrigger = false;
             }
         }
     }
