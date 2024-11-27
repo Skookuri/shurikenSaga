@@ -1,33 +1,54 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class BGSoundScript : MonoBehaviour {
 
     private static BGSoundScript instance = null;
 
-    public static BGSoundScript Instance{
-        get {return instance;}
+    public static BGSoundScript Instance {
+        get { return instance; }
     }
 
-    void Start(){
-        AudioSource audio = GetComponent<AudioSource>();
-        if (audio != null && !audio.isPlaying){
-            //Debug.Log("AudioSource is not playing. Starting playback.");
-            audio.Play();
-        }
+    public AudioClip overworldClip; // Assign in the Inspector: Music.Homeworld.Overworld
+    public AudioClip shadowClip;   // Assign in the Inspector: Music.Homeworld.Shadow
+    private AudioSource audioSource;
+
+    void Start() {
+        audioSource = GetComponent<AudioSource>();
+        UpdateMusic();
     }
 
-    void Awake(){
-        if (instance != null && instance != this){
-            //Debug.Log("Duplicate BGSoundScript detected, destroying this instance.");
+    void Awake() {
+        if (instance != null && instance != this) {
             Destroy(this.gameObject);
             return;
         } else {
-            //Debug.Log("BGSoundScript instance created.");
             instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
     }
 
+    void Update() {
+        // Optionally, check and update if `isOverWorld` changes during runtime
+        UpdateMusic();
+    }
+
+    public void UpdateMusic() {
+        if (audioSource == null || overworldClip == null || shadowClip == null) {
+            Debug.LogWarning("AudioSource or Clips are not set in BGSoundScript.");
+            return;
+        }
+
+        // Set the correct clip based on isOverWorld
+        if (GameHandler.isOverWorld) {
+            if (audioSource.clip != overworldClip) {
+                audioSource.clip = overworldClip;
+                audioSource.Play();
+            }
+        } else {
+            if (audioSource.clip != shadowClip) {
+                audioSource.clip = shadowClip;
+                audioSource.Play();
+            }
+        }
+    }
 }

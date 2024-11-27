@@ -29,7 +29,7 @@ public class GameHandler : MonoBehaviour {
     private string sceneName;
     public static string lastLevelDied;  //allows replaying the Level where you died
 
-    public bool isOverWorld = true;
+    public static bool isOverWorld = true;
     private GameObject allOverworld;
     private GameObject allShadow;
     private bool cooldownDone = true;

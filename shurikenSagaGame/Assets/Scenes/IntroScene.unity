@@ -36763,6 +36763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a708fe73ab4484cae87bbcb17330bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overworldClip: {fileID: 8300000, guid: 2e70f743d20f04bde8ef2dd6fd6f3c6e, type: 3}
+  shadowClip: {fileID: 8300000, guid: 55131ba5cce5e47d99551bc0f5c4cca7, type: 3}
 --- !u!1001 &1302541823
 PrefabInstance:
   m_ObjectHideFlags: 0
