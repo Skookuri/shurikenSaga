@@ -515,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_Name
-      value: ScrollJutsuPair
+      value: ShurikenJutsuPair
       objectReference: {fileID: 0}
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_IsActive
@@ -62606,7 +62606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_Name
-      value: ScrollJutsuPair (1)
+      value: DashJutsuPair
       objectReference: {fileID: 0}
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_IsActive
