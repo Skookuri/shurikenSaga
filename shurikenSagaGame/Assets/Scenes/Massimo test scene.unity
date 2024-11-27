@@ -2089,8 +2089,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61a6ece721c4645b3ab58eaea97065f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: 100
   StartPlayerHealth: 100
+  healthText: {fileID: 0}
+  hit: 0
+  isImmune: 0
+  playerImmuneColor: {r: 0, g: 0, b: 0, a: 0}
+  tokensText: {fileID: 0}
   isDefending: 0
+  isOverWorld: 1
+  overlayImage: {fileID: 0}
+  switchDuration: 0
+  mainCamera: {fileID: 0}
+  shakeIntensity: 0
+  shakeFrequency: 0
+  cantSwitchSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!4 &1061889736
 Transform:
   m_ObjectHideFlags: 0
