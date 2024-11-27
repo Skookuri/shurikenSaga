@@ -17,18 +17,13 @@ public class GameHandler : MonoBehaviour {
     [SerializeField]
     private Color playerImmuneColor;
     private SpriteRenderer playerSpriteRenderer;
-
     public static int gotTokens = 0;
     public GameObject tokensText;
-
     public bool isDefending = false;
-
     public static bool stairCaseUnlocked = false;
     //this is a flag check. Add to other scripts: GameHandler.stairCaseUnlocked = true;
-
     private string sceneName;
     public static string lastLevelDied;  //allows replaying the Level where you died
-
     public static bool isOverWorld = true;
     private GameObject allOverworld;
     private GameObject allShadow;
@@ -50,7 +45,7 @@ public class GameHandler : MonoBehaviour {
     [SerializeField]
     private AudioSource audioSource;
 
-    private bool firstRunThrough = true;
+    //private bool firstRunThrough = true;
 
     public AudioSource toShadow;
     public AudioSource toHome;
@@ -72,114 +67,110 @@ public class GameHandler : MonoBehaviour {
             mainCamera = Camera.main;
         }
         originalCameraPosition = mainCamera.transform.localPosition;
+        
+        // Start in the Overworld
+        isOverWorld = true;
+        allOverworld.SetActive(true);
+        allShadow.SetActive(false);
+        overlayImage.color = new Color(0, 0, 0, 0);
+        playerHealth = StartPlayerHealth;
+        updateStatsDisplay();
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        if (firstRunThrough)
-        {
-            firstRunThrough = false;
-            if (isOverWorld) {
-                allShadow.SetActive(true);
-                allOverworld.SetActive(false);
-            } else {
-                allShadow.SetActive(false);
-                allOverworld.SetActive(true);
-            }
+    private void Update() {
+        HandlePlayerHit();
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownDone) {
+            StartRealmSwitch();
+        } else if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            PlayCannotSwitchSound();
         }
-        
-        if (hit && !isImmune)
-        {
+
+        if (switching) {
+            PerformRealmSwitch();
+        }
+    }
+
+    private void StartRealmSwitch() {
+        cooldownDone = false;
+        switching = true;
+        timePassedWhileSwitching = 0f;
+
+        // Toggle the Overworld/Shadow state
+        isOverWorld = !isOverWorld;
+
+        // Start overlay fade and realm activation
+        overlayImage.color = new Color(isOverWorld ? 0 : 1, isOverWorld ? 0 : 1, isOverWorld ? 0 : 1, 0);
+        StartCoroutine(Cooldown());
+    }
+    
+    private void PerformRealmSwitch() {
+        CameraShake();
+        timePassedWhileSwitching += Time.deltaTime;
+
+        if (timePassedWhileSwitching < switchDuration) {
+            // Fade to black
+            float alpha = Mathf.Clamp01(timePassedWhileSwitching / switchDuration);
+            overlayImage.color = new Color(overlayImage.color.r, overlayImage.color.g, overlayImage.color.b, alpha);
+            switchRealms = true;
+        } else if (timePassedWhileSwitching < switchDuration * 2) {
+            if (switchRealms) {
+                // Switch realms once halfway through the fade
+                switchRealms = false;
+
+                if (isOverWorld) {
+                    toHome.Play();
+                    allShadow.SetActive(false);
+                    allOverworld.SetActive(true);
+                } else {
+                    toShadow.Play();
+                    allShadow.SetActive(true);
+                    allOverworld.SetActive(false);
+                }
+            }
+
+            // Fade back to transparent
+            float alpha = Mathf.Clamp01((timePassedWhileSwitching - switchDuration) / switchDuration);
+            overlayImage.color = new Color(overlayImage.color.r, overlayImage.color.g, overlayImage.color.b, 1 - alpha);
+        } else {
+            // End of switching
+            switching = false;
+            overlayImage.color = new Color(0, 0, 0, 0);
+            mainCamera.transform.localPosition = new Vector3(originalCameraPosition.x, originalCameraPosition.y, -10f);
+        }
+    }
+
+    private void PlayCannotSwitchSound() {
+        if (audioSource != null && cantSwitchSound != null) {
+            audioSource.PlayOneShot(cantSwitchSound);
+        }
+    }
+
+    private void HandlePlayerHit() {
+        if (hit && !isImmune) {
             playerGetHit();
             hit = false;
             isImmune = true;
             playerFlashingTime = 0f;
             StartCoroutine(hitCooldown());
         }
-        if (isImmune)
-        {
+
+        if (isImmune) {
             playerFlashingTime += Time.deltaTime;
-            if (playerFlashingTime > .08)
-            {
-                playerSpriteRenderer.color = (playerSpriteRenderer.color == playerImmuneColor) ? new Color (1, 1, 1, 1) : playerImmuneColor;
+            if (playerFlashingTime > 0.08f) {
+                playerSpriteRenderer.color = (playerSpriteRenderer.color == playerImmuneColor)
+                    ? new Color(1, 1, 1, 1)
+                    : playerImmuneColor;
                 playerFlashingTime = 0f;
             }
         }
-        
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            if (cooldownDone)
-            {
-                cooldownDone = false;
-                if (isOverWorld)
-                {
-                    overlayImage.color = new Color(255, 255, 255, 0);
-                    isOverWorld = false;
-                }
-                else
-                {
-                    overlayImage.color = new Color(0, 0, 0, 0);
-                    isOverWorld = true;
-                }
-                Debug.Log("isOverWorld: " + isOverWorld);
-                switching = true;
-                timePassedWhileSwitching = 0f;
-                StartCoroutine(Cooldown());
-            }
-            else
-            {
-                // Play the "cannot switch" sound
-                if (audioSource != null && cantSwitchSound != null)
-                {
-                    audioSource.PlayOneShot(cantSwitchSound);
-                }
-            }
-        }
-        if (switching)
-        {
-            CameraShake();
-
-            timePassedWhileSwitching += Time.deltaTime;
-
-            if (timePassedWhileSwitching < switchDuration)
-            {
-                float alpha = Mathf.Clamp01(timePassedWhileSwitching / switchDuration);
-                overlayImage.color = new Color(overlayImage.color.r, overlayImage.color.g, overlayImage.color.b, alpha);
-                switchRealms = true;
-            } else if (timePassedWhileSwitching < switchDuration * 2)
-            {
-                if(switchRealms)
-                {
-                    switchRealms = false;
-                    if (!isOverWorld) {
-                        toHome.Play();
-                        allShadow.SetActive(false);
-                        allOverworld.SetActive(true);
-                    } else {
-                        toShadow.Play();
-                        allShadow.SetActive(true);
-                        allOverworld.SetActive(false);
-                    }
-                }
-
-                float alpha = Mathf.Clamp01((timePassedWhileSwitching - switchDuration) / switchDuration);
-                overlayImage.color = new Color(overlayImage.color.r, overlayImage.color.g, overlayImage.color.b, 1 - alpha);
-            } else
-            {
-                switching = false;
-                overlayImage.color = new Color(overlayImage.color.r, overlayImage.color.g, overlayImage.color.b, 0);
-                mainCamera.transform.localPosition = new Vector3(originalCameraPosition.x, originalCameraPosition.y, -10f);
-            }
-        }
     }
-    
-    public IEnumerator hitCooldown()
-    {
-        yield return new WaitForSeconds(1.5f);
-        //Debug.Log("2 seconds have passed!");
-        isImmune = false;
-        playerSpriteRenderer.color = new Color(1, 1, 1, 1);
+
+    private IEnumerator Cooldown() {
+        yield return new WaitForSeconds(3);
+        Debug.Log("2 seconds have passed!");
+        cooldownDone = true;
     }
     
     private void CameraShake()
@@ -197,20 +188,20 @@ public class GameHandler : MonoBehaviour {
         mainCamera.transform.position = new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, -10f);
     }
 
-    private IEnumerator Cooldown()
-    {
-        yield return new WaitForSeconds(3);
-        Debug.Log("2 seconds have passed!");
-        cooldownDone = true;
-    }
-
-    public void playerGetTokens(int newTokens){
+    public void playerGetTokens(int newTokens) {
         gotTokens += newTokens;
         //updateStatsDisplay();
     }
 
-    public void playerGetHit(){
-        if (isDefending == false){
+    public IEnumerator hitCooldown() {
+        yield return new WaitForSeconds(1.5f);
+        //Debug.Log("2 seconds have passed!");
+        isImmune = false;
+        playerSpriteRenderer.color = new Color(1, 1, 1, 1);
+    }
+
+    public void playerGetHit() {
+        if (!isDefending){
             //yield return new WaitForSeconds(1.0f);
             if (playerHealth >=0){
                 updateStatsDisplay();
@@ -227,8 +218,12 @@ public class GameHandler : MonoBehaviour {
         }
     }
 
-    
-
+    public void playerDies() {
+        //player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
+        lastLevelDied = sceneName;       //allows replaying the Level where you died
+        SceneManager.LoadScene("Lose Scene");
+        //StartCoroutine(DeathPause());
+    }
 
     public void updateStatsDisplay(){
             Text healthTextTemp = healthText.GetComponent<Text>();
@@ -236,13 +231,6 @@ public class GameHandler : MonoBehaviour {
 
             Text tokensTextTemp = tokensText.GetComponent<Text>();
             tokensTextTemp.text = "GOLD: " + gotTokens;
-    }
-
-    public void playerDies(){
-        //player.GetComponent<PlayerHurt>().playerDead();       //play Death animation
-        lastLevelDied = sceneName;       //allows replaying the Level where you died
-        SceneManager.LoadScene("Lose Scene");
-        //StartCoroutine(DeathPause());
     }
 
     IEnumerator DeathPause(){
