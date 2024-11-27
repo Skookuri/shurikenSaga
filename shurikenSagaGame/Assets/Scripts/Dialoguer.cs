@@ -150,12 +150,14 @@ public class Dialoguer : MonoBehaviour
 
         if (Subject.MumbleClips != null && Subject.MumbleClips.Length > 0) 
         {
-            SpeakerSpeech.SetActive(true);
+            // Select a random mumble clip
             int mumbleIndex = Random.Range(0, Subject.MumbleClips.Length);
             SpeakerSpeech.clip = Subject.MumbleClips[mumbleIndex];
-            
-        } else {
-            SpeakerSpeech.SetActive(false);
+        } 
+        else 
+        {
+            // No audio clip for this speaker
+            SpeakerSpeech.clip = null;
         }
     }
 
@@ -165,6 +167,7 @@ public class Dialoguer : MonoBehaviour
         {
             SpeakerSpeech.Play(); // Play mumble clip if available
         }
+        
         CanContinue = false;
         isTyping = true; // Set flag to indicate typing is in progress
         DialogueSpeech.SetText(string.Empty);
@@ -178,6 +181,11 @@ public class Dialoguer : MonoBehaviour
         isTyping = false; // Typing complete
         CanContinue = true;
 
+        if (SpeakerSpeech != null && SpeakerSpeech.isPlaying)
+        {
+            SpeakerSpeech.Stop(); // Stop the audio once typing finishes
+        }
+
         if (isFinalSegment)
         {
             screenFade.StartFade(1f, 1f);
@@ -185,6 +193,7 @@ public class Dialoguer : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
 
     private void AutocompleteDialogue()
     {
