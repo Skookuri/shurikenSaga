@@ -13255,6 +13255,10 @@ PrefabInstance:
       propertyPath: LevelExitDoor
       value: 
       objectReference: {fileID: 389490526}
+    - target: {fileID: 8894046267364767776, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_text
+      value: Press "left shift" to shift realms.
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
