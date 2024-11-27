@@ -80,13 +80,10 @@ public class GameHandler : MonoBehaviour {
         if (firstRunThrough)
         {
             firstRunThrough = false;
-            if (isOverWorld)
-            {
+            if (isOverWorld) {
                 allShadow.SetActive(true);
                 allOverworld.SetActive(false);
-            }
-            else
-            {
+            } else {
                 allShadow.SetActive(false);
                 allOverworld.SetActive(true);
             }

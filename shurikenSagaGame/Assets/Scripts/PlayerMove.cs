@@ -57,12 +57,14 @@ public class PlayerMove : MonoBehaviour {
     private bool fell = false;
 
     private GameHandler gh;
+    public AudioSource shuriThrow;
 
     void Start(){
         gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
         lastSavedPosition = transform.position;
 
         rb2D = transform.GetComponent<Rigidbody2D>();
+        shuriThrow.enabled = true;
 
         // Get the SpriteRenderer component from the player_art child
         spriteRenderer = transform.Find("player_art").GetComponent<SpriteRenderer>();
@@ -312,20 +314,19 @@ public class PlayerMove : MonoBehaviour {
         spriteRenderer.transform.localScale = theScale;
     }
 
-    void playerFire(){
-        //animator.SetTrigger ("Fire");
-        //Vector2 fwd = (firePoint.position - this.transform.position).normalized;
-        //Vector2 fwd = 0.normalized;
-        //GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        //projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse);
-        //spriteRenderer.sprite = shuriSprite; //Show non-moving default sprite
-
-
+    void playerFire() {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f; // Set z to 0 since we're working in 2D
 
         // Calculate the direction from the firing point to the mouse position
         Vector2 fwd = (mousePosition - firePoint.position).normalized;
+
+        // Play the shuriken throw sound
+        if (shuriThrow != null) {
+            if (!shuriThrow.isPlaying) { 
+                shuriThrow.Play(); 
+            }
+        }
 
         // Instantiate the projectile and apply force towards the mouse position
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
@@ -334,4 +335,5 @@ public class PlayerMove : MonoBehaviour {
         // Set the sprite to the default sprite
         spriteRenderer.sprite = shuriSprite; // Show non-moving default sprite
     }
+
 }

@@ -10544,28 +10544,6 @@ MonoBehaviour:
   dialogueCanvas: {fileID: 1351769089}
   player: {fileID: 1302541824}
   ScrollJutsuPair: {fileID: 1874196334}
---- !u!114 &1477803528 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3861169512236313123, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-  m_PrefabInstance: {fileID: 1974678313}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4a8f28ce5c594e679e7003971e89c21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1477803529 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1221504356127885085, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-  m_PrefabInstance: {fileID: 1974678313}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1477901797
 GameObject:
   m_ObjectHideFlags: 0
@@ -10881,6 +10859,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9f1f5d6bfcb04bd38c19ece90d03852, type: 3}
+--- !u!114 &1828298123 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3986840335949785550, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1974678313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4a8f28ce5c594e679e7003971e89c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1828298124 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6097190876393333497, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1974678313}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1874196334 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
@@ -12871,10 +12871,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1221504356127885085, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-      propertyPath: fadeImage
-      value: 
-      objectReference: {fileID: 883020472}
     - target: {fileID: 4519942182526219375, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: player
       value: 
@@ -12935,6 +12931,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6097190876393333497, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: fadeImage
+      value: 
+      objectReference: {fileID: 883020472}
     - target: {fileID: 7177258995242786473, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -13287,11 +13287,11 @@ PrefabInstance:
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: screenFade
       value: 
-      objectReference: {fileID: 1477803529}
+      objectReference: {fileID: 1828298124}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: screenShake
       value: 
-      objectReference: {fileID: 1477803528}
+      objectReference: {fileID: 1828298123}
     - target: {fileID: 1044003271674937058, guid: e0e8a9e551a564cd9a6ed77310636e01, type: 3}
       propertyPath: DialogueSegments.Array.size
       value: 22

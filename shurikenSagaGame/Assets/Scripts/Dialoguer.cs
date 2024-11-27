@@ -45,10 +45,6 @@ public class Dialoguer : MonoBehaviour
 
         // Ensure that an AudioSource component is assigned
         SpeakerSpeech = GetComponent<AudioSource>();
-        if (SpeakerSpeech == null)
-        {
-            Debug.LogError("AudioSource not found on the Dialoguer object.");
-        }
 
         if (playOnStart)
         {
@@ -154,8 +150,12 @@ public class Dialoguer : MonoBehaviour
 
         if (Subject.MumbleClips != null && Subject.MumbleClips.Length > 0) 
         {
+            SpeakerSpeech.SetActive(true);
             int mumbleIndex = Random.Range(0, Subject.MumbleClips.Length);
             SpeakerSpeech.clip = Subject.MumbleClips[mumbleIndex];
+            
+        } else {
+            SpeakerSpeech.SetActive(false);
         }
     }
 
