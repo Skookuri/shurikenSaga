@@ -15860,6 +15860,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 763895211126078514, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1562695753}
+    - target: {fileID: 763895211126078514, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 4522620028252696214, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -37143,6 +37151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6a708fe73ab4484cae87bbcb17330bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overworldClip: {fileID: 0}
+  shadowClip: {fileID: 0}
 --- !u!1001 &1302541823
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37583,6 +37593,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1562695753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365868411976817807, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 638505974}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a6ece721c4645b3ab58eaea97065f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1590110971
 GameObject:
   m_ObjectHideFlags: 0

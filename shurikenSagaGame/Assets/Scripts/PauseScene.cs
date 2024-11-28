@@ -8,7 +8,8 @@ public class PauseMenu : MonoBehaviour
     public AudioSource PauseSFX;
     public AudioSource PlaySFX;
     void Start() {
-        ResumeGame();
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     void Update()
@@ -28,17 +29,20 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(true);
+        PauseSFX.Play();
         Time.timeScale = 0.0f;
     }
 
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
+        PlaySFX.Play();
         Time.timeScale = 1.0f;
     }
 
     public void QuitGame()
     {
+        Application.Quit();
         #if UNITY_STANDALONE
             Application.Quit();
         #elif UNITY_EDITOR

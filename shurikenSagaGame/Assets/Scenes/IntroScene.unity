@@ -15464,6 +15464,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &269606665 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7365868411976817807, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1179278611519604617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61a6ece721c4645b3ab58eaea97065f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &534675644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43199,6 +43210,10 @@ PrefabInstance:
     - target: {fileID: 763895211126078514, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 269606665}
+    - target: {fileID: 763895211126078514, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
       objectReference: {fileID: 0}
     - target: {fileID: 1221504356127885085, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: fadeImage
