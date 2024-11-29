@@ -296,7 +296,7 @@ public class PlayerMove : MonoBehaviour {
         // Play the shuriken throw sound
         if (shuriThrow != null) {
             if (!shuriThrow.isPlaying) { 
-                shuriThrow.Play(); 
+                //shuriThrow.Play(); 
             }
         }
 

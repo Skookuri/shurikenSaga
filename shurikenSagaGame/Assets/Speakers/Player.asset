@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Player
   m_EditorClassIdentifier: 
   SpeakerName: You
-  SpeakerSprite: {fileID: 21300000, guid: 843097ad88da240e9a5c93c20c013a75, type: 3}
+  SpeakerSprite: {fileID: -1670988357, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
   MumbleClips:
   - {fileID: 8300000, guid: 12e98c199d47b410ebd868787678ca98, type: 3}
   - {fileID: 8300000, guid: 6360b351b6f7d47bf8bb95ff61be6bb6, type: 3}

@@ -293,8 +293,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 2105907380142545543}
-  PauseSFX: {fileID: 0}
-  PlaySFX: {fileID: 0}
+  PauseSFX: {fileID: 1627885565190853059, guid: c0f1b3baa06a346619a5a1b3bb0f8b23, type: 3}
+  PlaySFX: {fileID: 2187746628484087638, guid: 9f9db775b40eb19428d79947fa500ebf, type: 3}
+  mixer: {fileID: 24100000, guid: 4935823a4c2cf41dab784c7d09598c3f, type: 2}
 --- !u!1 &785133112789873286
 GameObject:
   m_ObjectHideFlags: 0

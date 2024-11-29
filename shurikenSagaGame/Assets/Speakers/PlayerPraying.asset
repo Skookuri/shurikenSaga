@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerPraying
   m_EditorClassIdentifier: 
   SpeakerName: You (praying)
-  SpeakerSprite: {fileID: 21300000, guid: 5d985510f6b1e4378b4bb1392070d94b, type: 3}
+  SpeakerSprite: {fileID: 1524468359, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
   MumbleClips: []
