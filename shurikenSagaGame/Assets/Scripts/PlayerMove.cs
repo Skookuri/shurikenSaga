@@ -18,9 +18,6 @@ public class PlayerMove : MonoBehaviour {
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    public Sprite defaultSprite;
-    public Sprite sideSprite;
-    public Sprite backSprite;
     public Sprite shuriSprite;
 
     //Projectiles
@@ -84,95 +81,74 @@ public class PlayerMove : MonoBehaviour {
     }
 
     void Update(){
+        if (!isAlive) return;
+
         //NOTE: Horizontal axis: [a] / left arrow is -1, [d] / right arrow is 1
         //NOTE: Vertical axis: [w] / up arrow, [s] / down arrow
         Vector3 hvMove = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f);
+        Vector2 movement = hvMove * runSpeed * Time.deltaTime;
+        rb2D.velocity = movement;
 
-        // Update vertical movement for the Animator
-        animator.SetFloat("Vertical", hvMove.y);  // Send the vertical movement to the Animator
+        isMoving = hvMove != Vector3.zero;
         bool MovingHoriz = hvMove.x != 0;  // Check if horizontal movement is happening
+
+        animator.SetFloat("Vertical", hvMove.y);  // Send the vertical movement to the Animator
         animator.SetBool("MovingHoriz", MovingHoriz);  // Send the horizontal movement != checker to the Animator
-        
-        if (isAlive == true){
-            Vector2 movement = hvMove * runSpeed * Time.deltaTime;
-            rb2D.velocity = movement;
+        animator.SetBool("IsMoving", isMoving);
+        animator.SetBool("IsDashing", isDashing);
+        animator.SetBool("IsShooting", isShoot);
 
-            // Check if the player is moving
-            isMoving = hvMove != Vector3.zero;
+        if (isMoving && !footstepSFX.isPlaying) {
+            footstepSFX.Play();
+            Debug.Log("Playing Footstep sound..");
+        } else if (!isMoving && footstepSFX.isPlaying) {
+            footstepSFX.Stop();
+            Debug.Log("Stopping Footstep sound..");
+        }
 
-            if (isMoving) {
-                // If moving and footstep sound isn't playing, play the sound
-                if (!footstepSFX.isPlaying) {
-                    footstepSFX.Play();
-                    Debug.Log("Playing Footstep sound..");
-                }
+        // Turning. Reverse if input is moving the Player right and Player faces left.
+        if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
+            playerTurn();
+        }
+
+        if (isShoot) {
+            animator.enabled = false;
+            spriteRenderer.sprite = shuriSprite; //Hide non- moving
+        } else {
+            animator.enabled = true; //Enable animator
+        }
+
+        if (Time.time >= nextAttackTime){
+            if (Input.GetAxis("AttackYea") > 0){
+                playerFire();
+                nextAttackTime = Time.time + 1f / attackRate;
+                isShoot = true;
             } else {
-                // If not moving, stop the sound
-                if (footstepSFX.isPlaying) {
-                    footstepSFX.Stop();
-                    Debug.Log("Stopping Footstep sound..");
-                }
-            }
-
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            // Massimo changes start*******
-            // Check for double-tap on movement keys
-            if (moveVertical > 0 && Input.GetKeyDown(KeyCode.W))
-            {
-                HandleDoubleTap("W");
-            }
-            else if (moveVertical < 0 && Input.GetKeyDown(KeyCode.S))
-            {
-                HandleDoubleTap("S");
-            }
-            else if (moveHorizontal < 0 && Input.GetKeyDown(KeyCode.A))
-            {
-                HandleDoubleTap("A");
-            }
-            else if (moveHorizontal > 0 && Input.GetKeyDown(KeyCode.D))
-            {
-                HandleDoubleTap("D");
-            }
-            //Massimo changes end*******
-
-            if (Time.time >= nextAttackTime){
-                if (Input.GetAxis("AttackYea") > 0){
-                    playerFire();
-                    nextAttackTime = Time.time + 1f / attackRate;
-                    isShoot = true;
-                } else {
-                    isShoot = false;
-                }
-            }
-
-            if (isShoot == true) {
-                spriteRenderer.sprite = shuriSprite; //Hide non- moving
-            } else if (!isDashing){ //disabled for when dashing (Massimo)
-                if (hvMove.y < 0) {
-                    animator.enabled = true; // Disable Animator for front view
-                    //spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
-                } else if (hvMove.y > 0) {
-                    animator.enabled = false; // Disable Animator for back view
-                    //animator.enabled = true;
-                    footstepSFX.Play();
-                    spriteRenderer.sprite = backSprite; //Show non-moving default sprite
-                } else if (hvMove.x != 0) {
-                    animator.enabled = false; // Disable Animator for side view
-                    spriteRenderer.sprite = sideSprite; //Show non-moving default sprite
-                } else {
-                    animator.enabled = true; // Enable Animator for Idle front view animation
-                    //spriteRenderer.sprite = defaultSprite; //Show non-moving default sprite
-                }
-            }
-            // Turning. Reverse if input is moving the Player right and Player faces left.
-            if ((hvMove.x < 0 && !FaceLeft) || (hvMove.x > 0 && FaceLeft)){
-                playerTurn();
+                isShoot = false;
             }
         }
 
-        
+        // Massimo changes start*******
+        // Check for double-tap on movement keys
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        if (moveVertical > 0 && Input.GetKeyDown(KeyCode.W))
+        {
+            HandleDoubleTap("W");
+        }
+        else if (moveVertical < 0 && Input.GetKeyDown(KeyCode.S))
+        {
+            HandleDoubleTap("S");
+        }
+        else if (moveHorizontal < 0 && Input.GetKeyDown(KeyCode.A))
+        {
+            HandleDoubleTap("A");
+        }
+        else if (moveHorizontal > 0 && Input.GetKeyDown(KeyCode.D))
+        {
+            HandleDoubleTap("D");
+        }
+        //Massimo changes end*******
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -261,23 +237,19 @@ public class PlayerMove : MonoBehaviour {
         if (directionKey == "W")
         {
             direction = Vector2.up;
-            spriteRenderer.sprite = backSprite;
 
         }
         else if (directionKey == "S")
         {
             direction = Vector2.down;
-            spriteRenderer.sprite = defaultSprite;
         }
         else if (directionKey == "A") 
         {
             direction = Vector2.left;
-            spriteRenderer.sprite = sideSprite;
         }
         else if (directionKey == "D")
         {
             direction = Vector2.right;
-            spriteRenderer.sprite = sideSprite;
         }
 
         float elapsedTime = 0f;

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ninja_idle_anim
+  m_Name: ninja_walk_side_anim
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1670988357, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+      value: {fileID: -1536105827, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
     - time: 0.2
-      value: {fileID: 1483268805, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+      value: {fileID: -1406550160, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
     - time: 0.4
-      value: {fileID: 1445880926, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+      value: {fileID: -1536105827, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
     - time: 0.6
-      value: {fileID: -1649944417, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+      value: {fileID: 414348950, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,10 +50,10 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1670988357, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
-    - {fileID: 1483268805, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
-    - {fileID: 1445880926, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
-    - {fileID: -1649944417, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+    - {fileID: -1536105827, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+    - {fileID: -1406550160, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+    - {fileID: -1536105827, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
+    - {fileID: 414348950, guid: 6462a175fcb3647cc942301a555dcd77, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
