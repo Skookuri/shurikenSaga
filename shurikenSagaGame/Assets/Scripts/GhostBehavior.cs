@@ -60,6 +60,7 @@ public class GhostBehavior : MonoBehaviour
         rb.gravityScale = 0; // Ensure the ghost is unaffected by gravity
         rb.drag = dragAmount; // Adjust drag for smooth deceleration
         basePosition = transform.position;
+        player = GameObject.Find("player").GetComponent<Transform>();
     }
 
     private void Update()

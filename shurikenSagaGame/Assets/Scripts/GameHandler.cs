@@ -25,15 +25,15 @@ public class GameHandler : MonoBehaviour {
     private string sceneName;
     public static string lastLevelDied;  //allows replaying the Level where you died
     public static bool isOverWorld = true;
-    private GameObject allOverworld;
-    private GameObject allShadow;
+    private GameObject[] allOverworld;
+    private GameObject[] allShadow;
     private bool cooldownDone = true;
     private bool switching = false;
     private float timePassedWhileSwitching = 0;
     public Image overlayImage;
     [SerializeField]
     public float switchDuration;
-    private bool switchRealms = false;
+    public bool switchRealms = false;
     public Camera mainCamera;
     [SerializeField]
     public float shakeIntensity;
@@ -45,6 +45,8 @@ public class GameHandler : MonoBehaviour {
     [SerializeField]
     private AudioSource audioSource;
 
+    public bool doneSwitchingRealms = false;
+
     //private bool firstRunThrough = true;
 
     public AudioSource toShadow;
@@ -53,8 +55,8 @@ public class GameHandler : MonoBehaviour {
 
     void Start(){
 
-        allOverworld = GameObject.FindWithTag("overworld");
-        allShadow = GameObject.FindWithTag("shadow");
+        allOverworld = GameObject.FindGameObjectsWithTag("overworld");
+        allShadow = GameObject.FindGameObjectsWithTag("shadow");
         playerSpriteRenderer = GameObject.Find("player").transform.Find("player_art").GetComponent<SpriteRenderer>();
         player = GameObject.FindWithTag("Player");
         sceneName = SceneManager.GetActiveScene().name;
@@ -76,6 +78,31 @@ public class GameHandler : MonoBehaviour {
         playerHealth = StartPlayerHealth;
         updateStatsDisplay();
         audioSource = GetComponent<AudioSource>();
+
+        if (isOverWorld)
+        {
+            toHome.Play();
+            foreach (GameObject g in allShadow)
+            {
+                g.SetActive(false);
+            }
+            foreach (GameObject g in allOverworld)
+            {
+                g.SetActive(true);
+            }
+        }
+        else
+        {
+            toShadow.Play();
+            foreach (GameObject g in allShadow)
+            {
+                g.SetActive(true);
+            }
+            foreach (GameObject g in allOverworld)
+            {
+                g.SetActive(false);
+            }
+        }
     }
 
     private void Update() {
@@ -121,13 +148,26 @@ public class GameHandler : MonoBehaviour {
 
                 if (isOverWorld) {
                     toHome.Play();
-                    allShadow.SetActive(false);
-                    allOverworld.SetActive(true);
+                    foreach (GameObject g in allShadow)
+                    {
+                        g.SetActive(false);
+                    }
+                    foreach (GameObject g in allOverworld)
+                    {
+                        g.SetActive(true);
+                    }
                 } else {
                     toShadow.Play();
-                    allShadow.SetActive(true);
-                    allOverworld.SetActive(false);
+                    foreach (GameObject g in allShadow)
+                    {
+                        g.SetActive(true);
+                    }
+                    foreach (GameObject g in allOverworld)
+                    {
+                        g.SetActive(false);
+                    }
                 }
+                doneSwitchingRealms = true;
             }
 
             // Fade back to transparent
