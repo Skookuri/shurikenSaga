@@ -50843,7 +50843,6 @@ MonoBehaviour:
   prayText: {fileID: 439628069}
   dialogueCanvas: {fileID: 1351769089}
   player: {fileID: 1302541824}
-  ScrollJutsuPair: {fileID: 0}
 --- !u!4 &1437227567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8904542411568045566, guid: e62a09deaf4c62849b28f6a2da75c139, type: 3}
@@ -61919,11 +61918,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 325b391aded16a24d87a3ac2c27bf9ac, type: 3}
---- !u!82 &1707843176 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8430926377588767133, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-  m_PrefabInstance: {fileID: 1996661079}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1745513394
 GameObject:
   m_ObjectHideFlags: 0
@@ -62699,7 +62693,7 @@ PrefabInstance:
     - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: ScrollGetSFX
       value: 
-      objectReference: {fileID: 1707843176}
+      objectReference: {fileID: 1996661082}
     - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: LevelExitDoor
       value: 
@@ -74168,6 +74162,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 4932765961073981721, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
     - {fileID: 1061211487602405461, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+    - {fileID: 7583785252655266041, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
@@ -74179,6 +74174,11 @@ GameObject:
 --- !u!1 &1996661081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5883847652988416055, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1996661079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1996661082 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7383948337379641390, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
   m_PrefabInstance: {fileID: 1996661079}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2020368302
