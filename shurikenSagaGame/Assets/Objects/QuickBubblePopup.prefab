@@ -113,7 +113,7 @@ RectTransform:
   - {fileID: 2124522418314769427}
   - {fileID: 7859769464588597772}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueSegments:
-  - Dialogue: Seems like I can't go through without a key...
+  - Dialogue: Seems like I can't go through without scissors...
     Character: {fileID: 11400000, guid: 4db892efece4b4c7193521ba87139b62, type: 2}
     IsFinalSegment: 1
   SpeakerImg: {fileID: 2986664328216966164}

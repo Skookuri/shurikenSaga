@@ -15885,6 +15885,10 @@ PrefabInstance:
       propertyPath: popSFX
       value: 
       objectReference: {fileID: 192407227}
+    - target: {fileID: 6107719254291907466, guid: b9f1f5d6bfcb04bd38c19ece90d03852, type: 3}
+      propertyPath: DialogueSegments.Array.data[0].Dialogue
+      value: Seems like I can't go through without scissors...
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
