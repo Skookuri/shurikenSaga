@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 1688601553984742223}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8907432629146608969
 MonoBehaviour:
@@ -51,17 +51,18 @@ MonoBehaviour:
   healthText: {fileID: 0}
   hit: 0
   isImmune: 0
-  playerImmuneColor: {r: 0, g: 0, b: 0, a: 0}
+  playerImmuneColor: {r: 0.8490566, g: 0.5238519, b: 0.5238519, a: 1}
   tokensText: {fileID: 0}
   isDefending: 0
-  isOverWorld: 0
   overlayImage: {fileID: 351900121933782714}
   switchDuration: 0.5
+  switchRealms: 0
   mainCamera: {fileID: 0}
   shakeIntensity: 0.5
   shakeFrequency: 20
   cantSwitchSound: {fileID: 8300000, guid: c54321d4551245c4a822e8aae8af633f, type: 3}
   audioSource: {fileID: 5845935800779063617}
+  doneSwitchingRealms: 0
   toShadow: {fileID: 5428064577793885304, guid: 870f0faa2a600487594a501a9f716e5d, type: 3}
   toHome: {fileID: 7403727979709483004, guid: bde8faa9f770d412e814a3cac546be45, type: 3}
 --- !u!82 &5845935800779063617

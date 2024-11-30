@@ -19,23 +19,36 @@ public class LinkedEnemies : MonoBehaviour
 
     private void Update()
     {
-        if(GameHandler.isOverWorld)
-        {
-            sharedPosition = overworldEnemy.transform.position;
-        } else
-        {
-            sharedPosition = shadowEnemy.transform.position;
-        }
         // Check if the active state of overworldEnemy has changed
         if (g.doneSwitchingRealms)
         {
-            Debug.Log("SWITCHING, GETTING POSITIONS");
+            //Debug.Log("SWITCHING, GETTING POSITIONS");
             // Determine the shared position
             //Vector2 sharedPosition = g.isOverWorld ? overworldEnemy.transform.position : shadowEnemy.transform.position;
 
             // Update the position of the newly active enemy
-            overworldEnemy.transform.position = sharedPosition;
-            shadowEnemy.transform.position = sharedPosition;
+            if(GameHandler.isOverWorld)
+            {
+                overworldEnemy.transform.position = sharedPosition;
+                shadowEnemy.transform.position = sharedPosition;
+            } else
+            {
+                shadowEnemy.transform.position = sharedPosition;
+                overworldEnemy.transform.position = sharedPosition;
+            }
+
+            g.doneSwitchingRealms = false;
+        }
+        
+        if (GameHandler.isOverWorld)
+        {
+            //Debug.Log("getting overworld pos: " + sharedPosition);
+            sharedPosition = overworldEnemy.transform.position;
+        }
+        else
+        {
+            //Debug.Log("getting shadow pos: " + sharedPosition);
+            sharedPosition = shadowEnemy.transform.position;
         }
     }
 }

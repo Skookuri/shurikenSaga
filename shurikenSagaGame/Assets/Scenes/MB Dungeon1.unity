@@ -50445,6 +50445,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1302541824}
     - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
+      propertyPath: kbForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: firePoint
       value: 
       objectReference: {fileID: 1993197071}
@@ -50526,7 +50530,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 843097ad88da240e9a5c93c20c013a75, type: 3}
     - target: {fileID: 7651378164711912017, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7872201298657971100, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: m_Name
@@ -122469,6 +122473,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 43667003}
     m_Modifications:
+    - target: {fileID: 2047548501386898555, guid: 20a9c0a1a2474f144ba7f7849de9ae73, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3281985510944461785, guid: 20a9c0a1a2474f144ba7f7849de9ae73, type: 3}
       propertyPath: m_RootOrder
       value: -1

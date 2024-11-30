@@ -46,6 +46,7 @@ public class GameHandler : MonoBehaviour {
     private AudioSource audioSource;
 
     public bool doneSwitchingRealms = false;
+    public bool resetLinkedKozous = false;
 
     //private bool firstRunThrough = true;
 
@@ -124,11 +125,8 @@ public class GameHandler : MonoBehaviour {
         switching = true;
         timePassedWhileSwitching = 0f;
 
-        // Toggle the Overworld/Shadow state
-        isOverWorld = !isOverWorld;
-
         // Start overlay fade and realm activation
-        overlayImage.color = new Color(isOverWorld ? 0 : 1, isOverWorld ? 0 : 1, isOverWorld ? 0 : 1, 0);
+        overlayImage.color = new Color(!isOverWorld ? 0 : 1, !isOverWorld ? 0 : 1, !isOverWorld ? 0 : 1, 0);
         StartCoroutine(Cooldown());
     }
     
@@ -146,7 +144,7 @@ public class GameHandler : MonoBehaviour {
                 // Switch realms once halfway through the fade
                 switchRealms = false;
 
-                if (isOverWorld) {
+                if (!isOverWorld) {
                     toHome.Play();
                     foreach (GameObject g in allShadow)
                     {
@@ -167,7 +165,11 @@ public class GameHandler : MonoBehaviour {
                         g.SetActive(false);
                     }
                 }
+
+                // Toggle the Overworld/Shadow state
+                isOverWorld = !isOverWorld;
                 doneSwitchingRealms = true;
+                resetLinkedKozous = true;
             }
 
             // Fade back to transparent

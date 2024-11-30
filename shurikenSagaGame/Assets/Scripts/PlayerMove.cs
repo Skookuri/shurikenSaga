@@ -56,6 +56,9 @@ public class PlayerMove : MonoBehaviour {
     private GameHandler gh;
     public AudioSource shuriThrow;
 
+    [SerializeField]
+    public float kbForce;
+
     void Start(){
         gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
         lastSavedPosition = transform.position;
@@ -151,18 +154,25 @@ public class PlayerMove : MonoBehaviour {
         //Massimo changes end*******
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Hole") && !isDashing)
         {
-            //LANCE - ACCOUNT FOR DAMAGE HERE
             fell = true;
             StartCoroutine(Wait());
+            gh.playerHealth -= 20;
         }
         if (collision.CompareTag("enemy"))
         {
             gh.hit = true;
-            gh.playerHealth -= 10;
+            if (!gh.isImmune)
+            {
+                Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
+                rb2D.AddForce(knockbackDirection * kbForce, ForceMode2D.Force);
+                Debug.Log("Amount of force: " + kbForce);
+
+                gh.playerHealth -= collision.gameObject.GetComponent<BasicEnemyValues>().damageAmount;
+            }
         }
     }
 

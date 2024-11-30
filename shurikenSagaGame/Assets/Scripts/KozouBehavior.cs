@@ -24,6 +24,7 @@ public class KozouBehavior : MonoBehaviour
     private bool isPatrolling = false;
     private bool cantMove = false;
     private Coroutine moveCoroutine; // Reference to the move coroutine
+    private int numberInvalidPos = 0;
 
     public SpriteRenderer spriteRenderer;
     public Color blinkColor;
@@ -37,20 +38,35 @@ public class KozouBehavior : MonoBehaviour
 
     private bool caught = false;
 
+    private GameHandler gh;
+
     void Start()
     {
         originalColor = spriteRenderer.color;
         basePosition = transform.position;
         player = GameObject.Find("player").transform;
+        gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
     }
 
     void Update()
     {
         if (!caught)
         {
+            if (gh.resetLinkedKozous)
+            {
+                Debug.Log("resetting kozous");
+                StopAllCoroutines();
+                pickTarget = true;
+                cantMove = false;
+                lightSpotted = false;
+                isPatrolling = false;
+                movingToLastKnownPosition = false;
+                basePosition = transform.position;
+                gh.resetLinkedKozous = false;
+            }
             // Check distance to player
             float playerDistance = Vector2.Distance(transform.position, player.position);
-
+            
             if (playerDistance <= detRange)
             {
                 // If player is in range
@@ -147,6 +163,12 @@ public class KozouBehavior : MonoBehaviour
         else
         {
             Debug.LogWarning($"Invalid patrol location at index {index}");
+            numberInvalidPos += 1;
+            if (numberInvalidPos > movementPattern.Length)
+            {
+                Debug.Log("resetting kozou");
+                basePosition = transform.position;
+            }
             pickTarget = true;
         }
     }
