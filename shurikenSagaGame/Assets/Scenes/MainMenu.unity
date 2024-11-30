@@ -363,6 +363,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Text
+      value: ShurikenSaga
+      objectReference: {fileID: 0}
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 786621446273093431, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919045324128506611, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 919045324128506611, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1120848713226882277, guid: 10a9053800566964d84652bef22fef54, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -451,6 +491,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4783463021981106672, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783463021981106672, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1280
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783463021981106672, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 359.81
+      objectReference: {fileID: 0}
     - target: {fileID: 5233335448207574404, guid: 10a9053800566964d84652bef22fef54, type: 3}
       propertyPath: m_Text
       value: Play
@@ -467,6 +519,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1477036818}
+    - target: {fileID: 7176237303826189203, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 933533481521448a98d3ddb216e59e37, type: 3}
+    - target: {fileID: 7176237303826189203, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176237303826189203, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Color.b
+      value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176237303826189203, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Color.g
+      value: 0.43943575
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176237303826189203, guid: 10a9053800566964d84652bef22fef54, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4900089
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
