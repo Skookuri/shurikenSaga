@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class ScrollDrop : MonoBehaviour
 {
-    public GameObject ScrollJutsuPairPrefab; // Reference to the ScrollJutsuPair prefab
     private List<GameObject> ScrollJutsuPairs = new List<GameObject>(); // List of ScrollJutsuPair objects
 
     void Start()
     {
-        // Locate all GameObjects in the scene with the "ScrollJutsuPair" prefab.
-        ScrollJutsuPairs.Clear();
-        ScrollJutsuPair[] existingInstances = FindObjectsOfType<ScrollJutsuPair>(); // Find all ScrollJutsuPair components in the scene
-        
-        foreach (ScrollJutsuPair instance in existingInstances)
+        // Find all GameObjects in the scene with the "ScrollJutsuPair" tag
+        GameObject[] scrollJutsuObjects = GameObject.FindGameObjectsWithTag("ScrollJutsuPair");
+
+        // Add the GameObjects to the list and deactivate them initially
+        foreach (GameObject scrollJutsuObject in scrollJutsuObjects)
         {
-            // Add the GameObject of each ScrollJutsuPair instance to the list
-            ScrollJutsuPairs.Add(instance.gameObject);
-            instance.gameObject.SetActive(false); // Deactivate the instance initially
+            ScrollJutsuPairs.Add(scrollJutsuObject);
+            scrollJutsuObject.SetActive(false); // Deactivate the instance initially
         }
 
         if (ScrollJutsuPairs.Count == 0)
@@ -32,16 +30,9 @@ public class ScrollDrop : MonoBehaviour
         Debug.Log("Dropping scrolls");
 
         // Activate all ScrollJutsuPair objects
-        foreach (GameObject scroll in ScrollJutsuPairs)
+        foreach (var scroll in ScrollJutsuPairs)
         {
-            if (scroll != null)
-            {
-                scroll.SetActive(true); // Activate the ScrollJutsuPair instance
-            }
-            else
-            {
-                Debug.LogWarning("A ScrollJutsuPair object is null.");
-            }
+            scroll.SetActive(true); // Activate the ScrollJutsuPair instance
         }
     }
 }

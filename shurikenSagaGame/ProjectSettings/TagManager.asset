@@ -12,6 +12,7 @@ TagManager:
   - overworld
   - shadow
   - enemy
+  - ScrollJutsuPair
   layers:
   - Default
   - TransparentFX

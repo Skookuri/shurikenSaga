@@ -9980,15 +9980,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.12603632
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10032,7 +10032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_TagString
+      value: ScrollJutsuPair
       objectReference: {fileID: 0}
     - target: {fileID: 4676951133246242935, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_text
@@ -10041,11 +10045,11 @@ PrefabInstance:
     - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: ScrollGetSFX
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1974678314}
     - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: LevelExitDoor
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 389490526}
     - target: {fileID: 8894046267364767776, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_text
       value: Click to throw shuriken
@@ -10482,6 +10486,7 @@ GameObject:
   - component: {fileID: 1396497558}
   - component: {fileID: 1396497557}
   - component: {fileID: 1396497561}
+  - component: {fileID: 1396497562}
   m_Layer: 0
   m_Name: gravestone
   m_TagString: Untagged
@@ -10643,7 +10648,18 @@ MonoBehaviour:
   prayText: {fileID: 439628069}
   dialogueCanvas: {fileID: 1351769089}
   player: {fileID: 1302541824}
-  ScrollJutsuPairPrefab: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+--- !u!114 &1396497562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396497556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e7843de715f7460f84bd3873696b0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1477901797
 GameObject:
   m_ObjectHideFlags: 0
@@ -13333,6 +13349,14 @@ PrefabInstance:
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_Name
       value: PlaneJutsuPair
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_TagString
+      value: ScrollJutsuPair
       objectReference: {fileID: 0}
     - target: {fileID: 4537711970192569377, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_AnchoredPosition.x
