@@ -62698,6 +62698,10 @@ PrefabInstance:
       propertyPath: LevelExitDoor
       value: 
       objectReference: {fileID: 1912887815}
+    - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: jutsuTypeUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8894046267364767776, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_text
       value: Go fast and glide over gaps and water by double clicking WASD (ww, aa,
