@@ -10643,7 +10643,7 @@ MonoBehaviour:
   prayText: {fileID: 439628069}
   dialogueCanvas: {fileID: 1351769089}
   player: {fileID: 1302541824}
-  ScrollJutsuPair: {fileID: 1874196334}
+  ScrollJutsuPairPrefab: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
 --- !u!1 &1477901797
 GameObject:
   m_ObjectHideFlags: 0
@@ -10981,11 +10981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7390de81dd5a144eba34ad42b6e2306e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1874196334 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-  m_PrefabInstance: {fileID: 2884091581943510126}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1945512540
 GameObject:
   m_ObjectHideFlags: 0
@@ -13337,7 +13332,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 4b1cced9d7cb74b6e9e2860f0367ddf9, type: 3}
     - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_Name
-      value: ScrollJutsuPair
+      value: PlaneJutsuPair
       objectReference: {fileID: 0}
     - target: {fileID: 4537711970192569377, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_AnchoredPosition.x

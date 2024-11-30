@@ -36,14 +36,12 @@ public class Dialoguer : MonoBehaviour
     {
         DialogueIndex = 0;
 
-        // Ensure the player object and its components are properly assigned
         if (player != null)
         {
             spriteRenderer = player.Find("player_art").GetComponent<SpriteRenderer>();
             animator = player.Find("player_art").GetComponent<Animator>();
         }
 
-        // Ensure that an AudioSource component is assigned
         SpeakerSpeech = GetComponent<AudioSource>();
 
         if (playOnStart)
@@ -56,7 +54,7 @@ public class Dialoguer : MonoBehaviour
     {
         Skip.enabled = CanContinue;
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && IsDialogueUIVisible())
         {
             if (CanContinue)
             {
@@ -72,7 +70,6 @@ public class Dialoguer : MonoBehaviour
             }
             else if (isTyping)
             {
-                // Autocomplete the dialogue if it's still typing
                 StopAllCoroutines();
                 AutocompleteDialogue();
             }
@@ -150,13 +147,11 @@ public class Dialoguer : MonoBehaviour
 
         if (Subject.MumbleClips != null && Subject.MumbleClips.Length > 0) 
         {
-            // Select a random mumble clip
             int mumbleIndex = Random.Range(0, Subject.MumbleClips.Length);
             SpeakerSpeech.clip = Subject.MumbleClips[mumbleIndex];
         } 
         else 
         {
-            // No audio clip for this speaker
             SpeakerSpeech.clip = null;
         }
     }
@@ -194,13 +189,17 @@ public class Dialoguer : MonoBehaviour
         }
     }
 
-
     private void AutocompleteDialogue()
     {
         DialogueSegment currentSegment = DialogueSegments[DialogueIndex];
         DialogueSpeech.SetText(currentSegment.Dialogue); // Show full dialogue
         isTyping = false; // Stop typing
         CanContinue = true; // Allow continuing to the next segment
+    }
+
+    private bool IsDialogueUIVisible()
+    {
+        return DialogueBox.color.a > 0.1f; // Adjust threshold as needed for visibility
     }
 
     private void OnDisable()

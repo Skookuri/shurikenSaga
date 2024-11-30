@@ -4,64 +4,95 @@ using UnityEngine;
 
 public class PrayTemple : MonoBehaviour
 {
-    public GameObject prayText; // Pray text UI element
-    public GameObject dialogueCanvas; // Dialogue Canvas 
-    public Transform player; // player
-    public GameObject ScrollJutsuPair; //scroll jutsu pair that drops after interaction is over
-    private Dialoguer dialoguer; // Declare a Dialoguer variable
-    private bool playerInTrigger = false; // To track if the player is in the trigger area
-    private bool hasInteracted = false; // To track if the player has interacted with the object
-    
+    public GameObject prayText;
+    public GameObject dialogueCanvas;
+    public Transform player;
+    private Dialoguer dialoguer;
+    private ScrollDrop scrollDrop;
+    private bool playerInTrigger = false; // Track if the player is in the trigger area
+    private bool hasInteracted = false; // Track if the player has interacted with the object    
+    private bool hasDroppedScrolls = false; // Flag to track if Scrolls have already been dropped
 
     void Start()
     {
         prayText.SetActive(false); // Hide the button at the start
         dialogueCanvas.SetActive(false);
-        ScrollJutsuPair.SetActive(false);
+        scrollDrop = GetComponent<ScrollDrop>();
+        if (scrollDrop == null) {
+            Debug.LogWarning("ScrollDrop script not found in the scene.");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the entering collider belongs to the player
-        if (other.transform == player) {
+        if (other.transform == player)
+        {
             playerInTrigger = true; // Player is inside the trigger area
-            prayText.SetActive(true); // Show the pray button when player is near
-            //Debug.Log("Player entered the trigger area.");
+            prayText.SetActive(true); // Show the pray button when the player is near
         }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         // Check if the exiting collider belongs to the player
-        if (other.transform == player) {
+        if (other.transform == player)
+        {
             playerInTrigger = false; // Player is no longer in the trigger area
-            
             prayText.SetActive(false); // Hide the pray button when player leaves
-            //Debug.Log("Player exited the trigger area.");
         }
     }
 
     void Update()
     {
         // Check for input to trigger the prayer action when the player is in the trigger area
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.E) && !hasInteracted) {
-            TriggerPrayAction(); //starts prayer interaction when pressing e in location, first time doing so
-        } else if (playerInTrigger && hasInteracted) {
-            prayText.SetActive(false); //hides pray text now that you already have started the interaction
-        } else if (!dialogueCanvas.activeSelf && hasInteracted) {
-            ScrollJutsuPair.SetActive(true); //shows scroll jutsu pair after interaction has ended
-            Debug.Log("Activating Scroll Jutsu Pair");
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
+        {
+            TriggerPrayAction(); // Start prayer interaction
+        }
+        else if (playerInTrigger && hasInteracted)
+        {
+            prayText.SetActive(false); // Hide pray text after interaction
         }
     }
 
-    // This function is called when the Pray button is clicked (or 'E' is pressed while in the trigger area)
+    // Function to trigger the prayer interaction
     void TriggerPrayAction()
     {
-        // Deactivate the pray text once clicked
-        prayText.SetActive(false);
-        hasInteracted = true; // Mark that the player has interacted
+        prayText.SetActive(false); // Deactivate the pray text
+        hasInteracted = true; // Mark the player as having interacted
         dialoguer = dialogueCanvas.GetComponent<Dialoguer>();
-        dialogueCanvas.SetActive(true);
-        dialoguer.StartDialogueSegment();
+        if (dialoguer != null)
+        {
+            dialogueCanvas.SetActive(true);
+            dialoguer.StartDialogueSegment();
+            // Call DropScrolls after dialogue completes (you could trigger this in the dialogue segment itself if needed)
+            StartCoroutine(WaitForDialogueToEnd());
+        }
+        else
+        {
+            Debug.LogWarning("Dialoguer component is missing on the dialogueCanvas!");
+        }
+    }
+
+    // Coroutine to wait for the dialogue to finish before activating the ScrollJutsu pairs
+    IEnumerator WaitForDialogueToEnd()
+    {
+        // Wait for the dialogue to end (you might have a flag that marks the end of the dialogue)
+        yield return new WaitUntil(() => !dialogueCanvas.activeSelf);
+
+        // After dialogue is done, drop scrolls if they haven't been dropped yet
+        if (!hasDroppedScrolls)
+        {
+            if (scrollDrop != null)
+            {
+                scrollDrop.DropScrolls(); // Activate ScrollJutsuPairs after interaction
+                hasDroppedScrolls = true; // Set the flag to true to prevent repeating this action
+            }
+            else
+            {
+                Debug.LogWarning("ScrollDrop reference is missing.");
+            }
+        }
     }
 }
