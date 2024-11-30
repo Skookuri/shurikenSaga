@@ -9966,6 +9966,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1137388922
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 60.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 43.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.12603632
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515623738260731873, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 3515623738260731873, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_Name
+      value: ShurikenJutsuPair
+      objectReference: {fileID: 0}
+    - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4676951133246242935, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_text
+      value: SHURIKEN THROW JUTSU
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: ScrollGetSFX
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: LevelExitDoor
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8894046267364767776, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
+      propertyPath: m_text
+      value: Click to throw shuriken
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
 --- !u!1 &1138938667
 GameObject:
   m_ObjectHideFlags: 0

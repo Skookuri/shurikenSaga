@@ -453,95 +453,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 325b391aded16a24d87a3ac2c27bf9ac, type: 3}
---- !u!1001 &173419071
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 60.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 43.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.12603632
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3515623738260731873, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 3515623738260731873, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_Name
-      value: ShurikenJutsuPair
-      objectReference: {fileID: 0}
-    - target: {fileID: 4047692152067386681, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4676951133246242935, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_text
-      value: SHURIKEN THROW JUTSU
-      objectReference: {fileID: 0}
-    - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: ScrollGetSFX
-      value: 
-      objectReference: {fileID: 1707843176}
-    - target: {fileID: 5221089784498101539, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: LevelExitDoor
-      value: 
-      objectReference: {fileID: 1912887815}
-    - target: {fileID: 8894046267364767776, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
-      propertyPath: m_text
-      value: Click to throw shuriken
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
 --- !u!4 &174585595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2288427802079104824, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
@@ -49288,6 +49199,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 111453082}
     m_Modifications:
+    - target: {fileID: 329359201831776591, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 329359201831776591, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.48
+      objectReference: {fileID: 0}
     - target: {fileID: 2288427802079104824, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -49332,18 +49251,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7671204731943242820, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
-      propertyPath: m_Name
-      value: KeyDoorPair
-      objectReference: {fileID: 0}
-    - target: {fileID: 329359201831776591, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 21.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 329359201831776591, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -8.48
-      objectReference: {fileID: 0}
     - target: {fileID: 5028095304873513480, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.15
@@ -49363,6 +49270,10 @@ PrefabInstance:
     - target: {fileID: 5028095304873513480, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7671204731943242820, guid: 4b4777feb6bcf754fba7938267bdcb35, type: 3}
+      propertyPath: m_Name
+      value: KeyDoorPair
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49685,7 +49596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1066114646
 GameObject:
@@ -61860,7 +61771,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1577107595
 PrefabInstance:
@@ -62723,7 +62634,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1582556901167276231, guid: d53bd377cf35241299f17a3e213f03e9, type: 3}
       propertyPath: m_LocalPosition.x
