@@ -210,7 +210,7 @@ RectTransform:
   - {fileID: 2906506890445304871}
   - {fileID: 8322877933338797323}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -296,6 +296,8 @@ MonoBehaviour:
   PauseSFX: {fileID: 1627885565190853059, guid: c0f1b3baa06a346619a5a1b3bb0f8b23, type: 3}
   PlaySFX: {fileID: 2187746628484087638, guid: 9f9db775b40eb19428d79947fa500ebf, type: 3}
   mixer: {fileID: 24100000, guid: 4935823a4c2cf41dab784c7d09598c3f, type: 2}
+  musicSliderCtrl: {fileID: 5833819455503963852}
+  sfxSliderCtrl: {fileID: 7630770084904798062}
 --- !u!1 &785133112789873286
 GameObject:
   m_ObjectHideFlags: 0

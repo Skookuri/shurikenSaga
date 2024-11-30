@@ -10,11 +10,14 @@ public class PauseMenu : MonoBehaviour
     public AudioSource PauseSFX;
     public AudioSource PlaySFX;
     public AudioMixer mixer;
+    private AudioSource bgMusic;
 
     public static float BGMusicVolVal = 1.0f;
     public static float SFXVolVal = 1.0f;
 
+    [SerializeField]
     private Slider musicSliderCtrl;
+    [SerializeField]
     private Slider sfxSliderCtrl;
 
     void Start()
@@ -30,10 +33,12 @@ public class PauseMenu : MonoBehaviour
         SetSFXVolume(SFXVolVal);
 
         // Locate and initialize sliders
-        InitializeSliders();
-
+        //InitializeSliders();
+        //musicSliderCtrl = GameObject.FindWithTag("PauseMusicVolSlider").GetComponent<Slider>();
+        //sfxSliderCtrl = GameObject.FindWithTag("PauseSFXVolSlider").GetComponent<Slider>();
         // Ensure game is running at normal time scale
         Time.timeScale = 1.0f;
+        bgMusic = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -53,15 +58,21 @@ public class PauseMenu : MonoBehaviour
                 }
             }
         }
+        if (pauseMenu.activeSelf)
+        {
+            bgMusic.volume = musicSliderCtrl.value;
+            PauseSFX.volume = sfxSliderCtrl.value;
+            PlaySFX.volume = sfxSliderCtrl.value;
+        }
     }
 
     private void InitializeSliders()
     {
         // Locate and set up music slider
-        GameObject musicSliderTemp = GameObject.Find("VolumeMusicSlider");
-        if (musicSliderTemp != null)
+        //GameObject musicSliderTemp = GameObject.Find("VolumeMusicSlider");
+        if (GameObject.FindWithTag("PauseMusicVolSlider").GetComponent<Slider>() != null)
         {
-            musicSliderCtrl = musicSliderTemp.GetComponent<Slider>();
+            musicSliderCtrl = GameObject.FindWithTag("PauseMusicVolSlider").GetComponent<Slider>();
             musicSliderCtrl.value = BGMusicVolVal;
             musicSliderCtrl.onValueChanged.AddListener(SetMusicVolume);
         } else {
@@ -69,10 +80,9 @@ public class PauseMenu : MonoBehaviour
         }
 
         // Locate and set up SFX slider
-        GameObject sfxSliderTemp = GameObject.Find("VolumeSFXSlider");
-        if (sfxSliderTemp != null)
+        if (GameObject.FindWithTag("PauseSFXVolSlider").GetComponent<Slider>() != null)
         {
-            sfxSliderCtrl = sfxSliderTemp.GetComponent<Slider>();
+            sfxSliderCtrl = GameObject.FindWithTag("PauseSFXVolSlider").GetComponent<Slider>();
             sfxSliderCtrl.value = SFXVolVal;
             sfxSliderCtrl.onValueChanged.AddListener(SetSFXVolume);
         } else {

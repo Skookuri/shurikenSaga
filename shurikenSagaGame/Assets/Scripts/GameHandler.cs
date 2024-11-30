@@ -70,8 +70,8 @@ public class GameHandler : MonoBehaviour {
         
         // Start in the Overworld
         isOverWorld = true;
-        allOverworld.SetActive(true);
-        allShadow.SetActive(false);
+        //allOverworld.SetActive(true);
+        //allShadow.SetActive(false);
         overlayImage.color = new Color(0, 0, 0, 0);
         playerHealth = StartPlayerHealth;
         updateStatsDisplay();
