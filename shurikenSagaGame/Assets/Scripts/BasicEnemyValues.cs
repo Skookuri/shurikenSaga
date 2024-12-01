@@ -23,6 +23,8 @@ public class BasicEnemyValues : MonoBehaviour
 
     private GameObject player;
 
+    public bool isDead = false;
+
     private void Start()
     {
         player = GameObject.Find("player");
@@ -91,6 +93,7 @@ public class BasicEnemyValues : MonoBehaviour
 
     public void Kill()
     {
+        isDead = true;
         gameObject.SetActive(false); // Disable the enemy
     }
 

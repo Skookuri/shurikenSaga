@@ -7,18 +7,30 @@ public class LinkedEnemies : MonoBehaviour
     public GameObject shadowEnemy;
     public GameObject overworldEnemy;
     private GameHandler g;
+
+    private BasicEnemyValues oBasicVals;
+    private BasicEnemyValues sBasicVals;
+
     Vector2 sharedPosition;
 
     //private bool isOverworld;
 
     private void Start()
     {
+        oBasicVals = overworldEnemy.GetComponent<BasicEnemyValues>();
+        sBasicVals = shadowEnemy.GetComponent<BasicEnemyValues>();
         // Initialize isOverworld based on overworldEnemy's active state
         g = GameObject.Find("GameHandler").GetComponent<GameHandler>();
     }
 
     private void Update()
     {
+
+        if (oBasicVals.isDead || sBasicVals.isDead)
+        {
+            overworldEnemy.SetActive(false);
+            shadowEnemy.SetActive(false);
+        }
         // Check if the active state of overworldEnemy has changed
         if (g.doneSwitchingRealms)
         {
@@ -51,4 +63,6 @@ public class LinkedEnemies : MonoBehaviour
             sharedPosition = shadowEnemy.transform.position;
         }
     }
+
+
 }
