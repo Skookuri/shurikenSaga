@@ -66,8 +66,7 @@ public class GameHandler : MonoBehaviour {
                 playerHealth = StartPlayerHealth;
         //}
         updateStatsDisplay();
-        if (mainCamera == null)
-        {
+        if (mainCamera == null) {
             mainCamera = Camera.main;
         }
         originalCameraPosition = mainCamera.transform.localPosition;
@@ -81,8 +80,7 @@ public class GameHandler : MonoBehaviour {
         updateStatsDisplay();
         audioSource = GetComponent<AudioSource>();
 
-        if (isOverWorld)
-        {
+        if (isOverWorld) {
             toHome.Play();
             foreach (GameObject g in allShadow)
             {
@@ -92,9 +90,7 @@ public class GameHandler : MonoBehaviour {
             {
                 g.SetActive(true);
             }
-        }
-        else
-        {
+        } else {
             toShadow.Play();
             foreach (GameObject g in allShadow)
             {
