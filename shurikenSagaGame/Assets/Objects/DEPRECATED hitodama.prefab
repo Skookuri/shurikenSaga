@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6700445885910987056}
   - component: {fileID: 6078628187956106505}
   m_Layer: 0
-  m_Name: hitodama 1
+  m_Name: DEPRECATED hitodama
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

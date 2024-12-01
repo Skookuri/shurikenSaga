@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3547456854544264177}
   - component: {fileID: 4344734232482221713}
   - component: {fileID: 6962315546073572289}
+  - component: {fileID: 3823360112370994024}
   m_Layer: 0
   m_Name: hitodama medium
   m_TagString: Untagged
@@ -181,3 +182,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 10
   health: 30
+  damaged: 0
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
+  material: {fileID: 2100000, guid: 4b3aec03c7c98b342b11dadb53ac76bd, type: 2}
+  sp: {fileID: 1992788847730466242}
+  rb: {fileID: 3547456854544264177}
+  kozouBehavior: {fileID: 0}
+  isDead: 0
+--- !u!61 &3823360112370994024
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5426247264471402229}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.005}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.104, y: 0.17}
+  m_EdgeRadius: 0

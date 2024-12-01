@@ -13,6 +13,7 @@ TagManager:
   - shadow
   - enemy
   - ScrollJutsuPair
+  - shuriken
   layers:
   - Default
   - TransparentFX

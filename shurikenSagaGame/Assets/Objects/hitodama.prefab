@@ -183,10 +183,12 @@ MonoBehaviour:
   damageAmount: 10
   health: 30
   damaged: 0
-  hurtColor: {r: 1, g: 1, b: 1, a: 1}
+  hurtColor: {r: 1, g: 0, b: 0, a: 1}
   material: {fileID: 0}
   sp: {fileID: 5216149069252312624}
   rb: {fileID: 2745079978599251003}
+  kozouBehavior: {fileID: 0}
+  isDead: 0
 --- !u!61 &5025838320732596480
 BoxCollider2D:
   m_ObjectHideFlags: 0
