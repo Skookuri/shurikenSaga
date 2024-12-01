@@ -123,7 +123,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1
-  m_LinearDrag: 0.8
+  m_LinearDrag: 0.4
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -154,20 +154,20 @@ MonoBehaviour:
   player: {fileID: 0}
   detRange: 7
   aggroDetRange: 12
-  sideAmp: 2
+  sideAmp: 7
   verticalAmp: 0.3
-  sideFrequency: 1
+  sideFrequency: 3
   verticalFrequency: 0.8
   cooldown: 4.3
-  floatForce: 0.045
+  floatForce: 2
   randomOffsetRadius: 1.4
   dragAmount: 0.6
   chargeInterval: 5
   chargeAmp: 54
   blinkColor: {r: 1, g: 0.7688679, b: 0.7688679, a: 1}
   timeBeforeBlinking: 3
-  overallAmpSide: 0.015
-  overallAmpVert: 0.015
+  overallAmpSide: 0.02
+  overallAmpVert: 0.1
 --- !u!114 &1155208054899283878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +181,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 10
+  health: 30
+  damaged: 0
+  hurtColor: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 0}
+  sp: {fileID: 5216149069252312624}
+  rb: {fileID: 2745079978599251003}
 --- !u!61 &5025838320732596480
 BoxCollider2D:
   m_ObjectHideFlags: 0

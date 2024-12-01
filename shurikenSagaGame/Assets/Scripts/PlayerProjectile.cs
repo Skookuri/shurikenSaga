@@ -9,25 +9,32 @@ public class PlayerProjectile : MonoBehaviour{
       public float SelfDestructTime = 4.0f;
       public float SelfDestructVFX = 0.5f;
       public SpriteRenderer projectileArt;
+    [SerializeField]
+    private float rotationSpeed;
 
       void Start(){
            projectileArt = GetComponentInChildren<SpriteRenderer>();
            selfDestruct();
       }
 
-      //if the bullet hits a collider, play the explosion animation, then destroy the effect and the bullet
-      void OnTriggerEnter2D(Collider2D other){
-            if (other.gameObject.layer == LayerMask.NameToLayer("Enemies")) {
-                  //gameHandlerObj.playerGetHit(damage);
-                  //other.gameObject.GetComponent<EnemyMeleeDamage>().TakeDamage(damage);
-            }
-           /*if (other.gameObject.tag != "Player") {
-                  GameObject animEffect = Instantiate (hitEffectAnim, transform.position, Quaternion.identity);
-                  projectileArt.enabled = false;
-                  //Destroy (animEffect, 0.5);
-                  StartCoroutine(selfDestructHit(animEffect));
-            }*/
-      }
+    void Update()
+    {
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+    }
+
+    //if the bullet hits a collider, play the explosion animation, then destroy the effect and the bullet
+    void OnTriggerEnter2D(Collider2D other){
+        if (other.CompareTag("enemy"))
+        {
+            Debug.Log("HIT ENEMY");
+            BasicEnemyValues enemyVals = other.GetComponent<BasicEnemyValues>();
+            enemyVals.TakeDamage(10);
+            enemyVals.DealKB(gameObject);
+
+            gameObject.SetActive(false);
+            //StartCoroutine(selfDestructHit();
+        }
+    }
 
       IEnumerator selfDestructHit(GameObject VFX){
             yield return new WaitForSeconds(SelfDestructVFX);

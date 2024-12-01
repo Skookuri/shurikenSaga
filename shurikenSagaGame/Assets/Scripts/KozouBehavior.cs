@@ -12,7 +12,7 @@ public class KozouBehavior : MonoBehaviour
     [SerializeField]
     private Vector2[] movementPattern;
     [SerializeField]
-    private float moveSpeed = 2f; // Speed of movement
+    private float moveSpeed; // Speed of movement
     [SerializeField]
     private float pauseTime; // Time to pause at each location
 

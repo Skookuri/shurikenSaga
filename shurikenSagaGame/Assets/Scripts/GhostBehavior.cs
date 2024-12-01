@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -26,6 +27,11 @@ public class GhostBehavior : MonoBehaviour
     private bool outOfAggro = false;
     public float dragAmount;
 
+    private float osa;
+    private float ova;
+    private float osf;
+    private float ovf;
+
     //private bool charge = false;
     private float timeUntilCharge = 0;
     public float chargeInterval;
@@ -44,8 +50,17 @@ public class GhostBehavior : MonoBehaviour
     private Rigidbody2D rb;
     Vector2 basePosition;
 
+    BasicEnemyValues bev;
+
     private void Start()
     {
+        osa = sideAmp;
+        ova = verticalAmp;
+        osf = sideFrequency;
+        ovf = verticalFrequency;
+
+        bev = gameObject.GetComponent<BasicEnemyValues>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (canDash)
         {
@@ -63,8 +78,14 @@ public class GhostBehavior : MonoBehaviour
         player = GameObject.Find("player").GetComponent<Transform>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        
+        if (bev.damaged)
+        {
+            return;
+        }
+        
         float pDistance = Vector2.Distance(transform.position, player.position);
         if (pDistance > detRange)
         {
@@ -83,15 +104,22 @@ public class GhostBehavior : MonoBehaviour
             }
 
             Float();
+            Debug.Log("FLOATING");
         }
         else
         {
             Aggro();
+            Debug.Log("AGGROING");
         }
     }
 
     private void Float()
     {
+        sideAmp = osa;
+        verticalAmp = ova;
+        sideFrequency = osf;
+        verticalFrequency = ovf;
+
         // Add oscillation in both X and Y axes for "floaty" effect
         float sideMovement = Mathf.Sin(Time.time * sideFrequency) * sideAmp * overallAmpSide;
         float verticalMovement = Mathf.Sin(Time.time * verticalFrequency) * verticalAmp * overallAmpVert;
@@ -120,8 +148,8 @@ public class GhostBehavior : MonoBehaviour
             // Randomize oscillation frequency and amplitude slightly for a natural effect
             sideFrequency = Random.Range(0.8f, 1.2f);
             verticalFrequency = Random.Range(0.6f, 1.0f);
-            sideAmp = Random.Range(0.4f, 0.6f);
-            verticalAmp = Random.Range(0.2f, 0.4f);
+            sideAmp = Random.Range(0.4f, 0.7f);
+            verticalAmp = Random.Range(0.4f, 0.7f);
         }
 
         // Calculate direction and apply force for smooth movement

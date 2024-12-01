@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6818349712941076165}
   m_Layer: 0
   m_Name: PlayerShuriken
-  m_TagString: Untagged
+  m_TagString: shuriken
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,7 +117,7 @@ Transform:
   m_Children:
   - {fileID: 5504081074221567725}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2315410851463826644
 BoxCollider2D:
@@ -162,7 +162,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.07, y: 0.07}
   m_EdgeRadius: 0
 --- !u!50 &2837666283551173688
 Rigidbody2D:
@@ -208,3 +208,4 @@ MonoBehaviour:
   SelfDestructTime: 4
   SelfDestructVFX: 0.5
   projectileArt: {fileID: 0}
+  rotationSpeed: -1800

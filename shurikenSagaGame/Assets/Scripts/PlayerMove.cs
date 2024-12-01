@@ -60,7 +60,7 @@ public class PlayerMove : MonoBehaviour {
     public float kbForce;
     public static bool dashUnlocked;
     public static bool shurikenUnlocked;
-    private bool knockedBack = false;
+    //private bool knockedBack = false;
     private Vector2 knockbackDirection;
     private float knockbackTime = 0f; // Time remaining for knockback
     private float knockbackDecayRate = 5f; // Rate of knockback decay
@@ -175,7 +175,7 @@ public class PlayerMove : MonoBehaviour {
                 //rb2D.AddForce(knockbackDirection * kbForce, ForceMode2D.Impulse);
                 knockbackDirection = (transform.position - collision.transform.position).normalized * kbForce;
                 Debug.Log("Amount of force: " + knockbackDirection);
-                knockedBack = true;
+                //knockedBack = true;
                 knockbackTime = 1f;
                 gh.playerHealth -= collision.gameObject.GetComponent<BasicEnemyValues>().damageAmount;
             }

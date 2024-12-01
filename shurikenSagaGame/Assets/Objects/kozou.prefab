@@ -190,3 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1000
+  health: 40
+  damaged: 0
+  hurtColor: {r: 1, g: 1, b: 1, a: 1}
+  material: {fileID: 0}
+  sp: {fileID: 6202424065628655353}
+  rb: {fileID: 0}
