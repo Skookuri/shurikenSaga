@@ -66,7 +66,7 @@ public class KozouBehavior : MonoBehaviour
             }
             // Check distance to player
             float playerDistance = Vector2.Distance(transform.position, player.position);
-            
+
             if (playerDistance <= detRange)
             {
                 // If player is in range
@@ -112,7 +112,8 @@ public class KozouBehavior : MonoBehaviour
                 // Continue normal patrol behavior
                 SelectTarget();
             }
-        } else
+        }
+        else
         {
             Debug.Log("lmao u r caught ez get good L");
             if (moveCoroutine != null)
