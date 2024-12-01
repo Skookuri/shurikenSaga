@@ -264,7 +264,6 @@ MonoBehaviour:
   shakeDuration: 0.5
   playOnStart: 0
   popSFX: {fileID: 8049781163151230583, guid: 3500f465eecfb474bbed6bb01df7c467, type: 3}
-  MyMixer: {fileID: 24100000, guid: 4935823a4c2cf41dab784c7d09598c3f, type: 2}
 --- !u!82 &6307519589931931417
 AudioSource:
   m_ObjectHideFlags: 0
@@ -437,7 +436,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0, g: 0.9248905, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -460,7 +459,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
