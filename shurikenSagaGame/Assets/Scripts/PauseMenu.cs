@@ -7,11 +7,7 @@ using UnityEngine.Audio;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
-    public AudioSource PauseSFX;
-    public AudioSource PlaySFX;
-    public AudioMixer mixer;
-    private AudioSource bgMusic;
-
+    [SerializeField] private AudioMixer mixer; // Reference to MyMixer
     public static float BGMusicVolVal = 1.0f;
     public static float SFXVolVal = 1.0f;
 
@@ -20,25 +16,25 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     private Slider sfxSliderCtrl;
 
+    public AudioSource PauseSFX;
+    public AudioSource PlaySFX;
+
     void Start()
     {
         // Ensure the pause menu is inactive initially
-        if (pauseMenu != null)
-        {
+        if (pauseMenu != null) {
             pauseMenu.SetActive(false);
         }
 
-        // Initialize volume levels
-        SetMusicVolume(BGMusicVolVal);
-        SetSFXVolume(SFXVolVal);
+        musicSliderCtrl.value = BGMusicVolVal;
+        musicSliderCtrl.onValueChanged.AddListener(SetMusicVolume);
 
-        // Locate and initialize sliders
-        //InitializeSliders();
-        //musicSliderCtrl = GameObject.FindWithTag("PauseMusicVolSlider").GetComponent<Slider>();
-        //sfxSliderCtrl = GameObject.FindWithTag("PauseSFXVolSlider").GetComponent<Slider>();
+        sfxSliderCtrl.value = SFXVolVal;
+        sfxSliderCtrl.onValueChanged.AddListener(SetSFXVolume);
+
+
         // Ensure game is running at normal time scale
         Time.timeScale = 1.0f;
-        bgMusic = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
     }
 
     void Update()
@@ -46,30 +42,19 @@ public class PauseMenu : MonoBehaviour
         // Toggle pause menu on Escape key press
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pauseMenu != null)
-            {
-                if (pauseMenu.activeSelf)
-                {
+            if (pauseMenu != null) {
+                if (pauseMenu.activeSelf) {
                     ResumeGame();
-                }
-                else
-                {
+                } else {
                     PauseGame();
                 }
             }
-        }
-        if (pauseMenu.activeSelf)
-        {
-            bgMusic.volume = musicSliderCtrl.value;
-            PauseSFX.volume = sfxSliderCtrl.value;
-            PlaySFX.volume = sfxSliderCtrl.value;
         }
     }
 
     private void InitializeSliders()
     {
         // Locate and set up music slider
-        //GameObject musicSliderTemp = GameObject.Find("VolumeMusicSlider");
         if (GameObject.FindWithTag("PauseMusicVolSlider").GetComponent<Slider>() != null)
         {
             musicSliderCtrl = GameObject.FindWithTag("PauseMusicVolSlider").GetComponent<Slider>();
