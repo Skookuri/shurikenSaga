@@ -47,9 +47,6 @@ public class GameHandler : MonoBehaviour {
 
     public bool doneSwitchingRealms = false;
     public bool resetLinkedKozous = false;
-
-    //private bool firstRunThrough = true;
-
     public AudioSource toShadow;
     public AudioSource toHome;
     public static bool shiftUnlocked;
