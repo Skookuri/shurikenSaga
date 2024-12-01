@@ -60,12 +60,15 @@ public class PlayerMove : MonoBehaviour {
     public float kbForce;
     public static bool dashUnlocked;
     public static bool shurikenUnlocked;
+    private bool knockedBack = false;
+    private Vector2 knockbackDirection;
+    private float knockbackTime = 0f; // Time remaining for knockback
+    private float knockbackDecayRate = 5f; // Rate of knockback decay
 
     void Start(){
         gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
         lastSavedPosition = transform.position;
 
-        rb2D = transform.GetComponent<Rigidbody2D>();
         shuriThrow.enabled = true;
 
         // Get the SpriteRenderer component from the player_art child
@@ -166,13 +169,14 @@ public class PlayerMove : MonoBehaviour {
         }
         if (collision.CompareTag("enemy"))
         {
-            gh.hit = true;
             if (!gh.isImmune)
             {
-                Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
-                rb2D.AddForce(knockbackDirection * kbForce, ForceMode2D.Force);
-                Debug.Log("Amount of force: " + kbForce);
-
+                gh.hit = true;
+                //rb2D.AddForce(knockbackDirection * kbForce, ForceMode2D.Impulse);
+                knockbackDirection = (transform.position - collision.transform.position).normalized * kbForce;
+                Debug.Log("Amount of force: " + knockbackDirection);
+                knockedBack = true;
+                knockbackTime = 1f;
                 gh.playerHealth -= collision.gameObject.GetComponent<BasicEnemyValues>().damageAmount;
             }
         }
@@ -197,7 +201,19 @@ public class PlayerMove : MonoBehaviour {
         if (isAlive && !isDashing && !fell)
         {
             Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * runSpeed * Time.fixedDeltaTime * 33;
-            rb2D.velocity = movement;
+            if (knockbackTime > 0)
+            {
+                rb2D.velocity = movement + knockbackDirection;
+
+                // Gradually reduce knockback effect
+                knockbackDirection = Vector2.Lerp(knockbackDirection, Vector2.zero, Time.fixedDeltaTime * knockbackDecayRate);
+                knockbackTime -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                rb2D.velocity = movement; // Normal movement
+                knockbackDirection = Vector2.zero; // Reset knockback
+            }
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1f);
         } else if ( isAlive && isDashing && !fell)
         {

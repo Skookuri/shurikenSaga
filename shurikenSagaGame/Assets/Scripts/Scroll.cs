@@ -13,7 +13,7 @@ public class Scroll : MonoBehaviour
     void Start() {
         // PlayerMove.shurikenUnlocked = true; // Automatically updates dashUnlocked in GameHandler
         // PlayerMove.dashUnlocked = true; // Automatically updates dashUnlocked in GameHandler
-        // GameHandler.shiftUnlocked = true; // Automatically updates shiftUnlocked in GameHandler
+        GameHandler.shiftUnlocked = true; // Automatically updates shiftUnlocked in GameHandler
     }
 
     private void OnTriggerEnter2D(Collider2D other)

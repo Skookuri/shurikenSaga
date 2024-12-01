@@ -144,7 +144,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &2078008005176182559
@@ -289,14 +289,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5100c62d0575d4ae9addee7459b4450a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb2D: {fileID: 0}
+  rb2D: {fileID: 6837867800934434527}
   startSpeed: 10
   isAlive: 1
   isShoot: 0
   player: {fileID: 4609256414913508916}
-  defaultSprite: {fileID: 21300000, guid: 843097ad88da240e9a5c93c20c013a75, type: 3}
-  sideSprite: {fileID: 21300000, guid: 30dfa2d6d827742f4a81d74c8e380a2f, type: 3}
-  backSprite: {fileID: 21300000, guid: f44f39cbe8d09488bbf6869c7acf13f6, type: 3}
   shuriSprite: {fileID: 21300000, guid: ede741535f2a742e1b7f647e63d583aa, type: 3}
   firePoint: {fileID: 7699653576228044379}
   projectilePrefab: {fileID: 6712864749353911921, guid: 17ed4ec1e5ef24dbe93fcfa78f156b0e, type: 3}
@@ -311,3 +308,4 @@ MonoBehaviour:
   timePassed: 0
   isVisible: 1
   shuriThrow: {fileID: 2311744876610486081, guid: 49ae45a0a0df440a897fc74d1684a54a, type: 3}
+  kbForce: 0
