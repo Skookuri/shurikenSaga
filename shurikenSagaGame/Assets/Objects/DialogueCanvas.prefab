@@ -264,6 +264,7 @@ MonoBehaviour:
   shakeDuration: 0.5
   playOnStart: 0
   popSFX: {fileID: 8049781163151230583, guid: 3500f465eecfb474bbed6bb01df7c467, type: 3}
+  MyMixer: {fileID: 24100000, guid: 4935823a4c2cf41dab784c7d09598c3f, type: 2}
 --- !u!82 &6307519589931931417
 AudioSource:
   m_ObjectHideFlags: 0
@@ -273,7 +274,7 @@ AudioSource:
   m_GameObject: {fileID: 833845619107174612}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -856117454850800698, guid: 4935823a4c2cf41dab784c7d09598c3f, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
