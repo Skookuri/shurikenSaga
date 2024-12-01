@@ -103,10 +103,10 @@ public class PlayerMove : MonoBehaviour {
 
         if (isMoving && !footstepSFX.isPlaying) {
             footstepSFX.Play();
-            Debug.Log("Playing Footstep sound..");
+            //Debug.Log("Playing Footstep sound..");
         } else if (!isMoving && footstepSFX.isPlaying) {
             footstepSFX.Stop();
-            Debug.Log("Stopping Footstep sound..");
+            //Debug.Log("Stopping Footstep sound..");
         }
 
         // Turning. Reverse if input is moving the Player right and Player faces left.

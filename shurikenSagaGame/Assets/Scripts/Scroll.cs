@@ -9,6 +9,7 @@ public class Scroll : MonoBehaviour
     public AudioSource ScrollGetSFX;
     public GameObject LevelExitDoor;
     public JutsuType jutsuTypeUnlocked;
+    // private Abilities abilities;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,9 +35,7 @@ public class Scroll : MonoBehaviour
                     ScrollGetSFX.Play();
                     jutsuUI.gameObject.SetActive(true);
                     LevelExitDoor.SetActive(false);
-                }
-                else
-                {
+                } else {
                     Debug.LogError("jutsuUI child not found in jutsu.");
                 }
             }
@@ -49,22 +48,24 @@ public class Scroll : MonoBehaviour
 
     private void UnlockAbility(JutsuType jutsuType)
     {
-        // Set the ability flag based on the JutsuTypeUnlocked enum
         switch (jutsuType)
         {
-            case JutsuType.Shuriken:
-                Abilities.canShurithrow = true;
+            case JutsuType.canShuriken:
+                //Abilities.canShurithrow = true;
                 Debug.Log("Can throw shuriken...");
                 break;
-            case JutsuType.Dash:
-                Abilities.canDash = true;
+            case JutsuType.canDash:
+                //Abilities.canDash = true;
                 Debug.Log("Can dash...");
                 break;
-            case JutsuType.PlaneShift:
-                Abilities.canShift = true;
+            case JutsuType.canShift:
+                GameHandler.shiftUnlocked = true; // Automatically updates shiftUnlocked in GameHandler
                 Debug.Log("Can plane shift...");
                 break;
-            // Add more cases as needed for other jutsu types
+            case JutsuType.canKatana:
+                //Abilities.canKatana = true;
+                Debug.Log("Can wield katana...");
+                break;
             default:
                 Debug.LogWarning("Unknown JutsuType: " + jutsuType);
                 break;

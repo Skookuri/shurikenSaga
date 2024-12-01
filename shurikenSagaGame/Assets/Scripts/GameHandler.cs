@@ -52,6 +52,7 @@ public class GameHandler : MonoBehaviour {
 
     public AudioSource toShadow;
     public AudioSource toHome;
+    public static bool shiftUnlocked;
 
 
     void Start(){
@@ -109,10 +110,11 @@ public class GameHandler : MonoBehaviour {
     private void Update() {
         HandlePlayerHit();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownDone) {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownDone && shiftUnlocked) {
             StartRealmSwitch();
         } else if (Input.GetKeyDown(KeyCode.LeftShift)) {
             PlayCannotSwitchSound();
+            Debug.Log("Can't switch yet!");
         }
 
         if (switching) {
