@@ -9,7 +9,6 @@ public class Scroll : MonoBehaviour
     public AudioSource ScrollGetSFX;
     public GameObject LevelExitDoor;
     public JutsuType jutsuTypeUnlocked;
-    // private Abilities abilities;
 
     void Start() {
         // PlayerMove.shurikenUnlocked = true; // Automatically updates dashUnlocked in GameHandler
