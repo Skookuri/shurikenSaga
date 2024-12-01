@@ -12637,6 +12637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e7843de715f7460f84bd3873696b0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropSpeed: 0.5
+  yOffset: 0.7
 --- !u!1 &1477901797
 GameObject:
   m_ObjectHideFlags: 0
@@ -25080,7 +25082,7 @@ PrefabInstance:
       objectReference: {fileID: 1302541824}
     - target: {fileID: 7405558546375107460, guid: e858f62469e5e47309365eff9fd7d5d9, type: 3}
       propertyPath: sceneToSwitchTo
-      value: Dungeon1
+      value: MB Dungeon1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

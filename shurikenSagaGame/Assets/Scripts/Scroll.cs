@@ -11,6 +11,12 @@ public class Scroll : MonoBehaviour
     public JutsuType jutsuTypeUnlocked;
     // private Abilities abilities;
 
+    void Start() {
+        // PlayerMove.shurikenUnlocked = true; // Automatically updates dashUnlocked in GameHandler
+        // PlayerMove.dashUnlocked = true; // Automatically updates dashUnlocked in GameHandler
+        // GameHandler.shiftUnlocked = true; // Automatically updates shiftUnlocked in GameHandler
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "player" && !isPickedUp)
@@ -51,11 +57,11 @@ public class Scroll : MonoBehaviour
         switch (jutsuType)
         {
             case JutsuType.canShuriken:
-                //Abilities.canShurithrow = true;
+                PlayerMove.shurikenUnlocked = true; // Automatically updates dashUnlocked in GameHandler
                 Debug.Log("Can throw shuriken...");
                 break;
             case JutsuType.canDash:
-                //Abilities.canDash = true;
+                PlayerMove.dashUnlocked = true; // Automatically updates dashUnlocked in GameHandler
                 Debug.Log("Can dash...");
                 break;
             case JutsuType.canShift:

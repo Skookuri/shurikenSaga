@@ -58,6 +58,8 @@ public class PlayerMove : MonoBehaviour {
 
     [SerializeField]
     public float kbForce;
+    public static bool dashUnlocked;
+    public static bool shurikenUnlocked;
 
     void Start(){
         gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
@@ -122,7 +124,7 @@ public class PlayerMove : MonoBehaviour {
         }
 
         if (Time.time >= nextAttackTime){
-            if (Input.GetAxis("AttackYea") > 0){
+            if (Input.GetAxis("AttackYea") > 0 && shurikenUnlocked){
                 playerFire();
                 nextAttackTime = Time.time + 1f / attackRate;
                 isShoot = true;
@@ -227,7 +229,7 @@ public class PlayerMove : MonoBehaviour {
     //Massimo changes start*******
     private void HandleDoubleTap(string key)
     {
-        if (key == lastTappedKey && Time.time - lastTapTime <= doubleTapTime)
+        if (key == lastTappedKey && Time.time - lastTapTime <= doubleTapTime && dashUnlocked)
         {
             // If the same key is tapped twice within the time window, dash
             StartCoroutine(Dash(key));
