@@ -33,15 +33,19 @@ public class KozouBehavior : MonoBehaviour
     private bool lightSpotted = false;
     //private float elapsedTimeLooking = 0f;
 
-    private Vector2 lastKnownPosition; // Player's last known position
+    public Vector2 lastKnownPosition; // Player's last known position
     private bool movingToLastKnownPosition = false; // Flag for moving to the last known position
 
     private bool caught = false;
 
     private GameHandler gh;
 
+    public bool hurt = false;
+    private BasicEnemyValues b;
+
     void Start()
     {
+        b = GetComponent<BasicEnemyValues>();
         originalColor = spriteRenderer.color;
         basePosition = transform.position;
         player = GameObject.Find("player").transform;
@@ -66,7 +70,7 @@ public class KozouBehavior : MonoBehaviour
             }
             // Check distance to player
             float playerDistance = Vector2.Distance(transform.position, player.position);
-
+            
             if (playerDistance <= detRange)
             {
                 // If player is in range
@@ -124,7 +128,27 @@ public class KozouBehavior : MonoBehaviour
         }
     }
 
-    private void MoveToLastKnownPosition()
+    public IEnumerator hurtFlash()
+    {
+        //float knockbackDuration = 0.3f; // Duration of knockback
+        hurt = true;
+        spriteRenderer.color = b.hurtColor;
+        yield return new WaitForSeconds(.4f);
+
+        spriteRenderer.color = originalColor;
+        hurt = false;
+    }
+
+    public void ResetBools()
+    {
+        pickTarget = true;
+        cantMove = false;
+        lightSpotted = false;
+        isPatrolling = false;
+        movingToLastKnownPosition = false;
+    }
+
+    public void MoveToLastKnownPosition()
     {
         movingToLastKnownPosition = true;
 
@@ -211,7 +235,10 @@ public class KozouBehavior : MonoBehaviour
         if (Time.time >= nextBlinkTime)
         {
             // Toggle between blinkColor and originalColor
-            spriteRenderer.color = spriteRenderer.color == originalColor ? blinkColor : originalColor;
+            if (!hurt)
+            {
+                spriteRenderer.color = spriteRenderer.color == originalColor ? blinkColor : originalColor;
+            }
 
             // Set the next blink time based on the current blink interval
             nextBlinkTime = Time.time + blinkInterval;
@@ -229,7 +256,10 @@ public class KozouBehavior : MonoBehaviour
     {
         if (collision.gameObject.name == "player")
         {
-            spriteRenderer.color = blinkColor;
+            if (!hurt)
+            {
+                spriteRenderer.color = blinkColor;
+            }
             caught = true;
         }
     }

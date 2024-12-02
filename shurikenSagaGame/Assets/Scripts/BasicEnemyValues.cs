@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicEnemyValues : MonoBehaviour
@@ -24,6 +25,7 @@ public class BasicEnemyValues : MonoBehaviour
     private GameObject player;
 
     public bool isDead = false;
+    public bool kozouHit = false;
 
     private void Start()
     {
@@ -54,11 +56,20 @@ public class BasicEnemyValues : MonoBehaviour
         {
             StartCoroutine(FlashWhite()); // Trigger flash effect
         }
+        
+        if (gameObject.TryGetComponent<KozouBehavior>(out var kozouBehavior))
+        {
+            kozouBehavior.StopAllCoroutines();
+            kozouBehavior.ResetBools();
+            kozouBehavior.lastKnownPosition = player.transform.position;
+            kozouBehavior.MoveToLastKnownPosition();
+        }
+        
     }
 
     public void DealKB(GameObject s)
     {
-        Vector2 knockbackDirection = (transform.position - s.transform.position).normalized * 0.2f;
+        Vector2 knockbackDirection = (transform.position - s.transform.position).normalized * 0.55f;
         if (rb != null)
         {
             // If Rigidbody2D is available, use it for knockback
@@ -67,11 +78,18 @@ public class BasicEnemyValues : MonoBehaviour
         else
         {
             // Use KozouBehavior's coroutine to apply knockback
+            /*
+            if (gameObject.TryGetComponent<KozouBehavior>(out var kozouBehavior))
+            {
+            }
+            */
             kozouBehavior = gameObject.GetComponent<KozouBehavior>();
             if (kozouBehavior != null)
             {
                 kozouBehavior.StartCoroutine(ApplyKnockbackCoroutine(knockbackDirection * 3.5f));
+                //kozouBehavior.hurt = true;
             }
+
         }
     }
 

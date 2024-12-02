@@ -102,7 +102,7 @@ public class GameHandler : MonoBehaviour {
 
     public void killPlayer()
     {
-        playerHealth -= 1000;
+        //playerHealth -= 1000;
         updateStatsDisplay();
         playerDies();
     }
@@ -119,6 +119,10 @@ public class GameHandler : MonoBehaviour {
 
         if (switching) {
             PerformRealmSwitch();
+        }
+        if (playerHealth <= 0)
+        {
+            playerDies();
         }
     }
 

@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: e46c53818cc364fcba2477c5ded71f81, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -207,5 +207,5 @@ MonoBehaviour:
   hitEffectAnim: {fileID: 0}
   SelfDestructTime: 4
   SelfDestructVFX: 0.5
-  projectileArt: {fileID: 0}
+  projectileArt: {fileID: 1481331576350166340}
   rotationSpeed: -1800
