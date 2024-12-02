@@ -172,6 +172,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8981887459469615780, guid: 325b391aded16a24d87a3ac2c27bf9ac, type: 3}
+      propertyPath: moveSpeed
+      value: 3.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -195,6 +199,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 998735225563338258}
     m_Modifications:
+    - target: {fileID: 1155208054899283878, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1659054073909625364, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -238,6 +246,26 @@ PrefabInstance:
     - target: {fileID: 1659054073909625364, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954858038509259602, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
+      propertyPath: floatForce
+      value: 0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954858038509259602, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
+      propertyPath: sideFrequency
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954858038509259602, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
+      propertyPath: overallAmpSide
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954858038509259602, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
+      propertyPath: overallAmpVert
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025838320732596480, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5967707963041363279, guid: 378bf245ffc834a36928c944cd7512c0, type: 3}
       propertyPath: m_Name

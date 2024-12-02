@@ -120,9 +120,7 @@ public class KozouBehavior : MonoBehaviour
             {
                 StopCoroutine(moveCoroutine);
             }
-            // **********************************
-            // STUFF FOR GETTING CAUGHT GOES HERE
-            // **********************************
+            gh.killPlayer();
         }
     }
 
