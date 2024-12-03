@@ -8,6 +8,7 @@ public class PlayerProjectile : MonoBehaviour{
       public GameObject hitEffectAnim;
       public float SelfDestructTime = 4.0f;
       public float SelfDestructVFX = 0.5f;
+      public int counter = 0;
       public SpriteRenderer projectileArt;
     [SerializeField]
     private float rotationSpeed;
@@ -19,7 +20,12 @@ public class PlayerProjectile : MonoBehaviour{
 
     void Update()
     {
-        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+      transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+      if (counter > 500){
+        Destroy (gameObject);
+      }
+      counter ++;
+
     }
 
     //if the bullet hits a collider, play the explosion animation, then destroy the effect and the bullet
@@ -31,7 +37,7 @@ public class PlayerProjectile : MonoBehaviour{
             enemyVals.TakeDamage(10);
             enemyVals.DealKB(gameObject);
 
-            gameObject.SetActive(false);
+            Destroy (gameObject);
             //StartCoroutine(selfDestructHit();
         }
     }
