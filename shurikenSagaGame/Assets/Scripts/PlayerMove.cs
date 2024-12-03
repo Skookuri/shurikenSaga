@@ -180,6 +180,26 @@ public class PlayerMove : MonoBehaviour {
                 gh.playerHealth -= collision.gameObject.GetComponent<BasicEnemyValues>().damageAmount;
             }
         }
+        else if (collision.CompareTag("noswitch"))
+        {
+            gh.noSwitchZone = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if (collision.CompareTag("noswitch"))
+        //{
+        //    gh.noSwitchZone = true;
+        //}
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("noswitch"))
+        {
+            gh.noSwitchZone = false;
+        }
     }
 
     private IEnumerator Wait()

@@ -28,7 +28,7 @@ public class GameHandler : MonoBehaviour {
     private GameObject[] allOverworld;
     private GameObject[] allShadow;
     private bool cooldownDone = true;
-    private bool switching = false;
+    public bool switching = false;
     private float timePassedWhileSwitching = 0;
     public Image overlayImage;
     [SerializeField]
@@ -50,9 +50,13 @@ public class GameHandler : MonoBehaviour {
     public AudioSource toShadow;
     public AudioSource toHome;
     public static bool shiftUnlocked;
+    public NotificationBehavior n;
+
+    public bool noSwitchZone = false;
 
 
     void Start(){
+        n = GameObject.Find("NotificationCanvas").GetComponent<NotificationBehavior>();
 
         allOverworld = GameObject.FindGameObjectsWithTag("overworld");
         allShadow = GameObject.FindGameObjectsWithTag("shadow");
@@ -110,10 +114,21 @@ public class GameHandler : MonoBehaviour {
     private void Update() {
         HandlePlayerHit();
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownDone && shiftUnlocked) {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownDone && shiftUnlocked && !noSwitchZone) {
             StartRealmSwitch();
         } else if (Input.GetKeyDown(KeyCode.LeftShift)) {
             PlayCannotSwitchSound();
+            if (!cooldownDone)
+            {
+                if (n != null)
+                {
+                    n.startNotif("You must wait before switching realms again.");
+                }
+            }
+            else if (noSwitchZone)
+            {
+                n.startNotif("Something is blocking you from switching realms here.");
+            }
             Debug.Log("Can't switch yet!");
         }
 

@@ -141,7 +141,7 @@ public class GhostBehavior : MonoBehaviour
             Vector2 directionToPlayer = (player.position - transform.position).normalized;
 
             // Set the target in the general direction of the player with a random offset
-            randomTarget = (Vector2)transform.position + directionToPlayer * 2f + Random.insideUnitCircle * randomOffsetRadius;
+            randomTarget = (Vector2)transform.position + directionToPlayer * 2.5f + Random.insideUnitCircle * randomOffsetRadius;
             pickFloatDir = false;
             timePassedInAggro = 0f;
 

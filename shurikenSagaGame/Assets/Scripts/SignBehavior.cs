@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static UnityEngine.GraphicsBuffer;
 
 public class SignBehavior : MonoBehaviour
 {
@@ -16,16 +17,27 @@ public class SignBehavior : MonoBehaviour
     [SerializeField]
     private float tweenDuration = 0.5f; // Duration of the tween
 
+    private GameHandler gh;
+
     [SerializeField]
     private AnimationCurve tweenCurve = AnimationCurve.EaseInOut(0, 0, 1, 1); // Default easing curve
 
     void Start()
     {
+        gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
         if (SignImage != null)
         {
             // Cache the original position
             originalPosition = SignImage.rectTransform.anchoredPosition;
             targetPosition = originalPosition + new Vector2(0, moveDistance);
+        }
+    }
+
+    private void Update()
+    {
+        if (gh.switching)
+        {
+            SignImage.rectTransform.anchoredPosition = originalPosition;
         }
     }
 
