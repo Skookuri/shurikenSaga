@@ -77009,6 +77009,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NotificationCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8449418709491666784, guid: fa0b67f04781dfb498b1e473be4761c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
