@@ -28,8 +28,8 @@ public class GameHandler : MonoBehaviour {
     private string sceneName;
     public static string lastLevelDied;  //allows replaying the Level where you died
     public static bool isOverWorld = true;
-    private GameObject[] allOverworld;
-    private GameObject[] allShadow;
+    private GameObject[] allOverworld = new GameObject[0];
+    private GameObject[] allShadow = new GameObject[0];
     private bool cooldownDone = true;
     public bool switching = false;
     private float timePassedWhileSwitching = 0;
@@ -56,7 +56,7 @@ public class GameHandler : MonoBehaviour {
     public NotificationBehavior n;
 
     public bool noSwitchZone = false;
-
+    public bool firstRun = true;
 
     void Start(){
         
@@ -82,27 +82,7 @@ public class GameHandler : MonoBehaviour {
         updateStatsDisplay();
         audioSource = GetComponent<AudioSource>();
 
-        if (isOverWorld) {
-            toHome.Play();
-            foreach (GameObject g in allShadow)
-            {
-                g.SetActive(false);
-            }
-            foreach (GameObject g in allOverworld)
-            {
-                g.SetActive(true);
-            }
-        } else {
-            toShadow.Play();
-            foreach (GameObject g in allShadow)
-            {
-                g.SetActive(true);
-            }
-            foreach (GameObject g in allOverworld)
-            {
-                g.SetActive(false);
-            }
-        }
+        
     }
 
     public void killPlayer()
@@ -113,6 +93,34 @@ public class GameHandler : MonoBehaviour {
     }
 
     private void Update() {
+        if (firstRun)
+        {
+            firstRun = false;
+            if (isOverWorld)
+            {
+                toHome.Play();
+                foreach (GameObject g in allShadow)
+                {
+                    g.SetActive(false);
+                }
+                foreach (GameObject g in allOverworld)
+                {
+                    g.SetActive(true);
+                }
+            }
+            else
+            {
+                toShadow.Play();
+                foreach (GameObject g in allShadow)
+                {
+                    g.SetActive(true);
+                }
+                foreach (GameObject g in allOverworld)
+                {
+                    g.SetActive(false);
+                }
+            }
+        }
         HandlePlayerHit();
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownDone && shiftUnlocked && !noSwitchZone) {
