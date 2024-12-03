@@ -43317,6 +43317,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5723459486361393343, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: m_Color.b
+      value: 0.006289184
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723459486361393343, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: m_Color.g
+      value: 0.006289184
+      objectReference: {fileID: 0}
+    - target: {fileID: 5723459486361393343, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6097190876393333497, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: fadeImage
       value: 
@@ -43363,6 +43375,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8944542551936134966, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063292793736490384, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
