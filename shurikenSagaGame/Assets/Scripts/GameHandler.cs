@@ -87,9 +87,10 @@ public class GameHandler : MonoBehaviour {
 
     public void killPlayer()
     {
-        //playerHealth -= 1000;
-        updateStatsDisplay();
         playerDies();
+        playerHealth -= 1000;
+        updateStatsDisplay();
+        //playerDies();
     }
 
     private void Update() {
