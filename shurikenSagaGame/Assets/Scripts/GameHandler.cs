@@ -11,6 +11,9 @@ public class GameHandler : MonoBehaviour {
     public int playerHealth = 100;
     public int StartPlayerHealth = 100;
     public GameObject healthText;
+    public GameObject tokensText;
+    
+   
     public bool hit = false;
     public bool isImmune = false;
     private float playerFlashingTime = 0;
@@ -18,7 +21,7 @@ public class GameHandler : MonoBehaviour {
     private Color playerImmuneColor;
     private SpriteRenderer playerSpriteRenderer;
     public static int gotTokens = 0;
-    public GameObject tokensText;
+    
     public bool isDefending = false;
     public static bool stairCaseUnlocked = false;
     //this is a flag check. Add to other scripts: GameHandler.stairCaseUnlocked = true;
@@ -56,16 +59,19 @@ public class GameHandler : MonoBehaviour {
 
 
     void Start(){
-        n = GameObject.Find("NotificationCanvas").GetComponent<NotificationBehavior>();
-
-        allOverworld = GameObject.FindGameObjectsWithTag("overworld");
-        allShadow = GameObject.FindGameObjectsWithTag("shadow");
-        playerSpriteRenderer = GameObject.Find("player").transform.Find("player_art").GetComponent<SpriteRenderer>();
-        player = GameObject.FindWithTag("Player");
+        
         sceneName = SceneManager.GetActiveScene().name;
-        //if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
+        if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
                 playerHealth = StartPlayerHealth;
-        //}
+        }
+        else{
+            n = GameObject.Find("NotificationCanvas").GetComponent<NotificationBehavior>();
+
+            allOverworld = GameObject.FindGameObjectsWithTag("overworld");
+            allShadow = GameObject.FindGameObjectsWithTag("shadow");
+            playerSpriteRenderer = GameObject.Find("player").transform.Find("player_art").GetComponent<SpriteRenderer>();
+            player = GameObject.FindWithTag("Player");
+        }
         updateStatsDisplay();
         if (mainCamera == null) {
             mainCamera = Camera.main;
