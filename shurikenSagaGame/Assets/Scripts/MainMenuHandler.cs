@@ -56,7 +56,7 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     public void StartGame() {
-        SceneManager.LoadScene("Dungeon1Intro");
+        SceneManager.LoadScene("Dungeon1");
     }
 
     public void QuitGame() {
