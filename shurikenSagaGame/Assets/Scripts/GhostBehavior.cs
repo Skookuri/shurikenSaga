@@ -5,7 +5,7 @@ using UnityEngine;
 public class GhostBehavior : MonoBehaviour
 {
     [SerializeField]
-    private Material material;
+    public Material material;
 
     [SerializeField]
     private bool canDash;
@@ -104,12 +104,12 @@ public class GhostBehavior : MonoBehaviour
             }
 
             Float();
-            Debug.Log("FLOATING");
+            //Debug.Log("FLOATING");
         }
         else
         {
             Aggro();
-            Debug.Log("AGGROING");
+            //Debug.Log("AGGROING");
         }
     }
 

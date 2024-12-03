@@ -24,6 +24,7 @@ public class NotificationBehavior : MonoBehaviour
     {
         if (notifImage != null)
         {
+            notifImage.rectTransform.anchoredPosition = notifImage.rectTransform.anchoredPosition;
             // Cache the original position
             originalPosition = notifImage.rectTransform.anchoredPosition;
             targetPosition = originalPosition - new Vector2(moveDistance, 0);
