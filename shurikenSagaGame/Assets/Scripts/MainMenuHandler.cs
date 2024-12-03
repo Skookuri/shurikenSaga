@@ -56,7 +56,7 @@ public class MainMenuHandler : MonoBehaviour
     }
 
     public void StartGame() {
-        SceneManager.LoadScene("MB Dungeon1");
+        SceneManager.LoadScene("IntroScene");
     }
 
     public void QuitGame() {
