@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3823360112370994024}
   m_Layer: 0
   m_Name: hitodama medium
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1
-  m_LinearDrag: 0.8
+  m_LinearDrag: 0.5
   m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -152,20 +152,20 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 4b3aec03c7c98b342b11dadb53ac76bd, type: 2}
   canDash: 1
   player: {fileID: 0}
-  detRange: 7
-  aggroDetRange: 12
+  detRange: 18
+  aggroDetRange: 30
   sideAmp: 2
-  verticalAmp: 0.3
+  verticalAmp: 1
   sideFrequency: 1
   verticalFrequency: 0.8
-  cooldown: 4.3
-  floatForce: 0.045
+  cooldown: 1
+  floatForce: 0.4
   randomOffsetRadius: 1.4
   dragAmount: 0.6
-  chargeInterval: 5
+  chargeInterval: 3
   chargeAmp: 54
   blinkColor: {r: 0.14026342, g: 0.3669229, b: 0.3773585, a: 1}
-  timeBeforeBlinking: 3
+  timeBeforeBlinking: 1
   overallAmpSide: 0.015
   overallAmpVert: 0.015
 --- !u!114 &6962315546073572289
@@ -189,6 +189,7 @@ MonoBehaviour:
   rb: {fileID: 3547456854544264177}
   kozouBehavior: {fileID: 0}
   isDead: 0
+  kozouHit: 0
 --- !u!61 &3823360112370994024
 BoxCollider2D:
   m_ObjectHideFlags: 0

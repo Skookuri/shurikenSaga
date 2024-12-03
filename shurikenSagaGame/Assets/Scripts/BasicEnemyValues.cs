@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BasicEnemyValues : MonoBehaviour
 {
@@ -111,6 +112,10 @@ public class BasicEnemyValues : MonoBehaviour
 
     public void Kill()
     {
+        if (gameObject.name == "boss_monk_meditate")
+        {
+            SceneManager.LoadScene("WinScene");
+        }
         isDead = true;
         gameObject.SetActive(false); // Disable the enemy
     }
