@@ -83342,7 +83342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fd6dfe6c69f4bb3ab88fa274b54d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToSwitchTo: Dungeon1Intro
+  sceneToSwitchTo: MB Dungeon1
   player: {fileID: 1302541824}
   isDungeon1: 0
   isDungeon2: 0
