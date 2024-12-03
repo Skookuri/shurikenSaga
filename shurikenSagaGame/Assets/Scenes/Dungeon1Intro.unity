@@ -135471,6 +135471,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7365868411976817807, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1974678315}
     - target: {fileID: 7481922899463534756, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_Name
       value: GLOBALS (GameHandler_Canvas_Camera etc)
@@ -135500,6 +135504,11 @@ PrefabInstance:
 --- !u!82 &1974678314 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7383948337379641390, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 1974678313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1974678315 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 383559578151175475, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
   m_PrefabInstance: {fileID: 1974678313}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1993197071 stripped
