@@ -61,17 +61,12 @@ public class GameHandler : MonoBehaviour {
     void Start(){
         
         sceneName = SceneManager.GetActiveScene().name;
-        if (sceneName=="MainMenu"){ //uncomment these two lines when the MainMenu exists
-                playerHealth = StartPlayerHealth;
-        }
-        else{
-            n = GameObject.Find("NotificationCanvas").GetComponent<NotificationBehavior>();
-
-            allOverworld = GameObject.FindGameObjectsWithTag("overworld");
-            allShadow = GameObject.FindGameObjectsWithTag("shadow");
-            playerSpriteRenderer = GameObject.Find("player").transform.Find("player_art").GetComponent<SpriteRenderer>();
-            player = GameObject.FindWithTag("Player");
-        }
+        playerHealth = StartPlayerHealth;
+        n = GameObject.Find("NotificationCanvas").GetComponent<NotificationBehavior>();
+        allOverworld = GameObject.FindGameObjectsWithTag("overworld");
+        allShadow = GameObject.FindGameObjectsWithTag("shadow");
+        playerSpriteRenderer = GameObject.Find("player").transform.Find("player_art").GetComponent<SpriteRenderer>();
+        player = GameObject.FindWithTag("Player");
         updateStatsDisplay();
         if (mainCamera == null) {
             mainCamera = Camera.main;
