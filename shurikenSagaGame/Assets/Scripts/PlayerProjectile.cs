@@ -37,7 +37,7 @@ public class PlayerProjectile : MonoBehaviour{
             enemyVals.TakeDamage(10);
             enemyVals.DealKB(gameObject);
 
-            gameObject.SetActive(false);
+            Destroy (gameObject);
             //StartCoroutine(selfDestructHit();
         }
     }
