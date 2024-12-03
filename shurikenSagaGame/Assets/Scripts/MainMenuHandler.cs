@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MainMenuHandler : MonoBehaviour
 {
@@ -52,5 +53,23 @@ public class MainMenuHandler : MonoBehaviour
         }
         rectTransform.anchoredPosition = targetPosition;
         rectTransform.localScale = targetScale;
+    }
+
+    public void StartGame() {
+        SceneManager.LoadScene("Dungeon1Intro");
+    }
+
+    public void QuitGame() {
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+        #endif
+    }
+    public void Credits() {
+        SceneManager.LoadScene("Credits");
+    }
+    public void Controls() {
+        SceneManager.LoadScene("Lose Scene");
     }
 }
