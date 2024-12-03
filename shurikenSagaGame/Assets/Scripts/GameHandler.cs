@@ -315,7 +315,7 @@ public class GameHandler : MonoBehaviour {
     // Return to MainMenu
     public void RestartGame() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MB Dungeon1");
             // Reset all static variables here, for new games:
         playerHealth = StartPlayerHealth;
     }
