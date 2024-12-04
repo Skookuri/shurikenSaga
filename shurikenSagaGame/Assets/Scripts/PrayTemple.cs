@@ -12,6 +12,7 @@ public class PrayTemple : MonoBehaviour
     private bool playerInTrigger = false; // Track if the player is in the trigger area
     private bool hasInteracted = false; // Track if the player has interacted with the object    
     private bool hasDroppedScrolls = false; // Flag to track if Scrolls have already been dropped
+    private bool notTriggered = true; //cant be triggered again
 
     void Start()
     {
@@ -46,12 +47,10 @@ public class PrayTemple : MonoBehaviour
     void Update()
     {
         // Check for input to trigger the prayer action when the player is in the trigger area
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.E) && !hasInteracted)
-        {
+        if (playerInTrigger && Input.GetKeyDown(KeyCode.E) && !hasInteracted) {
+            hasInteracted = true; // Mark the player as having interacted
             TriggerPrayAction(); // Start prayer interaction
-        }
-        else if (playerInTrigger && hasInteracted)
-        {
+        } else if (playerInTrigger && hasInteracted) {
             prayText.SetActive(false); // Hide pray text after interaction
         }
     }
@@ -60,17 +59,13 @@ public class PrayTemple : MonoBehaviour
     void TriggerPrayAction()
     {
         prayText.SetActive(false); // Deactivate the pray text
-        hasInteracted = true; // Mark the player as having interacted
         dialoguer = dialogueCanvas.GetComponent<Dialoguer>();
-        if (dialoguer != null)
-        {
+        if (dialoguer != null) {
             dialogueCanvas.SetActive(true);
             dialoguer.StartDialogueSegment();
             // Call DropScrolls after dialogue completes (you could trigger this in the dialogue segment itself if needed)
             StartCoroutine(WaitForDialogueToEnd());
-        }
-        else
-        {
+        } else {
             Debug.LogWarning("Dialoguer component is missing on the dialogueCanvas!");
         }
     }
