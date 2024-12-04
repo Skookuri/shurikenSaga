@@ -62,7 +62,12 @@ public class GameHandler : MonoBehaviour {
         
         sceneName = SceneManager.GetActiveScene().name;
         playerHealth = StartPlayerHealth;
-        n = GameObject.Find("NotificationCanvas").GetComponent<NotificationBehavior>();
+
+        if (GameObject.Find("NotificationCanvas").TryGetComponent<NotificationBehavior>(out var script))
+            n = script;
+        else
+            n = null;
+
         allOverworld = GameObject.FindGameObjectsWithTag("overworld");
         allShadow = GameObject.FindGameObjectsWithTag("shadow");
         playerSpriteRenderer = GameObject.Find("player").transform.Find("player_art").GetComponent<SpriteRenderer>();
