@@ -11,7 +11,7 @@ public class GameHandler : MonoBehaviour {
     public int playerHealth = 100;
     public int StartPlayerHealth = 100;
     public GameObject healthText;
-    public GameObject tokensText;
+    //public GameObject tokensText;
     
    
     public bool hit = false;
@@ -81,8 +81,6 @@ public class GameHandler : MonoBehaviour {
         playerHealth = StartPlayerHealth;
         updateStatsDisplay();
         audioSource = GetComponent<AudioSource>();
-
-        
     }
 
     public void killPlayer()
@@ -302,8 +300,8 @@ public class GameHandler : MonoBehaviour {
             Text healthTextTemp = healthText.GetComponent<Text>();
             healthTextTemp.text = "HEALTH: " + playerHealth;
 
-            Text tokensTextTemp = tokensText.GetComponent<Text>();
-            tokensTextTemp.text = "GOLD: " + gotTokens;
+            //Text tokensTextTemp = tokensText.GetComponent<Text>();
+            //tokensTextTemp.text = "GOLD: " + gotTokens;
     }
 
     IEnumerator DeathPause(){

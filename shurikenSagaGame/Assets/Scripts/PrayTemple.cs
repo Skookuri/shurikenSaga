@@ -12,7 +12,10 @@ public class PrayTemple : MonoBehaviour
     private bool playerInTrigger = false; // Track if the player is in the trigger area
     private bool hasInteracted = false; // Track if the player has interacted with the object    
     private bool hasDroppedScrolls = false; // Flag to track if Scrolls have already been dropped
-    private bool notTriggered = true; //cant be triggered again
+    //private bool notTriggered = true; //cant be triggered again
+
+    //public bool isTemple = false;
+
 
     void Start()
     {
@@ -31,7 +34,9 @@ public class PrayTemple : MonoBehaviour
         {
             playerInTrigger = true; // Player is inside the trigger area
             prayText.SetActive(true); // Show the pray button when the player is near
+            //TriggerPrayAction(); // Start prayer interaction
         }
+        
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -73,7 +78,7 @@ public class PrayTemple : MonoBehaviour
     // Coroutine to wait for the dialogue to finish before activating the ScrollJutsu pairs
     IEnumerator WaitForDialogueToEnd()
     {
-        // Wait for the dialogue to end (you might have a flag that marks the end of the dialogue)
+        // Wait for the dialogue to end 
         yield return new WaitUntil(() => !dialogueCanvas.activeSelf);
 
         // After dialogue is done, drop scrolls if they haven't been dropped yet

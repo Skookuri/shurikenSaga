@@ -74,6 +74,12 @@ public class Dialoguer : MonoBehaviour
                 AutocompleteDialogue();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            player.GetComponent<PlayerMove>().enabled = true;
+            DialogueIndex++;
+            DialogueSegment currentSegment = DialogueSegments[DialogueIndex];
+        }
     }
 
     public void StartDialogueSegment()
@@ -86,6 +92,7 @@ public class Dialoguer : MonoBehaviour
 
         player.GetComponent<PlayerMove>().enabled = false; // Turn off movement temporarily
         DialogueSegment currentSegment = DialogueSegments[DialogueIndex];
+
 
         if (currentSegment.ShouldShakeBefore)
         {
@@ -113,6 +120,7 @@ public class Dialoguer : MonoBehaviour
         }
 
         SetStyle(currentSegment.Character);
+        Debug.Log("Dialogue #1 : " + currentSegment.Dialogue + " " + currentSegment.IsFinalSegment);
         StartCoroutine(PlayDialogue(currentSegment.Dialogue, currentSegment.IsFinalSegment));
     }
 
@@ -149,9 +157,7 @@ public class Dialoguer : MonoBehaviour
         {
             int mumbleIndex = Random.Range(0, Subject.MumbleClips.Length);
             SpeakerSpeech.clip = Subject.MumbleClips[mumbleIndex];
-        } 
-        else 
-        {
+        }  else  {
             SpeakerSpeech.clip = null;
         }
     }
