@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1321281433209836727}
   - component: {fileID: 6635327571196334386}
   m_Layer: 0
-  m_Name: Dungeon1 Fixes Overworld
+  m_Name: Street Fixes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
