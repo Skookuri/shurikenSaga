@@ -15947,7 +15947,7 @@ PrefabInstance:
     - target: {fileID: 7365868411976817807, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: tokensText
       value: 
-      objectReference: {fileID: 638505975}
+      objectReference: {fileID: 0}
     - target: {fileID: 7481922899463534756, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
       propertyPath: m_Name
       value: GLOBALS (GameHandler_Canvas_Camera etc)
@@ -15970,11 +15970,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
---- !u!1 &638505975 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 378222190116657666, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
-  m_PrefabInstance: {fileID: 638505974}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &638505976 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5883847652988416055, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
