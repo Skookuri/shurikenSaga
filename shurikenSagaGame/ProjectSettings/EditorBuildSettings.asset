@@ -21,10 +21,10 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeScene.unity
     guid: e44832181240d4aa5b3a8dfb5c4f8720
   - enabled: 1
-    path: Assets/Scenes/Dungeon1.unity
+    path: Assets/Scenes/TODELETE/OldDungeon1.unity
     guid: b8ddd1ef938bd45bdaf1edd0d1a0d50f
   - enabled: 1
-    path: Assets/Scenes/MB Dungeon1.unity
+    path: Assets/Scenes/Dungeon1.unity
     guid: de6fb07e9268c494d92ec66fc47113a5
   - enabled: 1
     path: Assets/Scenes/Lose Scene.unity
