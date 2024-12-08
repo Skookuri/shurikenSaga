@@ -13,7 +13,7 @@ public class GameHandler : MonoBehaviour {
     public GameObject healthText;
     //public GameObject tokensText;
     
-   
+    public static string respawnScene;
     public bool hit = false;
     public bool isImmune = false;
     private float playerFlashingTime = 0;
@@ -59,8 +59,11 @@ public class GameHandler : MonoBehaviour {
     public bool firstRun = true;
 
     void Start(){
-        
-        sceneName = SceneManager.GetActiveScene().name;
+        if(SceneManager.GetActiveScene().name != "Lose Scene"){
+            respawnScene = SceneManager.GetActiveScene().name;
+            Debug.Log("Scene:");
+        }
+        Debug.Log(respawnScene);
         playerHealth = StartPlayerHealth;
 
         if (GameObject.Find("NotificationCanvas").TryGetComponent<NotificationBehavior>(out var script))
@@ -324,10 +327,16 @@ public class GameHandler : MonoBehaviour {
         SceneManager.LoadScene("Lose Scene");
     }
 
+    public void MainMenu() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     // Return to MainMenu
     public void RestartGame() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MB Dungeon1");
+        Debug.Log("restart");
+        Debug.Log(respawnScene);
+        SceneManager.LoadScene(respawnScene);
             // Reset all static variables here, for new games:
         playerHealth = StartPlayerHealth;
     }
@@ -335,7 +344,9 @@ public class GameHandler : MonoBehaviour {
     // Replay the Level where you died
     public void ReplayLastLevel() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(lastLevelDied);
+        Debug.Log("replay");
+        Debug.Log(respawnScene);
+        SceneManager.LoadScene(respawnScene);
             // Reset all static variables here, for new games:
         playerHealth = StartPlayerHealth;
     }
