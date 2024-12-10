@@ -144,7 +144,7 @@ public class PlayerMove : MonoBehaviour {
             float attackInput = Input.GetAxis("AttackYea"); // Attack axis
 
             // Check for button press and ensure it only triggers once per press
-            if (attackInput > 0 && !isButtonHeld && shurikenUnlocked)
+            if (attackInput > 0 && shurikenUnlocked)
             {
                 playerFire(); // Fire the shuriken
                 nextAttackTime = Time.time + 1f / attackRate; // Set the next attack time
