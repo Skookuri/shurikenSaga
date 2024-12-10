@@ -54,8 +54,9 @@ public class Dialoguer : MonoBehaviour
     {
         Skip.enabled = CanContinue;
 
-        if (Input.GetKeyDown(KeyCode.P) && IsDialogueUIVisible())
+        if (Input.GetButtonDown("TextContinue") && IsDialogueUIVisible())
         {
+            Debug.Log("GETTING BUTTON INPUT");
             if (CanContinue)
             {
                 popSFX.Play();

@@ -65,6 +65,8 @@ public class PlayerMove : MonoBehaviour {
     private float knockbackTime = 0f; // Time remaining for knockback
     private float knockbackDecayRate = 5f; // Rate of knockback decay
 
+    private bool isButtonHeld = false;
+
     void Start(){
         gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
         lastSavedPosition = transform.position;
@@ -89,6 +91,15 @@ public class PlayerMove : MonoBehaviour {
     }
 
     void Update(){
+
+        float jX = Input.GetAxis("Joystick X"); // or "Joystick X" if named differently
+        float jY = Input.GetAxis("Joystick Y"); // or "Joystick Y" if named differently
+
+        if (jX > 0.1f ||  jY > 0.1f)
+        {
+            //Debug.Log("joystick x axis: " + jX);
+            //Debug.Log("joystick y axis: " + jY);
+        }
         if (!isAlive) return;
 
         //NOTE: Horizontal axis: [a] / left arrow is -1, [d] / right arrow is 1
@@ -126,14 +137,28 @@ public class PlayerMove : MonoBehaviour {
             animator.enabled = true; //Enable animator
         }
 
-        if (Time.time >= nextAttackTime){
-            if (Input.GetAxis("AttackYea") > 0 && shurikenUnlocked){
-                playerFire();
-                nextAttackTime = Time.time + 1f / attackRate;
-                isShoot = true;
-            } else {
-                isShoot = false;
+        if (Time.time >= nextAttackTime)
+        {
+            float joystickX = Input.GetAxis("Joystick X"); // Horizontal joystick axis
+            float joystickY = Input.GetAxis("Joystick Y"); // Vertical joystick axis
+            float attackInput = Input.GetAxis("AttackYea"); // Attack axis
+
+            // Check for button press and ensure it only triggers once per press
+            if (attackInput > 0 && !isButtonHeld && shurikenUnlocked)
+            {
+                playerFire(); // Fire the shuriken
+                nextAttackTime = Time.time + 1f / attackRate; // Set the next attack time
+                isShoot = true; // Set shooting pose
+                isButtonHeld = true; // Mark the button as being held
             }
+        }
+
+        // Reset shooting pose and button state
+        float attackInputRelease = Input.GetAxis("AttackYea");
+        if (attackInputRelease <= 0)
+        {
+            isShoot = false; // Exit shooting pose
+            isButtonHeld = false; // Reset button held state
         }
 
         // Massimo changes start*******
@@ -334,26 +359,46 @@ public class PlayerMove : MonoBehaviour {
         spriteRenderer.transform.localScale = theScale;
     }
 
-    void playerFire() {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f; // Set z to 0 since we're working in 2D
+    void playerFire()
+    {
+        Debug.Log("FIRING");
+        Vector3 fireDirection;
 
-        // Calculate the direction from the firing point to the mouse position
-        Vector2 fwd = (mousePosition - firePoint.position).normalized;
+        // Check for joystick input
+        float joystickX = Input.GetAxis("Joystick X");
+        float joystickY = Input.GetAxis("Joystick Y");
 
-        // Play the shuriken throw sound
-        if (shuriThrow != null) {
-            if (!shuriThrow.isPlaying) { 
-                //shuriThrow.Play(); 
-            }
+        if (Mathf.Abs(joystickX) > 0.1f || Mathf.Abs(joystickY) > 0.1f) // Deadzone threshold
+        {
+            // Use joystick direction
+            fireDirection = new Vector3(joystickX, -joystickY, 0f).normalized;
+        }
+        else
+        {
+            // Use mouse position
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePosition.z = 0f; // Set z to 0 since we're working in 2D
+
+            // Correctly calculate the direction towards the mouse
+            fireDirection = (mousePosition - firePoint.position).normalized;
         }
 
-        // Instantiate the projectile and apply force towards the mouse position
+        // Debug the direction for verification
+        Debug.Log($"Fire Direction: {fireDirection}");
+
+        // Play the shuriken throw sound
+        if (shuriThrow != null && !shuriThrow.isPlaying)
+        {
+            // shuriThrow.Play();
+        }
+
+        // Instantiate the projectile and apply force in the correct direction
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().AddForce(fwd * projectileSpeed, ForceMode2D.Impulse);
+        projectile.GetComponent<Rigidbody2D>().AddForce(fireDirection * projectileSpeed, ForceMode2D.Impulse);
 
         // Set the sprite to the default sprite
         spriteRenderer.sprite = shuriSprite; // Show non-moving default sprite
     }
+
 
 }

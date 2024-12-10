@@ -52,7 +52,7 @@ public class PrayTemple : MonoBehaviour
     void Update()
     {
         // Check for input to trigger the prayer action when the player is in the trigger area
-        if (playerInTrigger && Input.GetKeyDown(KeyCode.E) && !hasInteracted) {
+        if (playerInTrigger && Input.GetButtonDown("Pray") && !hasInteracted) {
             hasInteracted = true; // Mark the player as having interacted
             TriggerPrayAction(); // Start prayer interaction
         } else if (playerInTrigger && hasInteracted) {

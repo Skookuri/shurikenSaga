@@ -129,7 +129,7 @@ public class GameHandler : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && cooldownDone && shiftUnlocked && !noSwitchZone) {
             StartRealmSwitch();
-        } else if (Input.GetKeyDown(KeyCode.LeftShift)) {
+        } else if (Input.GetButtonDown("ShiftRealms")) {
             PlayCannotSwitchSound();
             if (!cooldownDone)
             {

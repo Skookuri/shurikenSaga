@@ -38,4 +38,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
     guid: 5ed55bffa29a31a4986cfbc7cad37f8c
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 24ba902b6dd46ae4d8e8ef792b8c77dd, type: 2}
