@@ -271,6 +271,7 @@ public class PlayerMove : MonoBehaviour {
         } else if (fell)
         {
             Vector2 movement = new Vector2(0, 0);
+            fell = false;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
         }
     }
