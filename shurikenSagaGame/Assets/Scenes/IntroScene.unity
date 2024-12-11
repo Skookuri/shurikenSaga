@@ -84013,7 +84013,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8394063646944362125, guid: fa0b67f04781dfb498b1e473be4761c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 553
+      value: 733
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394063646944362125, guid: fa0b67f04781dfb498b1e473be4761c5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8449418709491666784, guid: fa0b67f04781dfb498b1e473be4761c5, type: 3}
       propertyPath: m_Name
