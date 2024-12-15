@@ -11,58 +11,60 @@ public class LinkedEnemies : MonoBehaviour
     private BasicEnemyValues oBasicVals;
     private BasicEnemyValues sBasicVals;
 
-    Vector2 sharedPosition;
-
-    //private bool isOverworld;
+    public bool hasProcessedSwitch = true;
+    private Vector2 sharedPosition;
 
     private void Start()
     {
         oBasicVals = overworldEnemy.GetComponent<BasicEnemyValues>();
         sBasicVals = shadowEnemy.GetComponent<BasicEnemyValues>();
-        // Initialize isOverworld based on overworldEnemy's active state
         g = GameObject.Find("GameHandler").GetComponent<GameHandler>();
+
+        // Initialize sharedPosition from the active realm
+        sharedPosition = GameHandler.isOverWorld ? overworldEnemy.transform.position : shadowEnemy.transform.position;
     }
 
     private void Update()
     {
-
+        // Check if either enemy is dead
         if (oBasicVals.isDead || sBasicVals.isDead)
         {
             overworldEnemy.SetActive(false);
             shadowEnemy.SetActive(false);
+            return; // No further processing needed
         }
-        // Check if the active state of overworldEnemy has changed
-        if (g.doneSwitchingRealms)
-        {
-            //Debug.Log("SWITCHING, GETTING POSITIONS");
-            // Determine the shared position
-            //Vector2 sharedPosition = g.isOverWorld ? overworldEnemy.transform.position : shadowEnemy.transform.position;
 
-            // Update the position of the newly active enemy
-            if(GameHandler.isOverWorld)
+        // Handle realm switching
+        if (!hasProcessedSwitch)
+        {
+            // Sync the position from the previous active realm
+            if (GameHandler.isOverWorld)
             {
                 overworldEnemy.transform.position = sharedPosition;
-                shadowEnemy.transform.position = sharedPosition;
-            } else
+                //overworldEnemy.SetActive(true);
+                //shadowEnemy.SetActive(false);
+                Debug.Log($"{name}: Switched to Overworld. Position updated.");
+            }
+            else
             {
                 shadowEnemy.transform.position = sharedPosition;
-                overworldEnemy.transform.position = sharedPosition;
+                //shadowEnemy.SetActive(true);
+                //overworldEnemy.SetActive(false);
+                Debug.Log($"{name}: Switched to Shadow. Position updated.");
             }
 
-            g.doneSwitchingRealms = false;
+            // Mark this enemy as having processed the switch
+            hasProcessedSwitch = true;
         }
-        
-        if (GameHandler.isOverWorld)
+
+        // Continuously update the shared position from the currently active enemy
+        if (GameHandler.isOverWorld && overworldEnemy.activeSelf)
         {
-            //Debug.Log("getting overworld pos: " + sharedPosition);
             sharedPosition = overworldEnemy.transform.position;
         }
-        else
+        else if (!GameHandler.isOverWorld && shadowEnemy.activeSelf)
         {
-            //Debug.Log("getting shadow pos: " + sharedPosition);
             sharedPosition = shadowEnemy.transform.position;
         }
     }
-
-
 }

@@ -195,7 +195,7 @@ public class PlayerMove : MonoBehaviour {
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Hole") && !isDashing)
+        if (collision.CompareTag("Hole") && !isDashing && fell == false)
         {
             fell = true;
             StartCoroutine(Wait());

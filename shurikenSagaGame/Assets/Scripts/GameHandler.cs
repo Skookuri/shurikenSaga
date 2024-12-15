@@ -57,6 +57,7 @@ public class GameHandler : MonoBehaviour {
 
     public bool noSwitchZone = false;
     public bool firstRun = true;
+    public bool recordPos = true;
 
     void Start(){
         if(SceneManager.GetActiveScene().name != "Lose Scene"){
@@ -179,8 +180,9 @@ public class GameHandler : MonoBehaviour {
         } else if (timePassedWhileSwitching < switchDuration * 2) {
             if (switchRealms) {
                 // Switch realms once halfway through the fade
+                recordPos = false;
+                Debug.Log("recordPos false");
                 switchRealms = false;
-
                 if (!isOverWorld) {
                     toHome.Play();
                     foreach (GameObject g in allShadow)
@@ -202,11 +204,27 @@ public class GameHandler : MonoBehaviour {
                         g.SetActive(false);
                     }
                 }
-
                 // Toggle the Overworld/Shadow state
                 isOverWorld = !isOverWorld;
-                doneSwitchingRealms = true;
+
+                GameObject[] allLinkedEnemies = GameObject.FindGameObjectsWithTag("linkedenemy");
+
+                if (allLinkedEnemies != null && allLinkedEnemies.Length > 0)
+                {
+                    foreach (GameObject obj in allLinkedEnemies)
+                    {
+                        obj.GetComponent<LinkedEnemies>().hasProcessedSwitch = false;
+                    }
+                }
+                else
+                {
+                    Debug.Log("No objects found with the specified tag.");
+                }
+
+                Debug.Log("doneSwitchingRealms true");
+                //doneSwitchingRealms = true;
                 resetLinkedKozous = true;
+                //recordPos = false;
             }
 
             // Fade back to transparent
