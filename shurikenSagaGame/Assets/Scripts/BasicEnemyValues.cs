@@ -114,7 +114,8 @@ public class BasicEnemyValues : MonoBehaviour
     {
         if (gameObject.name == "boss_monk_meditate")
         {
-            SceneManager.LoadScene("WinScene");
+            GameObject.Find("Dungeon1ExitDoorPair").transform.GetChild(1).position = transform.position;
+            GameObject.Find("Dungeon1ExitDoorPair").transform.GetChild(1).gameObject.SetActive(true);
         }
         isDead = true;
         gameObject.SetActive(false); // Disable the enemy

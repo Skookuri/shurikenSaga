@@ -198,8 +198,10 @@ public class PlayerMove : MonoBehaviour {
         if (collision.CompareTag("Hole") && !isDashing && fell == false)
         {
             fell = true;
+            Debug.Log("FELL IN HOLE");
             StartCoroutine(Wait());
-            gh.playerHealth -= 20;
+            gh.playerHealth -= 10;
+            gh.updateStatsDisplay();
         }
         if (collision.CompareTag("enemy"))
         {
@@ -280,7 +282,7 @@ public class PlayerMove : MonoBehaviour {
         } else if (fell)
         {
             Vector2 movement = new Vector2(0, 0);
-            fell = false;
+            //fell = false;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0f);
         }
     }

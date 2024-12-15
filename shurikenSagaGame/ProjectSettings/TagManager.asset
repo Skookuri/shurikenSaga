@@ -15,6 +15,7 @@ TagManager:
   - ScrollJutsuPair
   - shuriken
   - noswitch
+  - linkedenemy
   layers:
   - Default
   - TransparentFX
