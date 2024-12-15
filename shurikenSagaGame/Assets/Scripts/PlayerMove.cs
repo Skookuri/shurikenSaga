@@ -139,26 +139,35 @@ public class PlayerMove : MonoBehaviour {
 
         if (Time.time >= nextAttackTime)
         {
-            float joystickX = Input.GetAxis("Joystick X"); // Horizontal joystick axis
-            float joystickY = Input.GetAxis("Joystick Y"); // Vertical joystick axis
             float attackInput = Input.GetAxis("AttackYea"); // Attack axis
 
-            // Check for button press and ensure it only triggers once per press
-            if (attackInput > 0 && shurikenUnlocked)
+            // Trigger the attack on button press (one-time per press)
+            if (attackInput > 0.1f && shurikenUnlocked && !isButtonHeld)
             {
                 playerFire(); // Fire the shuriken
-                nextAttackTime = Time.time + 1f / attackRate; // Set the next attack time
-                isShoot = true; // Set shooting pose
-                isButtonHeld = true; // Mark the button as being held
+                nextAttackTime = Time.time + 1f / attackRate; // Set cooldown
+                isShoot = true; // Enter shooting pose
+                isButtonHeld = true; // Prevent re-firing while held
             }
         }
 
-        // Reset shooting pose and button state
+        // Reset shooting pose and button state when button is released
         float attackInputRelease = Input.GetAxis("AttackYea");
-        if (attackInputRelease <= 0)
+        if (attackInputRelease <= 0.1f)
         {
             isShoot = false; // Exit shooting pose
-            isButtonHeld = false; // Reset button held state
+            isButtonHeld = false; // Allow firing on the next press
+        }
+
+        // Manage sprite and animator based on `isShoot` state
+        if (isShoot)
+        {
+            animator.enabled = false; // Disable animator for attack sprite
+            spriteRenderer.sprite = shuriSprite; // Set attack sprite
+        }
+        else
+        {
+            animator.enabled = true; // Re-enable animator for default sprites
         }
 
         // Massimo changes start*******
@@ -390,6 +399,7 @@ public class PlayerMove : MonoBehaviour {
         // Play the shuriken throw sound
         if (shuriThrow != null && !shuriThrow.isPlaying)
         {
+            // Uncomment this if sound is ready
             // shuriThrow.Play();
         }
 
@@ -397,8 +407,7 @@ public class PlayerMove : MonoBehaviour {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         projectile.GetComponent<Rigidbody2D>().AddForce(fireDirection * projectileSpeed, ForceMode2D.Impulse);
 
-        // Set the sprite to the default sprite
-        spriteRenderer.sprite = shuriSprite; // Show non-moving default sprite
+        // Attack animation/sprite logic removed from here
     }
 
 
