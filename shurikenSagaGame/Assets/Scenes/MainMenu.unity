@@ -458,30 +458,30 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Jason Wiser..........................................................Advising
+  m_Text: 'Alyssa Williams...............................Art/Code/Pm/Website
+
+    Lance
+    Haugh.......................................Code/Level Design
+
+    Massimo Bottari..................................Code/Level
+    Design
+
+    Boston-Blue Giovannini...........................Code/UI Design
+
+    Jason
+    Wiser..........................................................Advising
 
     Marc
     Yu....................................................................Music
 
-    Alyssa
-    Williams...............................Art/Code/Pm/Website
+    Neil
+    Small..........................................................Sound FX
 
-    Lance Haugh.......................................Code/Level
-    Design
+    Julian
+    Cabrera..................................................Sound FX
 
-    Massimo Bottari..................................Code/Level Design
-
-    Boston-Blue
-    Giovannini...........................Code/UI Design
-
-    Neil Small..........................................................Sound
-    FX
-
-    Julian Cabrera..................................................Sound
-    FX
-
-    Ananta Arora.....................................................Sound
-    FX'
+    Ananta
+    Arora.....................................................Sound FX'
 --- !u!222 &190521271
 CanvasRenderer:
   m_ObjectHideFlags: 0
