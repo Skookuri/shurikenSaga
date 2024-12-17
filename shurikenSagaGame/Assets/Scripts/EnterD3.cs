@@ -7,7 +7,7 @@ public class EnterD3 : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "enterd3")
+        if (collision.gameObject.name == "player")
         {
             SceneManager.LoadScene("Dungeon3");
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BossBehavior : MonoBehaviour
 {
@@ -34,23 +35,136 @@ public class BossBehavior : MonoBehaviour
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
+    [SerializeField]
     private Color originalColor;
+
+    [SerializeField]
+    private Color dashColor;
     [SerializeField]
     private float chargeAmp;
 
     private bool pds = true;
 
+    private float minionSpawnSpeed = 0f;
+    private float dashInterval = 0f;
+    private bool dashed = false;
+
+    private bool stopDash = false;
+
+    [SerializeField]
+    GameObject minion;
+
     [SerializeField]
     private startBoss sb;
+
+    private bool firstRun = true;
+
+    Vector2 playerDirection;
+
+    private bool pickedPlayerDir = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //sb = GameObject.Find("beginZone").GetComponent<startBoss>();
         player = GameObject.Find("player").transform;
-        originalColor = gameObject.GetComponent<SpriteRenderer>().color;
+        //originalColor = GetComponent<SpriteRenderer>().color;
     }
 
+
+    private void Update()
+    {
+        if (!sb.startFinalBoss)
+        {
+            return;
+        }
+
+        minionSpawnSpeed += Time.deltaTime;
+        dashInterval += Time.deltaTime;
+
+        if (minionSpawnSpeed > 14f)
+        {
+            minionSpawnSpeed = 0f;
+            StartCoroutine(MinionSpawner());
+        }
+
+        if (dashInterval > 6f)
+        {
+            if (!pickedPlayerDir && dashInterval > 6.9f)
+            {
+                pickedPlayerDir = true;
+                playerDirection = (player.position - gameObject.transform.position).normalized;
+
+            }
+            if ((dashInterval % .08f) < .04f){
+                spriteRenderer.color = dashColor;
+            } else
+            {
+                spriteRenderer.color = originalColor;
+            }
+
+            if(dashInterval > 7.2f && !dashed)
+            {
+                dashed = true;
+                rb.AddForce(playerDirection * chargeAmp, ForceMode2D.Impulse);
+            }
+
+            if (dashInterval > 7.48f && !stopDash)
+            {
+                stopDash = true;
+                rb.velocity = rb.velocity / 5;
+            }
+
+            if (dashInterval > 8.5f)
+            {
+                dashed = false;
+                stopDash = false;
+                pickedPlayerDir = false;
+                dashInterval = 0f;
+                spriteRenderer.color = originalColor;
+            }
+        }
+    }
+
+    public IEnumerator MinionSpawner()
+    {
+        int i = 0;
+        while (i < 3)
+        {
+            SpawnMinion();
+            yield return new WaitForSeconds(1);
+            i++;
+        }
+    }
+
+    private void SpawnMinion()
+    {
+        int i = 0;
+        while (i < 1)
+        {
+            GameObject spawnedMinion = Instantiate(minion, transform.position, Quaternion.identity);
+            Renderer renderer = spawnedMinion.GetComponent<Renderer>();
+            Material newMaterial = null;
+
+            if (renderer != null)
+            {
+                newMaterial = new Material(renderer.material); // Clone the material
+                renderer.material = newMaterial; // Assign the unique material to the Renderer
+            }
+
+            GhostBehavior ghostBehavior = spawnedMinion.GetComponent<GhostBehavior>();
+            if (ghostBehavior != null && newMaterial != null)
+            {
+                ghostBehavior.detRange = 100f;
+                ghostBehavior.aggroDetRange = 100f;
+                ghostBehavior.material = newMaterial; // Call a method to set the material
+            }
+
+            Debug.Log("Spawned minion at position: " + transform.position);
+            i++;
+        }
+        
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -89,7 +203,7 @@ public class BossBehavior : MonoBehaviour
 
             // Direct charge toward the player
             Vector2 chargeDir = (player.position - transform.position).normalized;
-            rb.AddForce(chargeDir * chargeAmp, ForceMode2D.Impulse);
+            //rb.AddForce(chargeDir * chargeAmp, ForceMode2D.Impulse);
         }
 
         // Check if the boss reached the random target

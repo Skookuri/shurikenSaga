@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8898475974486723970}
   m_Layer: 0
   m_Name: hitodama hard
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01e93fee1d15124499b422174000b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 20
+  damageAmount: 12
   health: 40
   damaged: 0
   hurtColor: {r: 1, g: 0, b: 0, a: 1}
@@ -189,6 +189,7 @@ MonoBehaviour:
   rb: {fileID: 5395914112176634056}
   kozouBehavior: {fileID: 0}
   isDead: 0
+  kozouHit: 0
 --- !u!61 &8898475974486723970
 BoxCollider2D:
   m_ObjectHideFlags: 0

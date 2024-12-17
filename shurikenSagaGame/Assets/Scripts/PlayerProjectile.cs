@@ -14,6 +14,8 @@ public class PlayerProjectile : MonoBehaviour{
     [SerializeField]
     private float rotationSpeed;
 
+    private 
+
       void Start(){
            projectileArt = GetComponentInChildren<SpriteRenderer>();
            selfDestruct();
@@ -21,6 +23,7 @@ public class PlayerProjectile : MonoBehaviour{
 
     void Update()
     {
+
         destroyTimer += Time.deltaTime;
       transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
       if (counter > 500){
