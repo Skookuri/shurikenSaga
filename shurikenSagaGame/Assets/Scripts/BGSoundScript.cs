@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BGSoundScript : MonoBehaviour {
 
@@ -9,8 +10,20 @@ public class BGSoundScript : MonoBehaviour {
 
     public AudioClip overworldClip;
     public AudioClip shadowClip;
-    private AudioSource audioSource;
+    public AudioClip bossClip;
+
+    public AudioSource audioSource;
     private float currentTimestamp = 0f; //timestamp of song
+
+    private bool bossBeingPlayed = false;
+
+    public void PlayBoss()
+    {
+        audioSource.clip = bossClip;
+        audioSource.time = 0f;
+        audioSource.Play();
+        bossBeingPlayed = true;
+    }
 
     void Start() {
         audioSource = GetComponent<AudioSource>();
@@ -28,8 +41,11 @@ public class BGSoundScript : MonoBehaviour {
     }
 
     void Update() {
-        // Optionally, check and update if `isOverWorld` changes during runtime
-        UpdateMusic(false);
+        if (SceneManager.GetActiveScene().name != "Dungeon3")
+        {
+            // Optionally, check and update if `isOverWorld` changes during runtime
+            UpdateMusic(false);
+        }
     }
 
     public void UpdateMusic(bool forceUpdate) {

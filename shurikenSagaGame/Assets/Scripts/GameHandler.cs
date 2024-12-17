@@ -48,6 +48,8 @@ public class GameHandler : MonoBehaviour {
     [SerializeField]
     private AudioSource audioSource;
 
+    public float timeSinceHeal = 0f;
+
     public bool doneSwitchingRealms = false;
     public bool resetLinkedKozous = false;
     public AudioSource toShadow;
@@ -71,6 +73,11 @@ public class GameHandler : MonoBehaviour {
             n = script;
         else
             n = null;
+
+        if (SceneManager.GetActiveScene().name == "Dungeon3")
+        {
+            GameObject.Find("BackgroundMusic").GetComponent<BGSoundScript>().audioSource.Stop();
+        }
 
         allOverworld = GameObject.FindGameObjectsWithTag("overworld");
         allShadow = GameObject.FindGameObjectsWithTag("shadow");
@@ -101,6 +108,17 @@ public class GameHandler : MonoBehaviour {
     }
 
     private void Update() {
+        if (playerHealth != 100)
+        {
+            timeSinceHeal += Time.deltaTime;
+            if (timeSinceHeal > 10f)
+            {
+                timeSinceHeal = 0f;
+                playerHealth += 5;
+                updateStatsDisplay();
+            }
+        }
+
         if (firstRun)
         {
             firstRun = false;

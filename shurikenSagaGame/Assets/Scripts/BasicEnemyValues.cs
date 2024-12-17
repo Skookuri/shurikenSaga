@@ -114,8 +114,10 @@ public class BasicEnemyValues : MonoBehaviour
     {
         if (gameObject.name == "boss_monk_meditate")
         {
-            GameObject.Find("Dungeon1ExitDoorPair").transform.GetChild(1).position = transform.position;
-            GameObject.Find("Dungeon1ExitDoorPair").transform.GetChild(1).gameObject.SetActive(true);
+            //GameObject.Find("Dungeon1ExitDoorPair").transform.GetChild(1).position = transform.position;
+            //GameObject.Find("Dungeon1ExitDoorPair").transform.GetChild(1).gameObject.SetActive(true);
+            GameObject.Find("ScrollDropper").transform.GetChild(0).gameObject.SetActive(true);
+            Debug.Log("SET SCROLL ACTIVE");
         }
         isDead = true;
         gameObject.SetActive(false); // Disable the enemy

@@ -302,10 +302,11 @@ MonoBehaviour:
   footstepSFX: {fileID: 2513815764066413457, guid: a3648b60a8cde4ae09da262802ec63a7, type: 3}
   dashSpeed: 150
   dashDuration: 0.3
-  dashCooldown: 0.5
+  dashCooldown: 1
   dashLength: 100
   doubleTapTime: 0.3
   timePassed: 0
   isVisible: 1
   shuriThrow: {fileID: 2311744876610486081, guid: 49ae45a0a0df440a897fc74d1684a54a, type: 3}
   kbForce: 0
+  isOnHole: 0

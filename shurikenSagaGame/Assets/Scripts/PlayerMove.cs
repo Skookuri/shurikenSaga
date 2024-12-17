@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour {
     //public AudioSource WalkSFX;
@@ -26,6 +27,7 @@ public class PlayerMove : MonoBehaviour {
     public float projectileSpeed = 10f;
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
+
     
     //Sounds
     public AudioSource footstepSFX;
@@ -37,7 +39,7 @@ public class PlayerMove : MonoBehaviour {
     [SerializeField]
     public float dashDuration = .5f; // Duration of the dash
     [SerializeField]
-    public float dashCooldown = .5f; // Cooldown time between dashes
+    public float dashCooldown; // Cooldown time between dashes
     [SerializeField]
     public float dashLength = 10f; // Distance the player dashes
 
@@ -66,8 +68,16 @@ public class PlayerMove : MonoBehaviour {
     private float knockbackDecayRate = 5f; // Rate of knockback decay
 
     private bool isButtonHeld = false;
+    private bool isOnDashCooldown = false;
+    public bool isOnHole = false;
 
     void Start(){
+        if(SceneManager.GetActiveScene().name == "Dungeon3")
+        {
+            dashUnlocked = true;
+            shurikenUnlocked = true;
+
+        }
         gh = GameObject.Find("GameHandler").GetComponent<GameHandler>();
         lastSavedPosition = transform.position;
 
@@ -84,7 +94,7 @@ public class PlayerMove : MonoBehaviour {
 
     private void SavePosition()
     {
-        if (!fell)
+        if (!fell && !isOnHole)
         {
             lastSavedPosition = transform.position;
         }
@@ -191,10 +201,16 @@ public class PlayerMove : MonoBehaviour {
             HandleDoubleTap("D");
         }
         //Massimo changes end*******
+
+        if (!fell)
+        {
+            
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+
         if (collision.CompareTag("Hole") && !isDashing && fell == false)
         {
             fell = true;
@@ -224,14 +240,20 @@ public class PlayerMove : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (collision.CompareTag("noswitch"))
-        //{
-        //    gh.noSwitchZone = true;
-        //}
+        if (collision.CompareTag("Hole"))
+        {
+            isOnHole = true;
+        }
     }
+
+
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.CompareTag("Hole"))
+        {
+            isOnHole = false;
+        }
         if (collision.CompareTag("noswitch"))
         {
             gh.noSwitchZone = false;
@@ -244,6 +266,13 @@ public class PlayerMove : MonoBehaviour {
         Debug.Log("2 seconds have passed!");
         Respawn();
         // Add any actions you want to perform after the wait here
+    }
+
+    public IEnumerator DashCooldown()
+    {
+        isOnDashCooldown = true;
+        yield return new WaitForSeconds(dashCooldown);
+        isOnDashCooldown = false;
     }
 
     public void Respawn()
@@ -305,7 +334,10 @@ public class PlayerMove : MonoBehaviour {
         if (key == lastTappedKey && Time.time - lastTapTime <= doubleTapTime && dashUnlocked)
         {
             // If the same key is tapped twice within the time window, dash
-            StartCoroutine(Dash(key));
+            if (!isOnDashCooldown)
+            {
+                StartCoroutine(Dash(key));
+            }
         }
 
         // Update last tapped key and time
@@ -358,6 +390,7 @@ public class PlayerMove : MonoBehaviour {
 
         // Allow for immediate resumption of regular movement
         isDashing = false;
+        StartCoroutine(DashCooldown());
     }
     //Massimo changes end*******
 

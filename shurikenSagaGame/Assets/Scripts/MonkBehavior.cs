@@ -17,7 +17,7 @@ public class MonkBehavior : MonoBehaviour
     SpriteRenderer spriteRenderer; // SpriteRenderer for the monk
     [SerializeField]
     private NotificationBehavior n;
-    private bool monkActivated = true;
+    public bool monkActivated = true;
     private BasicEnemyValues b;
     
 
@@ -30,6 +30,7 @@ public class MonkBehavior : MonoBehaviour
 
     void Start()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
         b = GetComponent<BasicEnemyValues>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -51,8 +52,10 @@ public class MonkBehavior : MonoBehaviour
         // Only start teleporting if the boss fight has started
         if (da.startBoss && !IsInvoking(nameof(TeleportRoutine)))
         {
+
             if (monkActivated)
             {
+                GetComponent<BoxCollider2D>().enabled = true;
                 n.startNotif("The monk is testing your strength! You must defeat him!");
             }
             InvokeRepeating(nameof(TeleportRoutine), 0f, teleportInterval);

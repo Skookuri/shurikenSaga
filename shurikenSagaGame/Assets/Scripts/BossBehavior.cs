@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossBehavior : MonoBehaviour
 {
+    //public startBoss sb;
     Transform player;
     [SerializeField]
     public float detRange;
@@ -39,9 +40,13 @@ public class BossBehavior : MonoBehaviour
 
     private bool pds = true;
 
+    [SerializeField]
+    private startBoss sb;
+
     // Start is called before the first frame update
     void Start()
     {
+        //sb = GameObject.Find("beginZone").GetComponent<startBoss>();
         player = GameObject.Find("player").transform;
         originalColor = gameObject.GetComponent<SpriteRenderer>().color;
     }
@@ -49,7 +54,9 @@ public class BossBehavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Aggro();
+        if (sb.startFinalBoss)
+            Aggro();
+        //GameObject.Find("BackgroundMusic").GetComponent<BGSoundScript>().audioSource.Play();
     }
 
     private bool isClockwise = true; // Tracks the current movement direction
