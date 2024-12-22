@@ -258,7 +258,7 @@ public class GameHandler : MonoBehaviour {
 
     private void PlayCannotSwitchSound() {
         if (audioSource != null && cantSwitchSound != null) {
-            audioSource.PlayOneShot(cantSwitchSound);
+            GameObject.Find("CantSwitchAudioSource").GetComponent<AudioSource>().Play();
         }
     }
 
