@@ -21,6 +21,8 @@ public class BasicEnemyValues : MonoBehaviour
     [SerializeField]
     public Rigidbody2D rb;
 
+    private AudioSource hitAudio;
+
     public KozouBehavior kozouBehavior;
 
     private GameObject player;
@@ -42,10 +44,13 @@ public class BasicEnemyValues : MonoBehaviour
         {
             startColor = material.GetColor("_ColorShift");
         }
+
+        hitAudio = GameObject.Find("shuriHitAudioSource").GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int damage)
     {
+        hitAudio.Play();
         damaged = true;
         // Reduce health
         health -= damage;
