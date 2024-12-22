@@ -10184,6 +10184,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1215736392}
     - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
+      propertyPath: shuriThrow
+      value: 
+      objectReference: {fileID: 1194405684}
+    - target: {fileID: 3581919358090069318, guid: 94334284fb80e49758cada6304da8315, type: 3}
       propertyPath: footstepSFX
       value: 
       objectReference: {fileID: 482463853}
@@ -10360,6 +10364,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1194405684 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8769562309080327328, guid: a89ea686efe3a461a8748efadcdc2538, type: 3}
+  m_PrefabInstance: {fileID: 482463852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1215736391
 GameObject:
   m_ObjectHideFlags: 0

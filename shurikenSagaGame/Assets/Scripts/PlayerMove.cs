@@ -72,6 +72,8 @@ public class PlayerMove : MonoBehaviour {
     private bool isOnDashCooldown = false;
     public bool isOnHole = false;
 
+    private float modStepSoundTime = 0f;
+
     void Start(){
         if(SceneManager.GetActiveScene().name == "Dungeon3")
         {
@@ -102,7 +104,7 @@ public class PlayerMove : MonoBehaviour {
     }
 
     void Update(){
-
+        
         float jX = Input.GetAxis("Joystick X"); // or "Joystick X" if named differently
         float jY = Input.GetAxis("Joystick Y"); // or "Joystick Y" if named differently
 
@@ -436,10 +438,11 @@ public class PlayerMove : MonoBehaviour {
         if (shuriThrow != null && !shuriThrow.isPlaying)
         {
             // Uncomment this if sound is ready
-            // shuriThrow.Play();
+            
         }
 
         // Instantiate the projectile and apply force in the correct direction
+        shuriThrow.Play();
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         projectile.GetComponent<Rigidbody2D>().AddForce(fireDirection * projectileSpeed, ForceMode2D.Impulse);
 

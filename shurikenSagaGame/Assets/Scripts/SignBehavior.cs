@@ -13,7 +13,7 @@ public class SignBehavior : MonoBehaviour
     private Vector2 originalPosition; // To save the original position of the image
     private Vector2 targetPosition; // The position to tween to
     [SerializeField]
-    private float moveDistance = 100f; // Adjust how far the image moves upwards
+    private float moveDistance; // Adjust how far the image moves upwards
     [SerializeField]
     private float tweenDuration = 0.5f; // Duration of the tween
 
