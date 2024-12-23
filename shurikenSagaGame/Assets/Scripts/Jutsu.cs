@@ -33,7 +33,7 @@ public class Jutsu : MonoBehaviour
     void Update()
     {
         // Example check for exit button click
-        if (exitButtonClicked) {
+        if (exitButtonClicked || Input.GetButtonDown("TextContinue")) {
             // Hide jutsuUI when exit button is clicked
             if (jutsuUI != null) {
                 jutsuUI.SetActive(false);

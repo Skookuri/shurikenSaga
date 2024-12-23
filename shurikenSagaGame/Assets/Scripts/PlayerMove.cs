@@ -110,8 +110,8 @@ public class PlayerMove : MonoBehaviour {
 
         if (jX > 0.1f ||  jY > 0.1f)
         {
-            //Debug.Log("joystick x axis: " + jX);
-            //Debug.Log("joystick y axis: " + jY);
+            Debug.Log("joystick x axis: " + jX);
+            Debug.Log("joystick y axis: " + jY);
         }
         if (!isAlive) return;
 
@@ -203,11 +203,55 @@ public class PlayerMove : MonoBehaviour {
         {
             HandleDoubleTap("D");
         }
+
+        if (!isOnDashCooldown && Input.GetButtonDown("DashButton") && dashUnlocked)
+        {
+            jX = Input.GetAxis("LeftStickHorizontal");
+            jY = Input.GetAxis("LeftStickVertical");
+            Debug.Log("X: " + jX + " Y: " + jY);
+            Debug.Log("DashButton if statement entered");
+            if (jX != 0f || jY != 0f)
+            {
+                Debug.Log("not All Zero");
+                if (Mathf.Abs(jX) >= Mathf.Abs(jY))
+                {
+                    Debug.Log("x bigger");
+                    if (jX > 0)
+                    {
+                        Debug.Log("x pos");
+                        StartCoroutine(Dash("D"));
+                    } 
+                    else
+                    {
+                        Debug.Log("x neg");
+                        StartCoroutine(Dash("A"));
+                    }
+                }
+                else
+                {
+                    Debug.Log("y bigger");
+                    if (jY > 0)
+                    {
+                        Debug.Log("y pos");
+                        StartCoroutine(Dash("S"));
+                    }
+                    else
+                    {
+                        Debug.Log("y neg");
+                        StartCoroutine(Dash("W"));
+                    }
+                }
+            }
+            else
+            {
+                Debug.Log("all zero");
+            }
+        }
         //Massimo changes end*******
 
         if (!fell)
         {
-            
+
         }
     }
 
